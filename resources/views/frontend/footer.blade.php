@@ -1,0 +1,99 @@
+<?php 
+?>
+<footer class="footer padding-bottom-45">
+	<div class="container">
+		<div class="col-lg-3">			
+			<?php 
+			$module=getPage("intro-footer");
+			if(count($module) > 0){
+				$fullname=substr($module["fullname"],0,50);
+				$featuredImg=asset('upload/'.$module['image']);
+				$permalink=route('frontend.index.index',[$module['alias']]);	
+				$content=$module["content"];					
+				?>		
+				<div class="margin-top-40">
+					<h1 class="brabel"><?php echo $fullname; ?></h1>
+					<div class="tialia margin-top-15">
+						<?php echo $content; ?>
+					</div>		
+				</div>										
+				<?php				
+			}
+			?>			
+		</div>
+		<div class="col-lg-3">
+			<?php 
+			$module=getPage("about-us-footer");
+			if(count($module) > 0){
+				$fullname=substr($module["fullname"],0,50);
+				$featuredImg=asset('upload/'.$module['image']);
+				$permalink=route('frontend.index.index',[$module['alias']]);	
+				$content=$module["content"];					
+				?>		
+				<div class="margin-top-40">
+					<h1 class="brabel"><?php echo $fullname; ?></h1>
+					<div class="tialia margin-top-15">
+						<?php echo $content; ?>
+					</div>		
+				</div>										
+				<?php				
+			}
+			?>			
+		</div>
+		<div class="col-lg-3">
+			<?php 
+			$module=getPage("fanpage-footer");
+			if(count($module) > 0){
+				$fullname=substr($module["fullname"],0,50);
+				$featuredImg=asset('upload/'.$module['image']);
+				$permalink=route('frontend.index.index',[$module['alias']]);	
+				$intro=$module["intro"];					
+				?>		
+				<div class="margin-top-40">
+					<h1 class="brabel"><?php echo $fullname; ?></h1>
+					<div class="tialia margin-top-15">
+						<?php echo $intro; ?>
+					</div>		
+				</div>										
+				<?php				
+			}
+			?>						
+		</div>
+		<div class="col-lg-3">
+			<div class="margin-top-40">
+				<h1 class="brabel">Kết nối mạng xã hội</h1>
+				<div class="tialia margin-top-15">
+					<?php 
+					$setting=getSettingSystem();
+					$telephone=$setting['telephone']['field_value'];
+					$facebook_url=$setting['facebook_url']['field_value'];
+					$twitter_url=$setting['twitter_url']['field_value'];
+					$google_plus=$setting['google_plus']['field_value'];
+					$youtube_url=$setting['youtube_url']['field_value'];
+					$instagram_url=$setting['instagram_url']['field_value'];
+					$pinterest_url=$setting['pinterest_url']['field_value'];   
+					?>
+					<ul class="inline-block connected-social">
+						<li><a href="<?php echo $facebook_url; ?>"><img src="<?php echo asset('upload/facebook-icon.png'); ?>"></a></li>
+						<li><a href="<?php echo $twitter_url; ?>"><img src="<?php echo asset('upload/twitter-icon.png'); ?>"></a></li>
+						<li><a href="<?php echo $google_plus; ?>"><img src="<?php echo asset('upload/google-plus.png'); ?>"></a></li>
+						<li><a href="<?php echo $youtube_url; ?>"><img src="<?php echo asset('upload/youtube-icon.png'); ?>"></a></li>												
+					</ul>
+					<div class="clr"></div>  
+				</div>
+			</div>								
+		</div>
+	</div>
+</footer>
+<div class="modal fade modal-add-cart" id="modal-alert-add-cart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>        
+			</div>
+			<div class="modal-body">
+
+			</div>      
+		</div>
+	</div>
+</div>
