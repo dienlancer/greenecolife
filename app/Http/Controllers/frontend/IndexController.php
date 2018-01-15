@@ -267,7 +267,7 @@ class IndexController extends Controller {
       $row=ArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();              
       if(count($row) > 0){
         $item=$row[0];
-      }        
+      }            
       $layout="two-column";       
       break;  
       case 'articles':      

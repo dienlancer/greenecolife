@@ -82,9 +82,9 @@
 							<?php 
 							foreach ($items as $key => $value) {
 								$alt=$value["alt"];
-								$item=asset('upload/'.$value["image"]);
+								$featuredImg=asset('upload/'.$value["image"]);
 								?>
-								<div><img src="<?php echo $item; ?>" alt="<?php echo $alt; ?>" /></div>
+								<div><img src="<?php echo $featuredImg; ?>" alt="<?php echo $alt; ?>" /></div>
 								<?php 
 							}
 							?>              

@@ -58,7 +58,7 @@ if(isset($alias)){
                             <?php 
                             foreach ($banners as $key => $value) {
                                 $alt=$value["alt"];
-                                $item=asset('upload/'.$value["image"]);
+                                $featuredImg=asset('upload/'.$value["image"]);
                                 $permalink='';
                                 if(!empty($value['page_url'])){
                                     $permalink=$value['page_url'];                                    
@@ -66,7 +66,7 @@ if(isset($alias)){
                                     $permalink='javascript:void(0);';
                                 }                                
                                 ?>
-                                <li><a href="<?php echo $permalink; ?>"><img src="<?php echo $item; ?>" alt="<?php echo $alt; ?>" /></a></li>
+                                <li><a href="<?php echo $permalink; ?>"><img src="<?php echo $featuredImg; ?>" alt="<?php echo $alt; ?>" /></a></li>
                                 <?php
                             }
                             ?>
@@ -89,7 +89,7 @@ if(isset($alias)){
                             <?php 
                             foreach ($banners as $key => $value) {
                                 $alt=$value["alt"];
-                                $item=asset('upload/'.$value["image"]);
+                                $featuredImg=asset('upload/'.$value["image"]);
                                 $permalink='';
                                 if(!empty($value['page_url'])){
                                     $permalink=$value['page_url'];                                    
@@ -97,7 +97,7 @@ if(isset($alias)){
                                     $permalink='javascript:void(0);';
                                 }                                
                                 ?>
-                                <li><a href="<?php echo $permalink; ?>"><img src="<?php echo $item; ?>" alt="<?php echo $alt; ?>" /></a></li>
+                                <li><a href="<?php echo $permalink; ?>"><img src="<?php echo $featuredImg; ?>" alt="<?php echo $alt; ?>" /></a></li>
                                 <?php
                             }
                             ?>
