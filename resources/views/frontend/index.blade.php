@@ -48,13 +48,63 @@ if(isset($alias)){
                 case 'category-article':
                 case 'article':
                 case 'page':                
-                wp_nav_menu($argsTinTucSuKien);   
+                wp_nav_menu($argsTinTucSuKien);  
+                $module=getBanner("advertising-article-widget");                        
+                if(count($module) > 0){                    
+                    $banners=$module["items"];    
+                    ?>
+                    <div class="margin-top-20">
+                        <ul class="advertising">
+                            <?php 
+                            foreach ($banners as $key => $value) {
+                                $alt=$value["alt"];
+                                $item=asset('upload/'.$value["image"]);
+                                $permalink='';
+                                if(!empty($value['page_url'])){
+                                    $permalink=$value['page_url'];                                    
+                                }else{
+                                    $permalink='javascript:void(0);';
+                                }                                
+                                ?>
+                                <li><a href="<?php echo $permalink; ?>"><img src="<?php echo $item; ?>" alt="<?php echo $alt; ?>" /></a></li>
+                                <?php
+                            }
+                            ?>
+                        </ul>                        
+                    </div>
+                    <?php
+                }
                 break;
                 case 'products':        
                 case 'category-product':
                 case 'product':
                 case 'search-product':                
-                wp_nav_menu($argsDanhMucSanPham);                                                                
+                wp_nav_menu($argsDanhMucSanPham);       
+                $module=getBanner("advertising-product-widget");                        
+                if(count($module) > 0){                    
+                    $banners=$module["items"];    
+                    ?>
+                    <div class="margin-top-20">
+                        <ul class="advertising">
+                            <?php 
+                            foreach ($banners as $key => $value) {
+                                $alt=$value["alt"];
+                                $item=asset('upload/'.$value["image"]);
+                                $permalink='';
+                                if(!empty($value['page_url'])){
+                                    $permalink=$value['page_url'];                                    
+                                }else{
+                                    $permalink='javascript:void(0);';
+                                }                                
+                                ?>
+                                <li><a href="<?php echo $permalink; ?>"><img src="<?php echo $item; ?>" alt="<?php echo $alt; ?>" /></a></li>
+                                <?php
+                            }
+                            ?>
+                        </ul>                        
+                    </div>
+                    <?php
+                }                                                         
                 break;                            
             }                                       
             ?>                            

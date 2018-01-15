@@ -566,20 +566,7 @@ footer{
     content: "\f0a9";
     margin-right: 5px;
 }
-.pagination li.active span{
-    background:#b93d00;
-    border: 1px solid #cd4401;
-}
-.pagination li.active span:hover{
-    background: #b93d00;
-    border: 1px solid #cd4401;
-}
-.pagination > li > a, .pagination > li > span{
-    color: #b93d00
-}
-.pagination > li > a:hover,.pagination > li > span:hover{
-    color: #b93d00
-}
+
 .menu-right-title{
        background: #0c62ad;
     color: #ffffff;
@@ -876,6 +863,13 @@ div.ducati  h2{
 }
 .thuong-hieu a{
     color: #0c62ad
+}
+.advertising{
+    list-style: none;
+}
+.advertising li{
+    margin-left: 0;
+    margin-top: 5px;
 }
 @media (max-width: 767px){       
     .menu-cerex{

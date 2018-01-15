@@ -168,4 +168,17 @@ div.button2-left button {
 	background: transparent;
 	border: 0 solid #aaa;
 }
-
+.pagination li.active span{
+    background:#0c62ad;
+    border: 1px solid #005299;
+}
+.pagination li.active span:hover{
+    background: #b93d00;
+    border: 1px solid #cd4401;
+}
+.pagination > li > a, .pagination > li > span{
+    color: #0c62ad
+}
+.pagination > li > a:hover,.pagination > li > span:hover{
+    color: #0c62ad
+}

@@ -270,7 +270,7 @@ class IndexController extends Controller {
       }        
       $layout="two-column";       
       break;  
-      case 'articles':
+      case 'articles':      
       $title="Tin tức";
         $meta_keyword="metakeyword tin tức";
         $meta_description="metadescription tin tức";
@@ -281,6 +281,7 @@ class IndexController extends Controller {
                 ->get()->toArray();
         $data=convertToArray($data);
         $totalItems=count($data);
+
         $totalItemsPerPage=(int)@$setting['article_perpage']['field_value']; 
         $pageRange=$this->_pageRange;
         if(!empty(@$request->filter_page)){
@@ -301,22 +302,7 @@ class IndexController extends Controller {
                 ->orderBy('article.created_at', 'desc')
                 ->skip($position)
                 ->take($totalItemsPerPage)
-                ->get()->toArray();    
-        $data=convertToArray($data);
-        $totalItems=count($data);
-        $totalItemsPerPage=(int)@$setting['article_perpage']['field_value']; 
-        $pageRange=$this->_pageRange;
-        if(!empty(@$request->filter_page)){
-          $currentPage=@$request->filter_page;
-        }       
-        $arrPagination=array(
-          "totalItems"=>$totalItems,
-          "totalItemsPerPage"=>$totalItemsPerPage,
-          "pageRange"=>$pageRange,
-          "currentPage"=>$currentPage   
-        );           
-        $pagination=new PaginationModel($arrPagination);
-        $position   = ((int)@$arrPagination['currentPage']-1)*$totalItemsPerPage;          
+                ->get()->toArray();            
         $items=convertToArray($data);           
       $layout="two-column";     
       break;

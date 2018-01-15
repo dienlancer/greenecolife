@@ -1,3 +1,4 @@
+
 <form method="post" class="frm margin-top-15" name="frm">
 	<input type="hidden" name="filter_page" value="1">         
 	{{ csrf_field() }}	
@@ -27,7 +28,7 @@
 								<i class="fa fa-eye" aria-hidden="true"></i>&nbsp;&nbsp;<?php echo $count_view_text; ?>&nbsp;lượt xem	
 							</div>							
 						</div>
-						<div class="margin-top-5 box-intro"><?php echo $intro; ?></div>
+						<!--<div class="margin-top-5 box-intro"><?php echo $intro; ?></div>-->
 						<div class="box-readmore margin-top-10"><a href="<?php echo $permalink; ?>">Xem chi tiết</a></div>
 					</div>
 					<div class="clr"></div>
