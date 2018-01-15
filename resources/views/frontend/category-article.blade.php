@@ -1,24 +1,20 @@
-
 <form method="post" class="frm margin-top-15" name="frm">
 	<input type="hidden" name="filter_page" value="1">         
 	{{ csrf_field() }}	
-	<?php 
-	switch ($alias) {
-		case 'tin-tuc':
-			?>
-			<h2 class="tieu-de">
-				<?php echo $title; ?>		
-			</h2>
-			<?php		
-			break;		
-		default:
-			?>
-			<h2 class="tieu-de-san-pham">
-            <span class="bai-viet-tieu-de"><a href="<?php echo route('frontend.index.index',[''.$alias.'']); ?>">Tin tức</a></span><span class="bai-viet-tieu-de margin-left-10"><?php echo $title; ?></span>
-        </h2>
-			<?php
-			break;
-	}
+	<?php 		
+	if(empty($breadcrumb)){
+		?>
+		<h2 class="tieu-de">
+			<?php echo $title; ?>		
+		</h2>
+		<?php
+	}else{
+		?>
+		<h2 class="tieu-de-san-pham">
+			<?php echo $breadcrumb; ?>
+		</h2>
+		<?php
+	}	
 	?>
 	<div class="row">
 		<?php 	

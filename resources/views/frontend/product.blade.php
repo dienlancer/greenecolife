@@ -4,6 +4,7 @@ use App\ProductModel;
 use Illuminate\Support\Facades\DB;
 $setting=getSettingSystem();
 if(count($item) > 0){
+
     $id=$item["id"];
     $fullname = $item["fullname"];
     $intro=$item["intro"];
@@ -47,11 +48,23 @@ if(count($item) > 0){
         $category_name=implode(' / ', $arr_category_name);      
     }       
     /* end category */
-    ?>
+    ?>    
     <div class="margin-top-15">
-        <h2 class="tieu-de-san-pham">
-            <span class="bai-viet-tieu-de"><a href="<?php echo route('frontend.index.index',['go-nhap-khau']); ?>">Gỗ nhập khẩu</a></span><span class="bai-viet-tieu-de margin-left-10"><?php echo $category_name; ?></span>
+        <?php       
+    if(empty($breadcrumb)){
+        ?>
+        <h2 class="tieu-de">
+            <?php echo $title; ?>       
         </h2>
+        <?php
+    }else{
+        ?>
+        <h2 class="tieu-de-san-pham">
+            <?php echo $breadcrumb; ?>
+        </h2>
+        <?php
+    }   
+    ?>  
         <div>
             <div class="col-lg-4 no-padding-left">
                 <div class="margin-top-15">

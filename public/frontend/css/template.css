@@ -505,6 +505,9 @@ footer{
     padding: 10px 10px;
     font-weight: bold;
 }
+.tieu-de a{
+    color: #0c62ad
+}
 .tieu-de::after{
         font-family: 'FontAwesome';
     content: "\f105";
@@ -535,7 +538,7 @@ footer{
 font-family: 'FontAwesome';
     content: "\f105";
     margin-left: 10px;
-    margin-left: 10px;
+    margin-right: 10px;
 }
 .bai-viet-tieu-de a{
     color: #0c62ad;
