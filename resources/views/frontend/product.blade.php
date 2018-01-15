@@ -134,7 +134,7 @@ if(count($item) > 0){
                 <div class="margin-top-15 product-detail-content">
                     Sản phẩm liên quan
                 </div> 
-                <div class="margin-top-45">
+                <div class="margin-top-15">
                     <script type="text/javascript" language="javascript">
                         $(document).ready(function(){
                             $(".related-products").owlCarousel({
