@@ -59,7 +59,7 @@ if(count($item) > 0){
         <?php
     }else{
         ?>
-        <h2 class="tieu-de-san-pham">
+        <h2 class="breadcrumb-title">
             <?php echo $breadcrumb; ?>
         </h2>
         <?php

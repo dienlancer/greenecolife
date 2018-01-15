@@ -228,6 +228,22 @@ function getBreadCrumb($alias){
   $strBreadcrumb='';
   getRecursiveMenu($alias,$arrMenu);  
   if(count($arrMenu) > 0){
+    $menuHome=MenuModel::whereRaw('alias = ?',['trang-chu'])->select('menu.id','menu.fullname','menu.alias','menu.parent_id')->get()->toArray()[0];
+    $menuAlias=MenuModel::whereRaw('alias = ?',[$alias])->select('menu.id','menu.fullname','menu.alias','menu.parent_id')->get()->toArray()[0];
+    $rowHome=array(
+        'id'        =>  $menuHome['id'],
+        'fullname'  =>  $menuHome['fullname'],
+        'alias'     =>  $menuHome['alias'],
+        'parent_id' =>  $menuHome['parent_id']
+      );
+    $rowAlias=array(
+        'id'        =>  $menuAlias['id'],
+        'fullname'  =>  $menuAlias['fullname'],
+        'alias'     =>  $menuAlias['alias'],
+        'parent_id' =>  $menuAlias['parent_id']
+      );
+    $arrMenu[]=$rowHome;
+    $arrMenu[]=$rowAlias;
     $data= get_field_data_array($arrMenu,'id');
     ksort($data);  
     foreach ($data as $key => $value) {
@@ -235,8 +251,16 @@ function getBreadCrumb($alias){
       $fullname=$value['fullname'];
       $alias=$value['alias'];
       $parent_id=$value['parent_id'];
-      $permalink=route('frontend.index.index',[$alias]);
-      $strBreadcrumb .='<span class="bai-viet-tieu-de"><a href="'.$permalink.'">'.$fullname.'</a></span>';
+      $permalink='';
+      switch ($alias) {
+        case 'trang-chu':
+          $permalink=url('/');
+          break;        
+        default:
+          $permalink=route('frontend.index.index',[$alias]);
+          break;
+      }      
+      $strBreadcrumb .='<a href="'.$permalink.'">'.$fullname.'</a>';
     }
   }
   return $strBreadcrumb;
