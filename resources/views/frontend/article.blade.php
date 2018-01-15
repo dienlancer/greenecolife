@@ -46,7 +46,7 @@ if(count($item) > 0){
 	}		
 	?>
 	<h2 class="tieu-de-san-pham margin-top-15">
-			<span class="article-detail"><?php echo $category_name; ?>		</span>
+			<span class="bai-viet-tieu-de"><?php echo $category_name; ?>		</span>
 		</h2>
 	<div class="margin-top-10 box-article">		
 		<div>
