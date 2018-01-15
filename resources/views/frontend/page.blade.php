@@ -24,7 +24,11 @@ if(count($item) > 0){
     $phone_office=$setting['phone_office']['field_value'];
     /* end setting */  
 	?>
-	<div class="margin-top-15 box-article">		
+    <h2 class="tieu-de margin-top-15">
+        Giới thiệu
+        </h2>
+	<div class="margin-top-10 box-article">	
+        	
 		<div>
             <div class="col-lg-4 no-padding-left">
                 <div class="margin-top-15">

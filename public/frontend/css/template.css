@@ -132,16 +132,12 @@ figure:hover img{-webkit-transform:scale3d(1.2, 1.2, 1);transform:scale3d(1.2, 1
 div.mobilemenu{
     display: none;
 }
-@media (max-width: 767px){
-    div.mobilemenu{
-        display: block;
-    }    
-}
+
 .navbar-default {
-        background-color:#d80027;
-    border-top:1px solid #ce0025;
-    border-left:1px solid #ce0025;
-    border-right:1px solid #ce0025;
+        background-color:#0c62ad;
+    border-top:1px solid #01539b;
+    border-left:1px solid #01539b;
+    border-right:1px solid #01539b;
 }
 .navbar-default .navbar-toggle {
     border-color: #ffffff;
@@ -150,14 +146,14 @@ div.mobilemenu{
     background-color: #ffffff;
 }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-    background-color: #d80027;
+    background-color: #0c62ad;
 }
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
-    border-top:1px solid #c50024;
+    border-top:1px solid #01539b;
 }
 .navbar-default .navbar-nav > li > a {
     color: #ffffff;
-    border-bottom:1px solid #c50024;
+    border-bottom:1px solid #01539b;
     padding-left:15px;
     padding-right: 15px;
         font-size: 16px;
@@ -202,7 +198,7 @@ ul.nav ul.sub-menu li a{
     margin-left: 0;
 }
 .navbar-nav li a:hover{
-    color: #ffb400 !important;
+    color: #ff8a00 !important;
 }
 div.opacity-absolute::before{
         position: absolute;
@@ -541,6 +537,9 @@ font-family: 'FontAwesome';
     margin-left: 10px;
     margin-left: 10px;
 }
+.bai-viet-tieu-de a{
+    color: #0c62ad;
+}
 .article-excerpt{
         color: #000000;
     font-weight: bold;
@@ -743,6 +742,7 @@ div.liverpool:hover div.youtube-img{
     float: right;
     margin-top: 35px;
     margin-right: 150px;
+    text-align: center;
 }
 .searching{
         float: right;
@@ -886,16 +886,23 @@ div.ducati  h2{
     margin-left: 0;
     margin-top: 5px;
 }
-@media (max-width: 767px){       
+.box-product-intro-title a{
+    background: rgba(0, 0, 0, 0.56);
+    color: #ffffff;
+    padding: 5px 15px;
+    display: block;
+}
+@media (max-width: 767px){    
+    div.mobilemenu{
+        display: block;
+    }    
     .menu-cerex{
         display: none;
     }
     .info-header{
         width: 100%;
     }
-    .logo{
-    width: 100%;    
-   }
+    
    .soratv{
         padding: 5px 0px;
         width: 100%;
@@ -906,12 +913,15 @@ div.ducati  h2{
     }
 }
 @media (max-width: 543px){
-    .rappit{
-        display: none;
-    }       
-   .rena{
-    width: 100%;
+    .logo{
+    width: 100%;    
    }
-    
+    .searching{
+        width: 100%;
+    }
+    .slogan{
+        margin-right: 0;
+        margin-top: 15px;
+    }
 }
 

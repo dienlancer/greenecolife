@@ -205,11 +205,8 @@ if(count($arrCart) > 0){
 				<div class="clr"></div>      
 			</div>      
 			<div class="clr"></div>      
-		</div>            
-
-	
-	
-		<div class="container">
+		</div>            	
+		<div class="container menu-cerex">
 			<div class="col-lg-12">
 				<div class="red-menu">
 					<?php     
@@ -236,7 +233,7 @@ if(count($arrCart) > 0){
 			<div class="clr"></div>      		
 		</div>
 	
-	<div class="mobilemenu">
+	<div class="mobilemenu margin-top-15">
 		<div class="container">
 			<div>
 				<nav class="navbar navbar-default">

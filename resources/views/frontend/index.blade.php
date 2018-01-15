@@ -66,7 +66,7 @@ if(isset($alias)){
                                     $permalink='javascript:void(0);';
                                 }                                
                                 ?>
-                                <li><a href="<?php echo $permalink; ?>"><img src="<?php echo $featuredImg; ?>" alt="<?php echo $alt; ?>" /></a></li>
+                                <li><center><a href="<?php echo $permalink; ?>"><img src="<?php echo $featuredImg; ?>" alt="<?php echo $alt; ?>" /></a></center></li>
                                 <?php
                             }
                             ?>
@@ -97,7 +97,7 @@ if(isset($alias)){
                                     $permalink='javascript:void(0);';
                                 }                                
                                 ?>
-                                <li><a href="<?php echo $permalink; ?>"><img src="<?php echo $featuredImg; ?>" alt="<?php echo $alt; ?>" /></a></li>
+                                <li><center><a href="<?php echo $permalink; ?>"><img src="<?php echo $featuredImg; ?>" alt="<?php echo $alt; ?>" /></a></center></li>
                                 <?php
                             }
                             ?>

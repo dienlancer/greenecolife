@@ -23,7 +23,7 @@
 									items:1
 								},
 								600:{
-									items:1
+									items:5
 								},
 								1000:{
 									items:5
@@ -45,7 +45,7 @@
 						?>
 						<div>
 							<div><center><figure><a href="<?php echo $permalink; ?>"><img src="<?php echo $featuredImg; ?>"></a></figure></center></div>
-							<div class="margin-top-5"><a href="<?php echo $permalink; ?>"><b><?php echo $title; ?></b></a></div>
+							<div class="margin-top-5 box-product-intro-title"><a href="<?php echo $permalink; ?>"><b><?php echo $title; ?></b></a></div>
 						</div>
 						<?php
 					}
@@ -127,7 +127,7 @@
 		<div class="clr"></div>				
 	</div>
 	<div>
-		<div class="col-lg-4">
+		<div class="col-sm-4">
 			<?php 
 			$module=getPage("introduce");
 			if(count($module) > 0){
@@ -146,7 +146,7 @@
 			}
 			?>			
 		</div>
-		<div class="col-lg-4">			
+		<div class="col-sm-4">			
 			<?php 
 			$module=getModuleItem("news-between");
 			if(count($module) > 0){
@@ -205,7 +205,7 @@
 			}
 			?>						
 		</div>
-		<div class="col-lg-4">
+		<div class="col-sm-4">
 			<?php 
 			$module=getModuleItem("other-news");
 			if(count($module) > 0){
@@ -242,7 +242,7 @@
 		$fullname=$data['fullname'];
 		if(count($items) > 0){
 			?>
-			<div class="col-lg-12 margin-top-45">
+			<div class="col-lg-12 margin-top-30">
 				<h2 class="f-title-info"><span><?php echo $fullname; ?></span></h2>
 				<script type="text/javascript" language="javascript">
 					$(document).ready(function(){
@@ -259,7 +259,7 @@
 									items:1
 								},
 								600:{
-									items:1
+									items:5
 								},
 								1000:{
 									items:5

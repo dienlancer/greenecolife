@@ -2,9 +2,24 @@
 <form method="post" class="frm margin-top-15" name="frm">
 	<input type="hidden" name="filter_page" value="1">         
 	{{ csrf_field() }}	
-	<h2 class="tieu-de">
-		<?php echo $title; ?>		
-	</h2>
+	<?php 
+	switch ($alias) {
+		case 'tin-tuc':
+			?>
+			<h2 class="tieu-de">
+				<?php echo $title; ?>		
+			</h2>
+			<?php		
+			break;		
+		default:
+			?>
+			<h2 class="tieu-de-san-pham">
+            <span class="bai-viet-tieu-de"><a href="<?php echo route('frontend.index.index',[''.$alias.'']); ?>">Tin tức</a></span><span class="bai-viet-tieu-de margin-left-10"><?php echo $title; ?></span>
+        </h2>
+			<?php
+			break;
+	}
+	?>
 	<div class="row">
 		<?php 	
 		if(count($items) > 0){
