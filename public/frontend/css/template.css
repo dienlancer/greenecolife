@@ -526,6 +526,21 @@ footer{
     font-weight: bold;
     
 }
+.tieu-de-san-pham{
+        border: 1px solid #d8d8d8;
+    background: linear-gradient(to bottom, #ffffff , #F5F5F5);
+    font-size: 15px;
+    color:#0c62ad;
+    text-transform: uppercase;
+    padding: 10px 10px;
+    font-weight: bold;
+}
+.bai-viet-tieu-de a::after{
+font-family: 'FontAwesome';
+    content: "\f105";
+    margin-left: 10px;
+    margin-left: 10px;
+}
 .article-excerpt{
         color: #000000;
     font-weight: bold;

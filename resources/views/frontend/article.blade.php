@@ -45,7 +45,10 @@ if(count($item) > 0){
 		$category_name=implode(' / ', $arr_category_name);		
 	}		
 	?>
-	<div class="margin-top-15 box-article">		
+	<h2 class="tieu-de-san-pham margin-top-15">
+            <span class="bai-viet-tieu-de"><a href="<?php echo route('frontend.index.index',['tin-tuc']); ?>">Tin tức</a></span><span class="bai-viet-tieu-de margin-left-10"><?php echo $category_name; ?></span>
+        </h2>
+	<div class="margin-top-10 box-article">		
 		<div>
             <div class="col-lg-4 no-padding-left">
                 <div class="margin-top-15">

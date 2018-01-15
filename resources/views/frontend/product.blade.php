@@ -26,10 +26,31 @@ if(count($item) > 0){
     $office=$setting['office']['field_value'];
     $phone_office=$setting['phone_office']['field_value'];
     /* end setting */    
+    /* begin category */
+    $dataProductCategory=DB::table('product_category')
+    ->join('category_product','product_category.category_product_id','=','category_product.id')     
+    ->select('category_product.id','category_product.fullname','category_product.alias')
+    ->where('product_category.product_id','=',(int)@$id)                    
+    ->groupBy('category_product.id','category_product.fullname','category_product.alias')
+    ->orderBy('category_product.sort_order','asc')
+    ->get()->toArray();
+    $arr_category_id=array();
+    $arr_category_name=array(); 
+    $category_name='';  
+    if(count($dataProductCategory) > 0){        
+        $dataProductCategory=convertToArray($dataProductCategory);
+        foreach ($dataProductCategory as $key => $value) {
+            $arr_category_id[]=$value["id"];
+            $permalink=route('frontend.index.index',[$value['alias']]);
+            $arr_category_name[]='<a href="'.$permalink.'">'.$value["fullname"].'</a>' ;                        
+        }       
+        $category_name=implode(' / ', $arr_category_name);      
+    }       
+    /* end category */
     ?>
     <div class="margin-top-15">
-        <h2 class="tieu-de">
-            <?php echo $title; ?>       
+        <h2 class="tieu-de-san-pham">
+            <span class="bai-viet-tieu-de"><a href="<?php echo route('frontend.index.index',['go-nhap-khau']); ?>">Gỗ nhập khẩu</a></span><span class="bai-viet-tieu-de margin-left-10"><?php echo $category_name; ?></span>
         </h2>
         <div>
             <div class="col-lg-4 no-padding-left">
@@ -93,20 +114,9 @@ if(count($item) > 0){
         <div class="margin-top-5">
             <b>Hotline:</b> <?php echo $telephone; ?>
         </div>              
-        <?php             
-        $dataProductCategory=DB::table('product_category')
-        ->join('category_product','product_category.category_product_id','=','category_product.id')     
-        ->select('category_product.id','category_product.fullname','category_product.alias')
-        ->where('product_category.product_id','=',(int)@$id)                    
-        ->groupBy('category_product.id','category_product.fullname','category_product.alias')
-        ->orderBy('category_product.sort_order','asc')
-        ->get()->toArray();
-        $arr_category_id=array();
-        if(count($dataProductCategory) > 0){
-            $dataProductCategory=convertToArray($dataProductCategory);   
-            foreach ($dataProductCategory as $key => $value) {
-                $arr_category_id[]=$value["id"];
-            }   
+        <?php                     
+        
+        if(count($dataProductCategory) > 0){            
             $dataProduct=DB::table('product')
             ->join('product_category','product.id','=','product_category.product_id')
             ->join('category_product','category_product.id','=','product_category.category_product_id')                   
