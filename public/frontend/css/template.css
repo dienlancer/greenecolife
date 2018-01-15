@@ -529,10 +529,19 @@ footer{
         border: 1px solid #d8d8d8;
     background: linear-gradient(to bottom, #ffffff , #F5F5F5);
     font-size: 15px;
-    color:#0c62ad;
+    
     text-transform: uppercase;
     padding: 10px 10px;
     font-weight: bold;
+}
+.article-detail a{
+    color:#0c62ad;
+}
+.article-detail a::after{
+    font-family: 'FontAwesome';
+    content: "\f105";
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .bai-viet-tieu-de a::after{
 font-family: 'FontAwesome';
