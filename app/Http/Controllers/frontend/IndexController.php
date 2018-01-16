@@ -170,7 +170,8 @@ class IndexController extends Controller {
     $item=array();     
     $items=array();                  
     $category=array();  
-    $component="";            
+    $component="";         
+    $menu=MenuModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();    
     $lstCategoryArticle=CategoryArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();    
     $lstCategoryProduct=CategoryProductModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
     $lstArticle=ArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
@@ -211,7 +212,7 @@ class IndexController extends Controller {
       case 'tin-tuc':      
       $component='articles';
       break;    
-      case 'go-nhap-khau':
+      case 'go-nguyen-lieu':
       $component='products';
       break;                     
     }        
@@ -270,8 +271,7 @@ class IndexController extends Controller {
       }            
       $layout="two-column";       
       break;  
-      case 'articles':      
-      $title="Tin tức";
+      case 'articles':            
         $meta_keyword="metakeyword tin tức";
         $meta_description="metadescription tin tức";
       $data=DB::table('article')                                  
@@ -366,10 +366,9 @@ class IndexController extends Controller {
       }    
       $layout="two-column";       
       break;     
-      case 'products':
-      $title="Gỗ nhập khẩu";
-        $meta_keyword="metakeyword gỗ nhập khẩu";
-        $meta_description="metadescription gỗ nhập khẩu";
+      case 'products':      
+        $meta_keyword="metakeyword Gỗ nguyên liệu";
+        $meta_description="metadescription Gỗ nguyên liệu";
       $data=DB::table('product')                                  
                 ->select('product.id')                
                 ->where('product.status',1)    
@@ -401,7 +400,11 @@ class IndexController extends Controller {
         $items=convertToArray($data);           
       $layout="two-column";        
       break;                
-    }         
+    }  
+    if(count($menu) > 0){
+      $menu=convertToArray($menu);
+      $title=$menu[0]['fullname'];
+    }       
     if(count($item) > 0){
       $title=$item['fullname'];                      
       if(!empty($item['meta_keyword'])){

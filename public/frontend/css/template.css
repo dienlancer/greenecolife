@@ -914,17 +914,28 @@ div.ducati  h2{
     top: 0; 
     left:0px;
     width: 100%;
-    z-index: 2
+    z-index: 2;
 }
 .bg-wrapper{
     background: #ffffff
 }
-.bg-header{
-    transition: all 0.5s ease-in-out
-}
 .toriese{
     box-shadow: 0px 2px 8px #999;
 }
+.bg-nina{
+    transition: 2s;
+}
+.bg-tatoo{
+    background: #ffffff
+}
+
+.bg-zipman .bg-tatoo{
+ background: #0c62ad
+}
+.bg-zipman .ddsmoothmenu > ul > li > a{
+    color: #ffffff ;
+}
+
 @media (max-width: 767px){    
     div.mobilemenu{
         display: block;

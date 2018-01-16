@@ -175,72 +175,75 @@ if(count($arrCart) > 0){
 		});    
 		$(document).ready(function(){        
 			$(window).bind("scroll", function() {                        
-				if ($(window).scrollTop() > 90) {
-					$(".bg-header").addClass("fixed");
-					$(".bg-wrapper").addClass("toriese");
+				if ($(window).scrollTop() > 90) {					
+					$(".bg-menu").addClass("fixed");
+					$(".bg-menu").addClass("bg-zipman");
+					$(".bg-wapper").hide();
 				}
-				else {
-					$(".bg-header").removeClass("fixed");
-					$(".bg-wrapper").removeClass("toriese");
+				else {					
+					$(".bg-menu").removeClass("fixed");
+					$(".bg-menu").removeClass("bg-zipman");
+					$(".bg-wapper").show();
 				}
 			});
 		});    
 	</script>
-
 </head>
 <body>	
 	<header class="header relative">	
-		<div class="bg-header">
-			<div class="container bg-wrapper">  
+		<div class="container bg-wrapper">  
 			<div class="col-lg-12">
-				<div class="logo">
-					<center>
-						<a href="<?php echo url('/'); ?>">                
-							<img src="<?php echo $seo_logo_frontend;?>" />
-						</a>
-					</center>
-				</div>				
-				<div class="searching  margin-top-30">
-					<div class="hotline">
-						<span class="telephone"><i class="fa fa-phone" aria-hidden="true"></i></span>
-						<span class="so-phone margin-left-5"><?php echo $telephone; ?></span>
-					</div>
-					<form action="<?php echo route('frontend.index.searchProduct'); ?>" method="post" name="frm-search" class="relative">
-						{{ csrf_field() }}
-						<input type="text" name="q" autocomplete="off" placeholder="Nhập từ khoá tìm kiếm" value="">
-						<a href="javascript:void(0);" onclick="document.forms['frm-search'].submit();">Tìm kiếm</a>
-					</form>
-				</div>	
-				<div class="slogan"><?php echo $company; ?></div>
-				<div class="clr"></div>      
-			</div>      
-			<div class="clr"></div>  
-			<div class="col-lg-12">
-				<div class="red-menu">
-					<?php     
-					$args = array(                         
-						'menu_class'            => 'main-menu',                               
-						'before_wrapper'        => '<div id="smoothmainmenu" class="ddsmoothmenu">',
-						'before_title'          => '',
-						'after_title'           => '',
-						'before_wrapper_ul'     =>  '',
-						'after_wrapper_ul'      =>  '',
-						'after_wrapper'         => '</div>'     ,
-						'link_before'           => '', 
-						'link_after'            => '',                                                                    
-						'theme_location'        => 'main-menu' ,
-						'menu_li_actived'       => 'current-menu-item',
-						'menu_item_has_children'=> 'menu-item-has-children',
-						'alias'                 => $seo_alias,
-					);                    
-					wp_nav_menu($args);
-					?>        
-					<div class="clr"></div>    
+					<div class="logo">
+						<center>
+							<a href="<?php echo url('/'); ?>">                
+								<img src="<?php echo $seo_logo_frontend;?>" />
+							</a>
+						</center>
+					</div>				
+					<div class="searching  margin-top-30">
+						<div class="hotline">
+							<span class="telephone"><i class="fa fa-phone" aria-hidden="true"></i></span>
+							<span class="so-phone margin-left-5"><?php echo $telephone; ?></span>
+						</div>
+						<form action="<?php echo route('frontend.index.searchProduct'); ?>" method="post" name="frm-search" class="relative">
+							{{ csrf_field() }}
+							<input type="text" name="q" autocomplete="off" placeholder="Nhập từ khoá tìm kiếm" value="">
+							<a href="javascript:void(0);" onclick="document.forms['frm-search'].submit();">Tìm kiếm</a>
+						</form>
+					</div>	
+					<div class="slogan"><?php echo $company; ?></div>
+					<div class="clr"></div>      
 				</div>      
-			</div>	
-			<div class="clr"></div>         
-		</div>         
-		</div>					   					
+				<div class="clr"></div>  				
+		</div>      
+		<div class="bg-menu">
+			<div class="container bg-tatoo">
+				<div class="col-lg-12">
+					<div class="red-menu">
+						<?php     
+						$args = array(                         
+							'menu_class'            => 'main-menu',                               
+							'before_wrapper'        => '<div id="smoothmainmenu" class="ddsmoothmenu">',
+							'before_title'          => '',
+							'after_title'           => '',
+							'before_wrapper_ul'     =>  '',
+							'after_wrapper_ul'      =>  '',
+							'after_wrapper'         => '</div>'     ,
+							'link_before'           => '', 
+							'link_after'            => '',                                                                    
+							'theme_location'        => 'main-menu' ,
+							'menu_li_actived'       => 'current-menu-item',
+							'menu_item_has_children'=> 'menu-item-has-children',
+							'alias'                 => $seo_alias,
+						);                    
+						wp_nav_menu($args);
+						?>        
+						<div class="clr"></div>    
+					</div>      
+				</div>	
+				<div class="clr"></div>        
+			</div>				 
+		</div>			   				   					
 		<div class="mobilemenu margin-top-15">
 			<div class="container">
 				<div>
