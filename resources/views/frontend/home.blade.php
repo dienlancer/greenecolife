@@ -1,7 +1,35 @@
 @extends("frontend.master")
 @section("content")
+<?php 
+$setting=getSettingSystem();
+$name_nvkd_1=$setting['name_nvkd_1']['field_value'];
+$name_nvkd_2=$setting['name_nvkd_2']['field_value'];
+$name_nvkd_3=$setting['name_nvkd_3']['field_value'];
+$name_nvkd_4=$setting['name_nvkd_4']['field_value'];
+
+$skype_nvkd_1=$setting['skype_nvkd_1']['field_value'];
+$skype_nvkd_2=$setting['skype_nvkd_2']['field_value'];
+$skype_nvkd_3=$setting['skype_nvkd_3']['field_value'];
+$skype_nvkd_4=$setting['skype_nvkd_4']['field_value'];
+
+$zalo_nvkd_1=$setting['zalo_nvkd_1']['field_value'];
+$zalo_nvkd_2=$setting['zalo_nvkd_2']['field_value'];
+$zalo_nvkd_3=$setting['zalo_nvkd_3']['field_value'];
+$zalo_nvkd_4=$setting['zalo_nvkd_4']['field_value'];
+
+$email_nvkd_1=$setting['email_nvkd_1']['field_value'];
+$email_nvkd_2=$setting['email_nvkd_2']['field_value'];
+$email_nvkd_3=$setting['email_nvkd_3']['field_value'];
+$email_nvkd_4=$setting['email_nvkd_4']['field_value'];
+
+$tel_nvkd_1=$setting['tel_nvkd_1']['field_value'];
+$tel_nvkd_2=$setting['tel_nvkd_2']['field_value'];
+$tel_nvkd_3=$setting['tel_nvkd_3']['field_value'];
+$tel_nvkd_4=$setting['tel_nvkd_4']['field_value'];
+?>
 <div class="container box-wrapper">
 	<?php 
+
 	$data=getModuleItem("san-pham-moi");
 	if(count($data) > 0){
 		$items=$data["items"];
@@ -96,33 +124,54 @@
 			?>
 		</div>
 		<div class="col-lg-4">
-			<?php 
-			$module=getModuleItem("tu-van-giai-phap-widget");
-			if(count($module) > 0){
-				$fullname=$module["fullname"];
-				$items=$module["items"];	
-				?>
-				<div class="ducati margin-top-20">
-					<div>
-						<h2><?php echo $fullname ?></h2>
-						<div class="box-article-list">
-							<ul class="categorymenu">
-								<?php 
-								foreach ($items as $key => $value) {
-									$title=$value['fullname'];
-									$permalink=route('frontend.index.index',[$value['alias']]);
-									?>
-									<li><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></li>
-									<?php	
-								}
-								?>								
-							</ul>
-						</div>
-					</div>					
-				</div>
-				<?php	
-			}
-			?>			
+			<div class="ducati margin-top-20">
+				<div>
+					<h2>Hotline</h2>
+					<div class="box-article-list">
+						<?php
+
+						?>
+						<table width="100%" class="hotline-tb">
+							<tr>
+								<td width="50%"><span class="employee-name"><?php echo $name_nvkd_1; ?></span></td>
+								<td>
+								<span class="skype"><a href="skype:<?php echo $skype_nvkd_1; ?>?add"><img src="<?php echo asset('upload/skype-icon.png'); ?>"></a></span>
+								<span class="zalo"><a href="javascript:void();"><img src="<?php echo asset('upload/zalo-icon.png'); ?>"></a></span>
+								<span class="mail"><a href="mailto:<?php echo $email_nvkd_1; ?>"><img src="<?php echo asset('upload/mail-icon.png'); ?>"></a></span>
+								<span class="tel"><a href="tel:<?php echo $tel_nvkd_1; ?>"><img src="<?php echo asset('upload/tel-icon.png'); ?>"></a></span>
+								</td>
+							</tr>
+							<tr>
+								<td width="50%"><span class="employee-name"><?php echo $name_nvkd_2; ?></span></td>
+								<td>
+								<span class="skype"><a href="skype:<?php echo $skype_nvkd_2; ?>?add"><img src="<?php echo asset('upload/skype-icon.png'); ?>"></a></span>
+								<span class="zalo"><a href="javascript:void();"><img src="<?php echo asset('upload/zalo-icon.png'); ?>"></a></span>
+								<span class="mail"><a href="mailto:<?php echo $email_nvkd_2; ?>"><img src="<?php echo asset('upload/mail-icon.png'); ?>"></a></span>
+								<span class="tel"><a href="tel:<?php echo $tel_nvkd_2; ?>"><img src="<?php echo asset('upload/tel-icon.png'); ?>"></a></span>
+								</td>
+							</tr>
+							<tr>
+								<td width="50%"><span class="employee-name"><?php echo $name_nvkd_3; ?></span></td>
+								<td>
+								<span class="skype"><a href="skype:<?php echo $skype_nvkd_3; ?>?add"><img src="<?php echo asset('upload/skype-icon.png'); ?>"></a></span>
+								<span class="zalo"><a href="javascript:void();"><img src="<?php echo asset('upload/zalo-icon.png'); ?>"></a></span>
+								<span class="mail"><a href="mailto:<?php echo $email_nvkd_3; ?>"><img src="<?php echo asset('upload/mail-icon.png'); ?>"></a></span>
+								<span class="tel"><a href="tel:<?php echo $tel_nvkd_3; ?>"><img src="<?php echo asset('upload/tel-icon.png'); ?>"></a></span>
+								</td>
+							</tr>
+							<tr>
+								<td width="50%"><span class="employee-name"><?php echo $name_nvkd_4; ?></span></td>
+								<td>
+								<span class="skype"><a href="skype:<?php echo $skype_nvkd_4; ?>?add"><img src="<?php echo asset('upload/skype-icon.png'); ?>"></a></span>
+								<span class="zalo"><a href="javascript:void();"><img src="<?php echo asset('upload/zalo-icon.png'); ?>"></a></span>
+								<span class="mail"><a href="mailto:<?php echo $email_nvkd_4; ?>"><img src="<?php echo asset('upload/mail-icon.png'); ?>"></a></span>
+								<span class="tel"><a href="tel:<?php echo $tel_nvkd_4; ?>"><img src="<?php echo asset('upload/tel-icon.png'); ?>"></a></span>
+								</td>
+							</tr>
+						</table>						
+					</div>
+				</div>					
+			</div>	
 		</div>
 		<div class="clr"></div>				
 	</div>

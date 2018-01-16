@@ -15,7 +15,8 @@
 					<h1 class="brabel"><?php echo $fullname; ?></h1>
 					<div class="tialia margin-top-15">
 						<?php echo $content; ?>
-					</div>		
+					</div>
+					<div class="margin-top-15 thiet-ke-boi">Thiết kế bởi: <a href="https://vidoweb.com.vn" target="_blank">www.vidoweb.com.vn</a> </div>		
 				</div>										
 				<?php				
 			}
@@ -41,23 +42,12 @@
 			?>			
 		</div>
 		<div class="col-lg-3">
-			<?php 
-			$module=getPage("fanpage-footer");
-			if(count($module) > 0){
-				$fullname=substr($module["fullname"],0,50);
-				$featuredImg=asset('upload/'.$module['image']);
-				$permalink=route('frontend.index.index',[$module['alias']]);	
-				$intro=$module["intro"];					
-				?>		
-				<div class="margin-top-40">
-					<h1 class="brabel"><?php echo $fullname; ?></h1>
-					<div class="tialia margin-top-15">
-						<?php echo $intro; ?>
-					</div>		
-				</div>										
-				<?php				
-			}
-			?>						
+			<div class="margin-top-40">
+				<h1 class="brabel">Fanpage</h1>
+				<div class="tialia margin-top-15">
+					<div class="fb-page" data-href="https://www.facebook.com/Greenecolife/" data-tabs="timeline" data-width="250" data-height="250" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false"><blockquote cite="https://www.facebook.com/Greenecolife/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Greenecolife/">Greenecolife Việt Nam</a></blockquote></div>
+				</div>		
+			</div>							
 		</div>
 		<div class="col-lg-3">
 			<div class="margin-top-40">

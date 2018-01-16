@@ -189,32 +189,47 @@ if(count($arrCart) > 0){
 		});    
 	</script>
 </head>
-<body>	
+<body>		
+	<!-- begin fanpage -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.11&appId=206740246563578';
+	fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- end fanpage -->
 	<header class="header relative">	
-		<div class="container bg-wrapper">  
-			<div class="col-lg-12">
-					<div class="logo">
-						<center>
-							<a href="<?php echo url('/'); ?>">                
-								<img src="<?php echo $seo_logo_frontend;?>" />
-							</a>
-						</center>
-					</div>				
-					<div class="searching  margin-top-30">
-						<div class="hotline">
-							<span class="telephone"><i class="fa fa-phone" aria-hidden="true"></i></span>
-							<span class="so-phone margin-left-5"><?php echo $telephone; ?></span>
-						</div>
-						<form action="<?php echo route('frontend.index.searchProduct'); ?>" method="post" name="frm-search" class="relative">
-							{{ csrf_field() }}
-							<input type="text" name="q" autocomplete="off" placeholder="Nhập từ khoá tìm kiếm" value="">
-							<a href="javascript:void(0);" onclick="document.forms['frm-search'].submit();">Tìm kiếm</a>
-						</form>
-					</div>	
-					<div class="slogan"><?php echo $company; ?></div>
-					<div class="clr"></div>      
-				</div>      
-				<div class="clr"></div>  				
+		<div class="container bg-wrapper"> 
+			<div class="col-lg-2">
+				<center>
+					<a href="<?php echo url('/'); ?>">                
+						<img src="<?php echo $seo_logo_frontend;?>" />
+					</a>
+				</center>				
+			</div> 
+			<div class="col-lg-6">
+				<div class="slogan"><?php echo $company; ?></div>
+			</div> 
+			<div class="col-lg-4">
+				<div class="searching  margin-top-30">
+					<div class="hotline">						
+						<span class="telephone"><i class="fa fa-phone" aria-hidden="true"></i></span>
+						<span class="so-phone margin-left-5"><?php echo $telephone; ?></span>
+					</div>
+					<div class="nana">
+						<form action="<?php echo route('frontend.index.searchProduct'); ?>" method="post" name="frm-search" class="relative tuabin">
+						{{ csrf_field() }}
+						<input type="text" name="q" autocomplete="off" placeholder="Nhập từ khoá tìm kiếm" value="">
+						<a href="javascript:void(0);" onclick="document.forms['frm-search'].submit();">Tìm kiếm</a>
+						
+					</form>
+					</div>					
+				</div>	
+				
+			</div> 
+			<div class="clr"></div>  				
 		</div>      
 		<div class="bg-menu">
 			<div class="container bg-tatoo">
@@ -244,7 +259,7 @@ if(count($arrCart) > 0){
 				<div class="clr"></div>        
 			</div>				 
 		</div>			   				   					
-		<div class="mobilemenu margin-top-15">
+		<div class="mobilemenu padding-top-15">
 			<div class="container">
 				<div>
 					<nav class="navbar navbar-default">
@@ -285,6 +300,11 @@ if(count($arrCart) > 0){
 	</header>
 @yield("content")
 @include("frontend.footer")
+<!--begin zalo-->
+<div class="zalo-chat-widget" data-oaid="579745863508352884" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="1" data-width="350" data-height="420"></div>
+
+<script src="https://sp.zalo.me/plugins/sdk.js"></script>
+<!--end zalo-->
 </body>
 </html>
 

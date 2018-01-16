@@ -21,7 +21,7 @@ if(count($item) > 0){
     $contacted_person=$setting['contacted_person']['field_value'];
     $telephone=$setting['telephone']['field_value'];
     $office=$setting['office']['field_value'];
-    $phone_office=$setting['phone_office']['field_value'];
+    
     /* end setting */  
 	?>    
 	<div class="margin-top-15 box-article">	
@@ -41,10 +41,7 @@ if(count($item) > 0){
                 </div>
                 <div class="margin-top-5 product-price">
                     <b>Giá:</b>&nbsp;Liên hệ
-                </div>
-                <div class="margin-top-5 product-price">
-                    <img src="<?php echo asset('upload/tru-so.png'); ?>">&nbsp;Trụ sở:&nbsp;<?php echo $address; ?>
-                </div>
+                </div>                
                 <div class="margin-top-5">
                     <img src="<?php echo asset('upload/tru-so.png'); ?>">&nbsp;Vp giao dịch:&nbsp;<?php echo $office; ?>
                 </div>

@@ -7,7 +7,7 @@
 @font-face{font-family:"Parisienne";src:url("../fonts/Parisienne.ttf") format('truetype');}
 @font-face{font-family:"Ovo";src:url("../fonts/Ovo-Regular.ttf") format('truetype');}
 @font-face{font-family:"RobotoSlab";src:url("../fonts/RobotoSlab.ttf") format('truetype');}
-body{font-size:14px;color:#585858;background: url('../images/bg-body-fixed.jpg');font-family: 'arial', serif}
+body{font-size:14px;color:#585858;background: url('../images/bg-body-fixed.png');font-family: 'arial', serif}
 table{max-width:100%;}
 p{margin:1em 0;}
 img{max-width:100%;}
@@ -132,7 +132,6 @@ figure:hover img{-webkit-transform:scale3d(1.2, 1.2, 1);transform:scale3d(1.2, 1
 div.mobilemenu{
     display: none;
 }
-
 .navbar-default {
         background-color:#0c62ad;
     border-top:1px solid #01539b;
@@ -273,10 +272,9 @@ ul.list-style-none{
         font-style: italic;
 }
 .searching input[type='text'][name='q']{
-        width:250px;
     border: 1px solid #d7d7d7;
     padding: 10px 10px;
-    font-style: italic;
+    font-style: italic;   
 }
 .searching a{
        color: #ffffff;
@@ -755,15 +753,14 @@ div.liverpool:hover div.youtube-img{
         color: #0c62ad;
     font-size: 24px;
     font-weight: bold;
-    float: right;
+   
     margin-top: 35px;
-    margin-right: 150px;
+
     text-align: center;
     text-transform: uppercase;
 }
 .searching{
-        float: right;
-    width: 324px;
+    
 }
 
 .main-menu li{
@@ -794,17 +791,10 @@ div.ducati  h2{
 }
 .categorymenu li{
     margin-left: 0;
+    margin-top: 10px;
 }
-.categorymenu li a{
-    display: block;
-    padding: 5px 0px;
-    font-style: italic;
-}
-.categorymenu li a i{
-    margin-right: 10px
-}
-.categorymenu .sub-menu{
-    margin-left: 15px;
+.categorymenu li span{
+	margin-left: 5px;
 }
 .ducati{
         border: 1px solid #dddddd;
@@ -812,17 +802,11 @@ div.ducati  h2{
     border-radius: 5px;
     background: linear-gradient(to bottom , #ffffff, #f0f0f0);
 }
-.categorymenu > li > a::before{
-    font-family: 'fontawesome';
-    content: "\f006";
-    margin-right: 5px;
-}
+
 .box-article-list{
     padding: 0px 5px;
 }
-.categorymenu > li > a{
-        border-bottom: 1px dotted #ddd;
-}
+
 .f-title-info span {
         font-size: 18px;
     color: #0c62ad;
@@ -935,11 +919,28 @@ div.ducati  h2{
 .bg-zipman .ddsmoothmenu > ul > li > a{
     color: #ffffff ;
 }
+.tuabin{
+	    width: 266px;
+    float: right;
+}
+.hotline-tb td{
+	padding: 5px 0px;
+}
+.thiet-ke-boi a{
+	color: #ffffff
+}
+.employee-name{	
+	font-style:italic;
 
+}
 @media (max-width: 767px){    
     div.mobilemenu{
         display: block;
+        background: #ffffff;
     }    
+    .bg-menu{
+    	display: none;
+    }
     .menu-cerex{
         display: none;
     }
@@ -955,6 +956,17 @@ div.ducati  h2{
     .immotal{
             padding-top: 15px;
     }
+    .hotline{
+    	text-align: center;
+    }
+    .nana{
+    	display: flex;
+    	
+    	justify-content: center;
+    }
+    .tuabin{
+    	float: none;
+    }
 }
 @media (max-width: 543px){
     .logo{
@@ -966,6 +978,9 @@ div.ducati  h2{
     .slogan{
         margin-right: 0;
         margin-top: 15px;
+    }
+    .hotline{
+    	text-align: center;
     }
 }
 
