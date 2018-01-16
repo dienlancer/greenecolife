@@ -7,7 +7,7 @@
 @font-face{font-family:"Parisienne";src:url("../fonts/Parisienne.ttf") format('truetype');}
 @font-face{font-family:"Ovo";src:url("../fonts/Ovo-Regular.ttf") format('truetype');}
 @font-face{font-family:"RobotoSlab";src:url("../fonts/RobotoSlab.ttf") format('truetype');}
-body{font-size:14px;color:#585858;background: url('../images/bg_body_fix.jpg');font-family: 'arial', serif}
+body{font-size:14px;color:#585858;background: url('../images/bg-body-fixed.jpg');font-family: 'arial', serif}
 table{max-width:100%;}
 p{margin:1em 0;}
 img{max-width:100%;}
@@ -456,8 +456,11 @@ ul.list-style-none{
     list-style: square;
 }
 footer{
-    background:#045195;
+    
     color: #ffffff;
+}
+.azweb{
+    background:#045195;
 }
 .brabel{
     font-size: 15px;
@@ -761,13 +764,8 @@ div.liverpool:hover div.youtube-img{
 .searching{
         float: right;
     width: 324px;
-    margin-top: 30px;
+}
 
-}
-.header{
-        background: #fff;
-    box-shadow: 0px 2px 8px #999;
-}
 .main-menu li{
     margin-left: 0
 }
@@ -905,6 +903,27 @@ div.ducati  h2{
     color: #ffffff;
     padding: 5px 15px;
     display: block;
+}
+.hotline{
+        font-size: 30px;
+    color: #0c62ad;
+    text-align: right;
+}
+.fixed {
+    position: fixed; 
+    top: 0; 
+    left:0px;
+    width: 100%;
+    z-index: 2
+}
+.bg-wrapper{
+    background: #ffffff
+}
+.bg-header{
+    transition: all 0.5s ease-in-out
+}
+.toriese{
+    box-shadow: 0px 2px 8px #999;
 }
 @media (max-width: 767px){    
     div.mobilemenu{

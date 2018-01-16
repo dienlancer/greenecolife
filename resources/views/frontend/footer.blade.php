@@ -1,7 +1,7 @@
 <?php 
 ?>
-<footer class="footer padding-bottom-45">
-	<div class="container">
+<footer class="footer">
+	<div class="container azweb">
 		<div class="col-lg-3">			
 			<?php 
 			$module=getPage("intro-footer");

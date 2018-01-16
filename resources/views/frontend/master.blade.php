@@ -175,11 +175,13 @@ if(count($arrCart) > 0){
 		});    
 		$(document).ready(function(){        
 			$(window).bind("scroll", function() {                        
-				if ($(window).scrollTop() > 104) {
-					$("div.bg-header").addClass("fixed");
+				if ($(window).scrollTop() > 90) {
+					$(".bg-header").addClass("fixed");
+					$(".bg-wrapper").addClass("toriese");
 				}
 				else {
-					$("div.bg-header").removeClass("fixed");
+					$(".bg-header").removeClass("fixed");
+					$(".bg-wrapper").removeClass("toriese");
 				}
 			});
 		});    
@@ -187,9 +189,9 @@ if(count($arrCart) > 0){
 
 </head>
 <body>	
-	<header class="header relative">		
-		
-		<div class="container">  
+	<header class="header relative">	
+		<div class="bg-header">
+			<div class="container bg-wrapper">  
 			<div class="col-lg-12">
 				<div class="logo">
 					<center>
@@ -198,8 +200,12 @@ if(count($arrCart) > 0){
 						</a>
 					</center>
 				</div>				
-				<div class="searching relative">
-					<form action="<?php echo route('frontend.index.searchProduct'); ?>" method="post" name="frm-search">
+				<div class="searching  margin-top-30">
+					<div class="hotline">
+						<span class="telephone"><i class="fa fa-phone" aria-hidden="true"></i></span>
+						<span class="so-phone margin-left-5"><?php echo $telephone; ?></span>
+					</div>
+					<form action="<?php echo route('frontend.index.searchProduct'); ?>" method="post" name="frm-search" class="relative">
 						{{ csrf_field() }}
 						<input type="text" name="q" autocomplete="off" placeholder="Nhập từ khoá tìm kiếm" value="">
 						<a href="javascript:void(0);" onclick="document.forms['frm-search'].submit();">Tìm kiếm</a>
@@ -208,9 +214,7 @@ if(count($arrCart) > 0){
 				<div class="slogan"><?php echo $company; ?></div>
 				<div class="clr"></div>      
 			</div>      
-			<div class="clr"></div>      
-		</div>            	
-		<div class="container menu-cerex">
+			<div class="clr"></div>  
 			<div class="col-lg-12">
 				<div class="red-menu">
 					<?php     
@@ -234,48 +238,48 @@ if(count($arrCart) > 0){
 					<div class="clr"></div>    
 				</div>      
 			</div>	
-			<div class="clr"></div>      		
-		</div>
-	
-	<div class="mobilemenu margin-top-15">
-		<div class="container">
-			<div>
-				<nav class="navbar navbar-default">
-					<div class="container-fluid">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>                   
+			<div class="clr"></div>         
+		</div>         
+		</div>					   					
+		<div class="mobilemenu margin-top-15">
+			<div class="container">
+				<div>
+					<nav class="navbar navbar-default">
+						<div class="container-fluid">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>                   
+							</div>
+							<div id="navbar" class="navbar-collapse collapse">
+								<?php     
+								$args = array(                         
+									'menu_class'            => 'nav navbar-nav',                            
+									'before_wrapper'        => '',
+									'before_title'          => '',
+									'after_title'           => '',
+									'before_wrapper_ul'     =>  '',
+									'after_wrapper_ul'      =>  '',
+									'after_wrapper'         => ''     ,
+									'link_before'           => '', 
+									'link_after'            => '',                                                                    
+									'theme_location'        => 'mobile-menu' ,
+									'menu_li_actived'       => 'current-menu-item',
+									'menu_item_has_children'=> 'menu-item-has-children',
+									'alias'                 => ''
+								);                 
+								wp_nav_menu($args);                          
+								?>             
+							</div>
 						</div>
-						<div id="navbar" class="navbar-collapse collapse">
-							<?php     
-							$args = array(                         
-								'menu_class'            => 'nav navbar-nav',                            
-								'before_wrapper'        => '',
-								'before_title'          => '',
-								'after_title'           => '',
-								'before_wrapper_ul'     =>  '',
-								'after_wrapper_ul'      =>  '',
-								'after_wrapper'         => ''     ,
-								'link_before'           => '', 
-								'link_after'            => '',                                                                    
-								'theme_location'        => 'mobile-menu' ,
-								'menu_li_actived'       => 'current-menu-item',
-								'menu_item_has_children'=> 'menu-item-has-children',
-								'alias'                 => ''
-							);                 
-							wp_nav_menu($args);                          
-							?>             
-						</div>
-					</div>
-				</nav>
+					</nav>
+				</div>
 			</div>
-		</div>
-	</div>    
-</header>
+		</div>    
+	</header>
 @yield("content")
 @include("frontend.footer")
 </body>
