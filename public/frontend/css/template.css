@@ -756,6 +756,7 @@ div.liverpool:hover div.youtube-img{
     margin-top: 35px;
     margin-right: 150px;
     text-align: center;
+    text-transform: uppercase;
 }
 .searching{
         float: right;

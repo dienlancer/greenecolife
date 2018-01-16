@@ -9,6 +9,7 @@ $google_plus=$setting['google_plus']['field_value'];
 $youtube_url=$setting['youtube_url']['field_value'];
 $instagram_url=$setting['instagram_url']['field_value'];
 $pinterest_url=$setting['pinterest_url']['field_value'];   
+$company=$setting['contacted_person']['field_value'];
 
 $seo_title="";
 if(isset($title)){
@@ -204,7 +205,7 @@ if(count($arrCart) > 0){
 						<a href="javascript:void(0);" onclick="document.forms['frm-search'].submit();">Tìm kiếm</a>
 					</form>
 				</div>	
-				<div class="slogan">CÔNG TY TNHH GREENECOLIFE</div>
+				<div class="slogan"><?php echo $company; ?></div>
 				<div class="clr"></div>      
 			</div>      
 			<div class="clr"></div>      
