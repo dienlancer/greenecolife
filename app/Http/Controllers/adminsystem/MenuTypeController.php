@@ -35,7 +35,7 @@ class MenuTypeController extends Controller {
                   ->get()
                   ->toArray();      
       $data=convertToArray($data);    
-      $data=categoryBannerConverter($data,$this->_controller);            
+      $data=menuTypeConverter($data,$this->_controller);            
       return $data;
     } 
     public function getForm($task,$id=""){		 

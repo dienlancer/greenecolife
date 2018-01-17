@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 17, 2018 lúc 11:21 AM
+-- Thời gian đã tạo: Th1 17, 2018 lúc 12:14 PM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.0.26
 
@@ -1726,7 +1726,8 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (362, 1, '7YWkgnr0fcthbBrZtZxI5VYfq9GkeIrH', '2018-01-16 20:15:12', '2018-01-16 20:15:12'),
 (363, 1, 'C7HQZp1uoHWuUddbCURbC67F8WRFPbhz', '2018-01-16 20:57:30', '2018-01-16 20:57:30'),
 (364, 1, 'An1hk9DM1kFNeHQDbXs26BUas2QhrMQM', '2018-01-17 00:28:12', '2018-01-17 00:28:12'),
-(366, 1, '1wUTqWD2BFEEIS98lz1DmfP6K2QhdeMT', '2018-01-17 00:47:17', '2018-01-17 00:47:17');
+(366, 1, '1wUTqWD2BFEEIS98lz1DmfP6K2QhdeMT', '2018-01-17 00:47:17', '2018-01-17 00:47:17'),
+(367, 1, 'Wvyegdf8fV2HH2JwrK7ZgqP6CCcS1bQ0', '2018-01-17 04:02:07', '2018-01-17 04:02:07');
 
 -- --------------------------------------------------------
 
@@ -2613,7 +2614,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `group_member_id`, `password`, `permissions`, `last_login`, `fullname`, `image`, `sort_order`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'diennk@dienkim.com', 1, '$2y$10$7dtr..hp2YFFY/AHsKqEQuHlU6VXg5Yrkli1rhqfuDjek.EbjFk1y', NULL, '2018-01-17 00:47:17', 'Nguyễn Kim Điền', 'nguyen-kim-dien.png', 5, 1, '2017-11-12 07:23:56', '2018-01-17 00:47:17');
+(1, 'admin', 'diennk@dienkim.com', 1, '$2y$10$7dtr..hp2YFFY/AHsKqEQuHlU6VXg5Yrkli1rhqfuDjek.EbjFk1y', NULL, '2018-01-17 04:02:07', 'Nguyễn Kim Điền', 'nguyen-kim-dien.png', 5, 1, '2017-11-12 07:23:56', '2018-01-17 04:02:07');
 
 -- --------------------------------------------------------
 
@@ -3013,7 +3014,7 @@ ALTER TABLE `payment_method`
 -- AUTO_INCREMENT cho bảng `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=367;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=368;
 
 --
 -- AUTO_INCREMENT cho bảng `photo`
