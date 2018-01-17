@@ -7,6 +7,8 @@
 @font-face{font-family:"Parisienne";src:url("../fonts/Parisienne.ttf") format('truetype');}
 @font-face{font-family:"Ovo";src:url("../fonts/Ovo-Regular.ttf") format('truetype');}
 @font-face{font-family:"RobotoSlab";src:url("../fonts/RobotoSlab.ttf") format('truetype');}
+@font-face{font-family:"OpenSans";src:url("../fonts/OpenSans.ttf") format('truetype');}
+@font-face{font-family:"OpenSans-Bold";src:url("../fonts/OpenSans-Bold.ttf") format('truetype');}
 body{
     font-size:14px;
     color:#585858;
@@ -14,7 +16,7 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center top;
-    
+    font-family: 'OpenSans';
     
 }
 table{max-width:100%;}
@@ -274,7 +276,6 @@ ul.list-style-none{
 }
 .contact-phone{
         color: #707070;
-    font-family: 'RobotoSlab';
     font-weight: bold;
     font-size: 30px;
     padding: 4px 0px;
@@ -289,7 +290,7 @@ ul.list-style-none{
        color: #ffffff;
     padding: 14px 15px;
     font-size: 10px;
-    background: #0c62ad;
+    background: #df0000;
     text-transform: uppercase;
     font-weight: bold;
     position: absolute;
@@ -757,19 +758,23 @@ div.liverpool:hover div.youtube-img{
     float: right;   
 }
 .slogan{
-        color: #0c62ad;
-    font-size: 24px;
+    color: #0c62ad;
+    font-size: 30px;
     font-weight: bold;
-   
     margin-top: 35px;
-
     text-align: center;
     text-transform: uppercase;
+    text-shadow: 2px 2px 0px #ffffff;
 }
 .searching{
     
 }
-
+.so-phone{
+    text-shadow: 2px 2px 0px #ffffff;
+}
+.telephone{
+    text-shadow: 2px 2px 0px #ffffff;
+}
 .main-menu li{
     margin-left: 0
 }
@@ -925,7 +930,7 @@ div.ducati  h2{
     color: #ffffff ;
 }
 .tuabin{
-	    width: 266px;
+	    width:255px;
     float: right;
 }
 .hotline-tb td{
