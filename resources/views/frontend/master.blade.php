@@ -179,11 +179,13 @@ if(count($arrCart) > 0){
 					$(".bg-menu").addClass("fixed");
 					$(".bg-menu").addClass("bg-zipman");
 					$(".bg-wapper").hide();
+					$(".red-menu").removeClass('margin-top-15');
 				}
 				else {					
 					$(".bg-menu").removeClass("fixed");
 					$(".bg-menu").removeClass("bg-zipman");
 					$(".bg-wapper").show();
+					$(".red-menu").addClass('margin-top-15');
 				}
 			});
 		});    

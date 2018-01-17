@@ -292,7 +292,7 @@ ul.list-style-none{
 }
 .red-menu{
     padding:0 0px;
-    
+    background: #0c62ad;
 }
 
 .content{
@@ -930,11 +930,14 @@ div.ducati  h2{
 .employee-name{	
 	    font-style: italic;
     font-size: 12px;
-
+    font-weight: bold;
 }
 .box-support{
     width: 100%;    
     box-shadow: 1px 1px 1px #888888;
+}
+.phone-tel{
+    color: #d10000
 }
 @media (max-width: 767px){    
     div.mobilemenu{
