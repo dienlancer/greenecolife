@@ -7,7 +7,16 @@
 @font-face{font-family:"Parisienne";src:url("../fonts/Parisienne.ttf") format('truetype');}
 @font-face{font-family:"Ovo";src:url("../fonts/Ovo-Regular.ttf") format('truetype');}
 @font-face{font-family:"RobotoSlab";src:url("../fonts/RobotoSlab.ttf") format('truetype');}
-body{font-size:14px;color:#585858;background: url('../images/bg-body-fixed.png');font-family: 'arial', serif}
+body{
+    font-size:14px;
+    color:#585858;
+    background-image: url('../images/bg-body-fixed.png');
+    background-repeat: no-repeat;
+ 
+    background-position: center top;
+    
+    font-family: 'arial', serif;
+}
 table{max-width:100%;}
 p{margin:1em 0;}
 img{max-width:100%;}
@@ -457,9 +466,7 @@ footer{
     
     color: #ffffff;
 }
-.azweb{
-    background:#045195;
-}
+
 .brabel{
     font-size: 15px;
     text-transform: uppercase;
@@ -899,7 +906,7 @@ div.ducati  h2{
     z-index: 2;
 }
 .bg-wrapper{
-    background: #ffffff
+    background:transparent;
 }
 .toriese{
     box-shadow: 0px 2px 8px #999;
