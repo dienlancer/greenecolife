@@ -259,7 +259,8 @@ class IndexController extends Controller {
                 ->orderBy('article.created_at', 'desc')
                 ->skip($position)
                 ->take($totalItemsPerPage)
-                ->get()->toArray();        
+                ->get()
+                ->toArray();        
         $items=convertToArray($data);                            
       }              
       $layout="two-column";  

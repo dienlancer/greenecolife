@@ -759,7 +759,7 @@ div.liverpool:hover div.youtube-img{
 }
 .slogan{
     color: #0c62ad;
-    font-size: 30px;
+    font-size: 35px;
     font-weight: bold;
     margin-top: 35px;
     text-align: center;
@@ -938,7 +938,8 @@ div.ducati  h2{
 	padding: 5px 0px;
 }
 .thiet-ke-boi a{
-	color: #ffffff
+	color: #ffffff;
+    text-transform: uppercase;
 }
 .employee-name{	
 	    font-style: italic;
@@ -951,6 +952,13 @@ div.ducati  h2{
 }
 .phone-tel{
     color: #d10000
+}
+
+.connected-social li{
+    margin-left: 15px;
+}
+.connected-social li:first-child{
+    margin-left: 0
 }
 @media (max-width: 767px){    
     div.mobilemenu{

@@ -16,7 +16,7 @@
 					<div class="tialia margin-top-15">
 						<?php echo $content; ?>
 					</div>
-					<div class="margin-top-15 thiet-ke-boi">Thiết kế bởi: <a href="https://vidoweb.com.vn" target="_blank">www.vidoweb.com.vn</a> </div>		
+					<div class="margin-top-15 thiet-ke-boi">Thiết kế bởi: <a href="https://vidoweb.com.vn" target="_blank">Vidoweb</a> </div>		
 				</div>										
 				<?php				
 			}
