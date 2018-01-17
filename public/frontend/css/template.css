@@ -771,11 +771,10 @@ div.liverpool:hover div.youtube-img{
     padding: 50px 15px 15px 15px;
 }
 div.ducati  h2{
-    background: #0c62ad;
-    color: #ffffff;
-    padding: 15px 0px;
+    color: #e80000;
+    padding: 0px 0px;
     text-transform: uppercase;
-    text-align: center;
+    text-align: left;
     font-size: 15px;
     font-weight: bold;
     border-radius: 5px;
@@ -797,14 +796,13 @@ div.ducati  h2{
 	margin-left: 5px;
 }
 .ducati{
-        border: 1px solid #dddddd;
+    
     padding: 5px;
-    border-radius: 5px;
-    background: linear-gradient(to bottom , #ffffff, #f0f0f0);
+   
 }
 
 .box-article-list{
-    padding: 0px 5px;
+    padding: 0px 0px;
 }
 
 .f-title-info span {
@@ -930,8 +928,13 @@ div.ducati  h2{
 	color: #ffffff
 }
 .employee-name{	
-	font-style:italic;
+	    font-style: italic;
+    font-size: 12px;
 
+}
+.box-support{
+    width: 100%;    
+    box-shadow: 1px 1px 1px #888888;
 }
 @media (max-width: 767px){    
     div.mobilemenu{

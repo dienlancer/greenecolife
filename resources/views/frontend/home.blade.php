@@ -126,49 +126,46 @@ $tel_nvkd_4=$setting['tel_nvkd_4']['field_value'];
 		<div class="col-lg-4">
 			<div class="ducati margin-top-20">
 				<div>
-					<h2>Hotline</h2>
-					<div class="box-article-list">
-						<?php
-
-						?>
-						<table width="100%" class="hotline-tb">
-							<tr>
-								<td width="50%"><span class="employee-name"><?php echo $name_nvkd_1; ?></span></td>
-								<td>
-								<span class="skype"><a href="skype:<?php echo $skype_nvkd_1; ?>?add"><img src="<?php echo asset('upload/skype-icon.png'); ?>"></a></span>
-								<span class="zalo"><a href="javascript:void();"><img src="<?php echo asset('upload/zalo-icon.png'); ?>"></a></span>
-								<span class="mail"><a href="mailto:<?php echo $email_nvkd_1; ?>"><img src="<?php echo asset('upload/mail-icon.png'); ?>"></a></span>
-								<span class="tel"><a href="tel:<?php echo $tel_nvkd_1; ?>"><img src="<?php echo asset('upload/tel-icon.png'); ?>"></a></span>
-								</td>
-							</tr>
-							<tr>
-								<td width="50%"><span class="employee-name"><?php echo $name_nvkd_2; ?></span></td>
-								<td>
-								<span class="skype"><a href="skype:<?php echo $skype_nvkd_2; ?>?add"><img src="<?php echo asset('upload/skype-icon.png'); ?>"></a></span>
-								<span class="zalo"><a href="javascript:void();"><img src="<?php echo asset('upload/zalo-icon.png'); ?>"></a></span>
-								<span class="mail"><a href="mailto:<?php echo $email_nvkd_2; ?>"><img src="<?php echo asset('upload/mail-icon.png'); ?>"></a></span>
-								<span class="tel"><a href="tel:<?php echo $tel_nvkd_2; ?>"><img src="<?php echo asset('upload/tel-icon.png'); ?>"></a></span>
-								</td>
-							</tr>
-							<tr>
-								<td width="50%"><span class="employee-name"><?php echo $name_nvkd_3; ?></span></td>
-								<td>
-								<span class="skype"><a href="skype:<?php echo $skype_nvkd_3; ?>?add"><img src="<?php echo asset('upload/skype-icon.png'); ?>"></a></span>
-								<span class="zalo"><a href="javascript:void();"><img src="<?php echo asset('upload/zalo-icon.png'); ?>"></a></span>
-								<span class="mail"><a href="mailto:<?php echo $email_nvkd_3; ?>"><img src="<?php echo asset('upload/mail-icon.png'); ?>"></a></span>
-								<span class="tel"><a href="tel:<?php echo $tel_nvkd_3; ?>"><img src="<?php echo asset('upload/tel-icon.png'); ?>"></a></span>
-								</td>
-							</tr>
-							<tr>
-								<td width="50%"><span class="employee-name"><?php echo $name_nvkd_4; ?></span></td>
-								<td>
-								<span class="skype"><a href="skype:<?php echo $skype_nvkd_4; ?>?add"><img src="<?php echo asset('upload/skype-icon.png'); ?>"></a></span>
-								<span class="zalo"><a href="javascript:void();"><img src="<?php echo asset('upload/zalo-icon.png'); ?>"></a></span>
-								<span class="mail"><a href="mailto:<?php echo $email_nvkd_4; ?>"><img src="<?php echo asset('upload/mail-icon.png'); ?>"></a></span>
-								<span class="tel"><a href="tel:<?php echo $tel_nvkd_4; ?>"><img src="<?php echo asset('upload/tel-icon.png'); ?>"></a></span>
-								</td>
-							</tr>
-						</table>						
+					<h2>Hỗ trợ trực tuyến</h2>
+					<div class="box-article-list">	
+						<div class="col-lg-6 no-padding-left">
+							<div class="box-support margin-top-5 padding-top-5 padding-left-5">
+								<div ><img src="<?php echo asset('upload/user-icon.png'); ?>" /><span class="employee-name margin-left-5"><?php echo $name_nvkd_1; ?></span></div>
+								<div><span class="skype"><a href="skype:<?php echo $skype_nvkd_1; ?>?add"><img src="<?php echo asset('upload/skype-icon.png'); ?>"></a></span><span class="employee-name margin-left-5"><?php echo $skype_nvkd_1; ?></span></div>
+								<div><span class="mail"><a href="mailto:<?php echo $email_nvkd_1; ?>"><img src="<?php echo asset('upload/mail-icon.png'); ?>"></a></span><span class="employee-name margin-left-5"><?php echo $email_nvkd_1; ?></span></div>
+								<div><img src="<?php echo asset('upload/zalo-icon.png'); ?>" /><span class="employee-name margin-left-5"><?php echo $tel_nvkd_1; ?></span></div>
+								<div><img src="<?php echo asset('upload/phone-icon.png'); ?>" /><span class="employee-name margin-left-5"><?php echo $tel_nvkd_1; ?></span></div>								
+							</div>
+						</div>
+						<div class="col-lg-6 no-padding-left">
+							<div class="box-support margin-top-5 padding-top-5 padding-left-5">
+								<div ><img src="<?php echo asset('upload/user-icon.png'); ?>" /><span class="employee-name margin-left-5"><?php echo $name_nvkd_2; ?></span></div>
+								<div><span class="skype"><a href="skype:<?php echo $skype_nvkd_2; ?>?add"><img src="<?php echo asset('upload/skype-icon.png'); ?>"></a></span><span class="employee-name margin-left-5"><?php echo $skype_nvkd_2; ?></span></div>
+								<div><span class="mail"><a href="mailto:<?php echo $email_nvkd_2; ?>"><img src="<?php echo asset('upload/mail-icon.png'); ?>"></a></span><span class="employee-name margin-left-5"><?php echo $email_nvkd_2; ?></span></div>
+								<div><img src="<?php echo asset('upload/zalo-icon.png'); ?>" /><span class="employee-name margin-left-5"><?php echo $tel_nvkd_2; ?></span></div>
+								<div><img src="<?php echo asset('upload/phone-icon.png'); ?>" /><span class="employee-name margin-left-5"><?php echo $tel_nvkd_2; ?></span></div>								
+							</div>
+						</div>
+						<div class="clr"></div>
+						<div class="col-lg-6 no-padding-left">
+							<div class="box-support margin-top-5 padding-top-5 padding-left-5">
+								<div ><img src="<?php echo asset('upload/user-icon.png'); ?>" /><span class="employee-name margin-left-5"><?php echo $name_nvkd_3; ?></span></div>
+								<div><span class="skype"><a href="skype:<?php echo $skype_nvkd_3; ?>?add"><img src="<?php echo asset('upload/skype-icon.png'); ?>"></a></span><span class="employee-name margin-left-5"><?php echo $skype_nvkd_3; ?></span></div>
+								<div><span class="mail"><a href="mailto:<?php echo $email_nvkd_3; ?>"><img src="<?php echo asset('upload/mail-icon.png'); ?>"></a></span><span class="employee-name margin-left-5"><?php echo $email_nvkd_3; ?></span></div>
+								<div><img src="<?php echo asset('upload/zalo-icon.png'); ?>" /><span class="employee-name margin-left-5"><?php echo $tel_nvkd_3; ?></span></div>
+								<div><img src="<?php echo asset('upload/phone-icon.png'); ?>" /><span class="employee-name margin-left-5"><?php echo $tel_nvkd_3; ?></span></div>								
+							</div>
+						</div>
+						<div class="col-lg-6 no-padding-left">
+							<div class="box-support margin-top-5 padding-top-5 padding-left-5">
+								<div ><img src="<?php echo asset('upload/user-icon.png'); ?>" /><span class="employee-name margin-left-5"><?php echo $name_nvkd_4; ?></span></div>
+								<div><span class="skype"><a href="skype:<?php echo $skype_nvkd_4; ?>?add"><img src="<?php echo asset('upload/skype-icon.png'); ?>"></a></span><span class="employee-name margin-left-5"><?php echo $skype_nvkd_4; ?></span></div>
+								<div><span class="mail"><a href="mailto:<?php echo $email_nvkd_4; ?>"><img src="<?php echo asset('upload/mail-icon.png'); ?>"></a></span><span class="employee-name margin-left-5"><?php echo $email_nvkd_4; ?></span></div>
+								<div><img src="<?php echo asset('upload/zalo-icon.png'); ?>" /><span class="employee-name margin-left-5"><?php echo $tel_nvkd_4; ?></span></div>
+								<div><img src="<?php echo asset('upload/phone-icon.png'); ?>" /><span class="employee-name margin-left-5"><?php echo $tel_nvkd_4; ?></span></div>								
+							</div>	
+						</div>
+						<div class="clr"></div>										
 					</div>
 				</div>					
 			</div>	

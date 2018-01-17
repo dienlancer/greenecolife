@@ -193,11 +193,11 @@ if(count($arrCart) > 0){
 	<!-- begin fanpage -->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
-	var js, fjs = d.getElementsByTagName(s)[0];
-	if (d.getElementById(id)) return;
-	js = d.createElement(s); js.id = id;
-	js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.11&appId=206740246563578';
-	fjs.parentNode.insertBefore(js, fjs);
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.11&appId=206740246563578';
+  fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 <!-- end fanpage -->
 	<header class="header relative">	
@@ -300,11 +300,6 @@ if(count($arrCart) > 0){
 	</header>
 @yield("content")
 @include("frontend.footer")
-<!--begin zalo-->
-<div class="zalo-chat-widget" data-oaid="579745863508352884" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="1" data-width="350" data-height="420"></div>
-
-<script src="https://sp.zalo.me/plugins/sdk.js"></script>
-<!--end zalo-->
 </body>
 </html>
 
