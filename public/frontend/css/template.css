@@ -10,12 +10,12 @@
 body{
     font-size:14px;
     color:#585858;
-    background-image: url('../images/bg-body-fixed.png');
+    background-image: url('../images/bg-body-fixed-v5.jpg');
     background-repeat: no-repeat;
- 
+    background-size: cover;
     background-position: center top;
     
-    font-family: 'arial', serif;
+    
 }
 table{max-width:100%;}
 p{margin:1em 0;}
@@ -463,8 +463,8 @@ ul.list-style-none{
     list-style: square;
 }
 footer{
-    
-    color: #ffffff;
+       color: #ffffff;
+    padding-bottom: 15px;
 }
 
 .brabel{
