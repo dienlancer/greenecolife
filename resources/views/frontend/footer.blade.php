@@ -45,7 +45,7 @@
 			<div class="margin-top-40">
 				<h1 class="brabel">Fanpage</h1>
 				<div class="tialia margin-top-15">
-					<div class="fb-page" data-href="https://www.facebook.com/Greenecolife/" data-tabs="timeline" data-width="250" data-height="150" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Greenecolife/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Greenecolife/">Greenecolife Việt Nam</a></blockquote></div>
+					<div class="fb-page" data-href="https://www.facebook.com/gonguyenlieumy/" data-tabs="timeline" data-width="250" data-height="200" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/gonguyenlieumy/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/gonguyenlieumy/">Công ty tnhh Greenecolife</a></blockquote></div>
 				</div>		
 			</div>							
 		</div>

@@ -771,6 +771,7 @@ div.liverpool:hover div.youtube-img{
 }
 .so-phone{
     text-shadow: 2px 2px 0px #ffffff;
+    font-style: italic;
 }
 .telephone{
     text-shadow: 2px 2px 0px #ffffff;
@@ -930,7 +931,7 @@ div.ducati  h2{
     color: #ffffff ;
 }
 .tuabin{
-	    width:255px;
+	    width:250px;
     float: right;
 }
 .hotline-tb td{
