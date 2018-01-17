@@ -464,7 +464,7 @@ ul.list-style-none{
     list-style: square;
 }
 footer{
-       color: #ffffff;
+       color: #0c62ad;
     padding-bottom: 15px;
 }
 
@@ -472,11 +472,11 @@ footer{
     font-size: 15px;
     text-transform: uppercase;
     font-weight: bold;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid #0c62ad;
     padding-bottom: 10px;
 }
 .tialia{
-        font-size: 13px;
+        font-size: 15px;
     text-align: justify;
 }
 .danh-muc{
@@ -938,7 +938,7 @@ div.ducati  h2{
 	padding: 5px 0px;
 }
 .thiet-ke-boi a{
-	color: #ffffff;
+	color: #0c62ad;
     text-transform: uppercase;
 }
 .employee-name{	
