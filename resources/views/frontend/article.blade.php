@@ -8,7 +8,7 @@ if(count($item) > 0){
 	$fullname = $item["fullname"];
 	$intro=$item["intro"];
 	$content=$item['content'];	
-	$featuredImg=asset('upload/'.$item['image']);
+	$featuredImg=get_article_thumbnail($item['image']) ;
 	/* begin cập nhật count view */
 	$count_view=(int)@$item['count_view'];
 	$count_view++;

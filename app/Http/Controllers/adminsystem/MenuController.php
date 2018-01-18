@@ -504,7 +504,6 @@ class MenuController extends Controller {
       $data=convertToArray($data);    
         $data=pageComponentConverter($data,$this->_controller,$menu_type_id);           
         return $data;
-    }  
-    
+    }      
 }
 ?>

@@ -25,7 +25,7 @@
 				$alias=$value['alias'];
 				$fullname=$value['fullname'];
 				$permalink=route('frontend.index.index',[$alias]) ;
-				$featuredImg =get_featured_image($value['image']) ;						
+				$featuredImg =get_product_thumbnail($value['image']) ;						
 				?>
 				<div class="col-sm-3 no-padding-left">
 					<div class="margin-top-15">

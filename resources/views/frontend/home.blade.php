@@ -62,7 +62,7 @@ $tel_nvkd_4=$setting['tel_nvkd_4']['field_value'];
 				<div class="owl-carousel san-pham-moi owl-theme">
 					<?php 
 					foreach($items as $key => $value){
-						$featuredImg=get_featured_image($value['image']) ;
+						$featuredImg=get_product_thumbnail($value['image']) ;
 						$permalink=route('frontend.index.index',[$value['alias']]);
 						$title=$value['fullname'];
 						?>
@@ -175,7 +175,7 @@ $tel_nvkd_4=$setting['tel_nvkd_4']['field_value'];
 			$module=getPage("introduce");
 			if(count($module) > 0){
 				$fullname=substr($module["fullname"],0,50);
-				$featuredImg=asset('upload/'.$module['image']);
+				$featuredImg=get_article_thumbnail($module['image']) ;
 				$permalink=route('frontend.index.index',[$module['alias']]);				
 				?>
 				<div class="margin-top-15">					
@@ -230,7 +230,7 @@ $tel_nvkd_4=$setting['tel_nvkd_4']['field_value'];
 						
 						<?php 
 						foreach ($items as $key => $value){
-							$featuredImg=asset('upload/'.$value['image']);
+							$featuredImg=get_article_thumbnail($value['image']) ;
 							$permalink=route('frontend.index.index',[$value['alias']]);
 							$title=substr( $value['fullname'],0,50);
 							?>
@@ -261,7 +261,7 @@ $tel_nvkd_4=$setting['tel_nvkd_4']['field_value'];
 						<ul class="other-news-list">
 							<?php 
 							foreach ($items as $key => $value){
-								$featuredImg=asset('upload/'.$value['image']);
+								$featuredImg=get_article_thumbnail($value['image']) ;
 								$permalink=route('frontend.index.index',[$value['alias']]);
 								$title=$value['fullname'];
 								?>

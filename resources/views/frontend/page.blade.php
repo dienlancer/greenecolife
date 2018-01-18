@@ -6,7 +6,8 @@ if(count($item) > 0){
 	$fullname = $item["fullname"];
 	$intro=$item["intro"];
 	$content=$item['content'];
-	$featuredImg=asset('upload/'.$item['image']);
+	$featuredImg=get_article_thumbnail($item['image']) ;
+    $largeImg=asset('upload/'.$item['image']);
 	/* begin cập nhật count view */
 	$count_view=(int)@$item['count_view'];
 	$count_view++;
@@ -29,7 +30,7 @@ if(count($item) > 0){
 		<div>
             <div class="col-lg-4 no-padding-left">
                 <div class="margin-top-15">
-                    <img id="zoom_img" src="<?php echo $featuredImg; ?>" data-zoom-image="<?php echo $featuredImg; ?>" />
+                    <img id="zoom_img" src="<?php echo $featuredImg; ?>" data-zoom-image="<?php echo $largeImg; ?>" />
                 </div>
             </div>
             <div class="col-lg-8 no-padding-left">

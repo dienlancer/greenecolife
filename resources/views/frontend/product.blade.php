@@ -9,7 +9,7 @@ if(count($item) > 0){
     $fullname = $item["fullname"];
     $intro=$item["intro"];
     $detail=$item['detail'];  
-    $small_img=get_featured_image($item['image']);
+    $small_img=get_product_thumbnail($item['image']);
     $large_img=asset('upload/'.$item['image']) ;
     /* begin cập nhật count view */
     $count_view=(int)@$item['count_view'];
@@ -169,7 +169,7 @@ if(count($item) > 0){
                     <div class="owl-carousel related-products owl-theme">
                         <?php 
                         foreach($dataProduct as $key => $value){
-                            $featuredImg=get_featured_image($value['image']) ;
+                            $featuredImg=get_product_thumbnail($value['image']) ;
                             $permalink=route('frontend.index.index',[$value['alias']]);
                             $title=$value['fullname'];
                             ?>
