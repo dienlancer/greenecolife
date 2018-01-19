@@ -42,7 +42,10 @@ if(count($item) > 0){
                 </div>
                 <div class="margin-top-5 product-price">
                     <b>Giá:</b>&nbsp;Liên hệ
-                </div>                
+                </div>         
+                <div class="margin-top-5">
+                    <span class="phone-tel"><i class="fa fa-phone" aria-hidden="true"></i></span>&nbsp;Hotline:&nbsp;<?php echo $telephone; ?>
+                </div>       
                 <div class="margin-top-5">
                     <img src="<?php echo asset('upload/tru-so.png'); ?>">&nbsp;Vp giao dịch:&nbsp;<?php echo $office; ?>
                 </div>
