@@ -86,19 +86,30 @@ if(isset($alias)){
                     $items=$data["items"];
                     if(count($items) > 0){
                         ?>
+                        <script language="javascript" type="text/javascript">
+                            $(document).ready(function(){
+                                $('.bxSlider').bxSlider({
+    mode: 'vertical', speed: 500, slideMargin:15, infiniteLoop: true, pager: false, controls: false, minSlides: 5, maxSlides:20, moveSlides: 5, adaptiveHeight: false,auto:true
+    });
+                            });
+                      </script>
                         <h2 class="menu-right-title margin-top-20"><?php echo $fullname; ?></h2>
-                        <?php
-                        foreach($items as $key => $value){
-                            $featuredImg=get_product_thumbnail($value['image']) ;
-                            $permalink=route('frontend.index.index',[$value['alias']]);
-                            $title=$value['fullname'];
+                        <div class="bxSlider">
+                            <?php 
+                            foreach($items as $key => $value){
+                                $featuredImg=get_product_thumbnail($value['image']) ;
+                                $permalink=route('frontend.index.index',[$value['alias']]);
+                                $title=$value['fullname'];
+                                ?>
+                                <div >
+                                    <div><center><figure><a href="<?php echo $permalink; ?>"><img src="<?php echo $featuredImg; ?>"></a></figure></center></div>
+                                    <div class="margin-top-5 box-product-intro-title"><a href="<?php echo $permalink; ?>"><b><?php echo $title; ?></b></a></div>
+                                </div>
+                                <?php
+                            }
                             ?>
-                            <div class="margin-top-15">
-                                <div><center><figure><a href="<?php echo $permalink; ?>"><img src="<?php echo $featuredImg; ?>"></a></figure></center></div>
-                                <div class="margin-top-5 box-product-intro-title"><a href="<?php echo $permalink; ?>"><b><?php echo $title; ?></b></a></div>
-                            </div>
-                            <?php
-                        }
+                        </div>
+                        <?php                        
                     }
                 }                                                        
                 break;                            
