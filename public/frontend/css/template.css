@@ -8,6 +8,7 @@
 @font-face{font-family:"Ovo";src:url("../fonts/Ovo-Regular.ttf") format('truetype');}
 @font-face{font-family:"RobotoSlab";src:url("../fonts/RobotoSlab.ttf") format('truetype');}
 @font-face{font-family:"OpenSans";src:url("../fonts/OpenSans.ttf") format('truetype');}
+@font-face{font-family:"Anton";src:url("../fonts/Anton.ttf") format('truetype');}
 @font-face{font-family:"OpenSans-Bold";src:url("../fonts/OpenSans-Bold.ttf") format('truetype');}
 body{
     font-size:14px;
@@ -474,6 +475,7 @@ footer{
     font-weight: bold;
     border-bottom: 1px solid #0c62ad;
     padding-bottom: 10px;
+    font-family: 'Anton';
 }
 .tialia{
         font-size: 15px;
@@ -762,9 +764,9 @@ div.liverpool:hover div.youtube-img{
     font-size: 35px;
     font-weight: bold;
     margin-top: 35px;
-    text-align: center;
-    text-transform: uppercase;
+    text-align: center;    
     text-shadow: 2px 2px 0px #ffffff;
+    font-family: 'Anton';
 }
 .searching{
     
@@ -772,6 +774,7 @@ div.liverpool:hover div.youtube-img{
 .so-phone{
     text-shadow: 2px 2px 0px #ffffff;
     font-style: italic;
+    font-family: 'Anton';
 }
 .telephone{
     text-shadow: 2px 2px 0px #ffffff;
@@ -791,6 +794,7 @@ div.ducati  h2{
     font-size: 15px;
     font-weight: bold;
     border-radius: 5px;
+    font-family: 'Anton';
 }
 .ducati ul{
     list-style: none;
@@ -823,6 +827,7 @@ div.ducati  h2{
     color: #0c62ad;
     border-bottom: solid 1px #555;
     text-transform: uppercase;
+    font-family: 'Anton';
 }
 .box-intro-title a{
     background: rgba(0, 0, 0, 0.56);
@@ -960,6 +965,7 @@ div.ducati  h2{
 .connected-social li:first-child{
     margin-left: 0
 }
+
 @media (max-width: 767px){    
     div.mobilemenu{
         display: block;

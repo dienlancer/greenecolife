@@ -1,6 +1,7 @@
 @extends("frontend.master")
 @section("content")
 <?php 
+use App\ProductModel;
 $setting=getSettingSystem();
 $name_nvkd_1=$setting['name_nvkd_1']['field_value'];
 $name_nvkd_2=$setting['name_nvkd_2']['field_value'];
@@ -24,62 +25,55 @@ $tel_nvkd_4=$setting['tel_nvkd_4']['field_value'];
 ?>
 <div class="container box-wrapper">
 	<?php 
-
-	$data=getModuleItem("san-pham-moi");
-	if(count($data) > 0){
-		$items=$data["items"];
-		if(count($items) > 0){
-			?>
-			<div class="col-lg-12">
-				<script type="text/javascript" language="javascript">
-					$(document).ready(function(){
-						$(".san-pham-moi").owlCarousel({
-							autoplay:false,                    
-							loop:true,
-							margin:25,                        
-							nav:true,            
-							mouseDrag: false,
-							touchDrag: false,                                
-							responsiveClass:true,
-							responsive:{
-								0:{
-									items:1
-								},
-								600:{
-									items:5
-								},
-								1000:{
-									items:5
-								}
-							}
-						});
-						var chevron_left='<i class="fa fa-chevron-left"></i>';
-						var chevron_right='<i class="fa fa-chevron-right"></i>';
-						$("div.san-pham-moi div.owl-prev").html(chevron_left);
-						$("div.san-pham-moi div.owl-next").html(chevron_right);
-					});                
-				</script>
-				<div class="owl-carousel san-pham-moi owl-theme">
-					<?php 
-					foreach($items as $key => $value){
-						$featuredImg=get_product_thumbnail($value['image']) ;
-						$permalink=route('frontend.index.index',[$value['alias']]);
-						$title=$value['fullname'];
-						?>
-						<div>
-							<div><center><figure><a href="<?php echo $permalink; ?>"><img src="<?php echo $featuredImg; ?>"></a></figure></center></div>
-							<div class="margin-top-5 box-product-intro-title"><a href="<?php echo $permalink; ?>"><b><?php echo $title; ?></b></a></div>
-						</div>
-						<?php
-					}
-					?>
-				</div>
-			</div>	
-			<div class="clr"></div>				
-			<?php
-		}  
-	}
+	$data=ProductModel::select('id','fullname','alias','image','count_view')->orderBy('count_view','desc')->take(20)->get()->toArray();	
+	$data=convertToArray($data);	
 	?>
+	<div class="col-lg-12">
+		<script type="text/javascript" language="javascript">
+			$(document).ready(function(){
+				$(".san-pham-moi").owlCarousel({
+					autoplay:false,                    
+					loop:true,
+					margin:25,                        
+					nav:true,            
+					mouseDrag: false,
+					touchDrag: false,                                
+					responsiveClass:true,
+					responsive:{
+						0:{
+							items:1
+						},
+						600:{
+							items:5
+						},
+						1000:{
+							items:5
+						}
+					}
+				});
+				var chevron_left='<i class="fa fa-chevron-left"></i>';
+				var chevron_right='<i class="fa fa-chevron-right"></i>';
+				$("div.san-pham-moi div.owl-prev").html(chevron_left);
+				$("div.san-pham-moi div.owl-next").html(chevron_right);
+			});                
+		</script>
+		<div class="owl-carousel san-pham-moi owl-theme">
+			<?php 
+			foreach($data as $key => $value){
+				$featuredImg=get_product_thumbnail($value['image']) ;
+				$permalink=route('frontend.index.index',[$value['alias']]);
+				$title=$value['fullname'];
+				?>
+				<div>
+					<div><center><figure><a href="<?php echo $permalink; ?>"><img src="<?php echo $featuredImg; ?>"></a></figure></center></div>
+					<div class="margin-top-5 box-product-intro-title"><a href="<?php echo $permalink; ?>"><b><?php echo $title; ?></b></a></div>
+				</div>
+				<?php
+			}
+			?>
+		</div>
+	</div>	
+	<div class="clr"></div>				
 	<div>
 		<div class="col-lg-8">
 			<?php 
@@ -279,17 +273,18 @@ $tel_nvkd_4=$setting['tel_nvkd_4']['field_value'];
 		<div class="clr"></div>
 	</div>	
 	<?php 
-	$data=getBanner("doi-tac");
+	$data=getModuleItem("san-pham-noi-bat");
 	if(count($data) > 0){
+		$fullname=$data["fullname"];
 		$items=$data["items"];
-		$fullname=$data['fullname'];
 		if(count($items) > 0){
 			?>
-			<div class="col-lg-12 margin-top-30">
-				<h2 class="f-title-info"><span><?php echo $fullname; ?></span></h2>
+			<h2 class="f-title-info margin-top-30"><span><?php echo $fullname; ?></span></h2>
+			<div class="margin-top-15">
+				<div class="col-lg-12">
 				<script type="text/javascript" language="javascript">
 					$(document).ready(function(){
-						$(".partner").owlCarousel({
+						$(".san-pham-moi").owlCarousel({
 							autoplay:false,                    
 							loop:true,
 							margin:25,                        
@@ -311,28 +306,31 @@ $tel_nvkd_4=$setting['tel_nvkd_4']['field_value'];
 						});
 						var chevron_left='<i class="fa fa-chevron-left"></i>';
 						var chevron_right='<i class="fa fa-chevron-right"></i>';
-						$("div.partner div.owl-prev").html(chevron_left);
-						$("div.partner div.owl-next").html(chevron_right);
+						$("div.san-pham-moi div.owl-prev").html(chevron_left);
+						$("div.san-pham-moi div.owl-next").html(chevron_right);
 					});                
 				</script>
-				<div class="owl-carousel partner owl-theme">
+				<div class="owl-carousel san-pham-moi owl-theme">
 					<?php 
 					foreach($items as $key => $value){
-						$featuredImg=asset('upload/'.$value['image']) ;
-						$page_url=$value['page_url'];
+						$featuredImg=get_product_thumbnail($value['image']) ;
+						$permalink=route('frontend.index.index',[$value['alias']]);
+						$title=$value['fullname'];
 						?>
 						<div>
-							<a href="<?php echo $page_url; ?>" target="_blank"><img src="<?php echo $featuredImg; ?>" /></a>
+							<div><center><figure><a href="<?php echo $permalink; ?>"><img src="<?php echo $featuredImg; ?>"></a></figure></center></div>
+							<div class="margin-top-5 box-product-intro-title"><a href="<?php echo $permalink; ?>"><b><?php echo $title; ?></b></a></div>
 						</div>
 						<?php
 					}
 					?>
 				</div>
-			</div> 
-			<div class="clr"></div> 
+			</div>	
+			<div class="clr"></div>
+			</div>						
 			<?php
 		}  
 	}
-	?>	
+	?>
 </div>  
 @endsection()               

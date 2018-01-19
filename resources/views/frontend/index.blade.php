@@ -80,31 +80,27 @@ if(isset($alias)){
                 case 'product':
                 case 'search-product':                
                 wp_nav_menu($argsDanhMucSanPham);       
-                $module=getBanner("advertising-product-widget");                        
-                if(count($module) > 0){                    
-                    $banners=$module["items"];    
-                    ?>
-                    <div class="margin-top-20">
-                        <ul class="advertising">
-                            <?php 
-                            foreach ($banners as $key => $value) {
-                                $alt=$value["alt"];
-                                $featuredImg=asset('upload/'.$value["image"]);
-                                $permalink='';
-                                if(!empty($value['page_url'])){
-                                    $permalink=$value['page_url'];                                    
-                                }else{
-                                    $permalink='javascript:void(0);';
-                                }                                
-                                ?>
-                                <li><center><a href="<?php echo $permalink; ?>"><img src="<?php echo $featuredImg; ?>" alt="<?php echo $alt; ?>" /></a></center></li>
-                                <?php
-                            }
+                $data=getModuleItem("san-pham-noi-bat");
+                if(count($data) > 0){
+                    $fullname=$data["fullname"];
+                    $items=$data["items"];
+                    if(count($items) > 0){
+                        ?>
+                        <h2 class="menu-right-title margin-top-20"><?php echo $fullname; ?></h2>
+                        <?php
+                        foreach($items as $key => $value){
+                            $featuredImg=get_product_thumbnail($value['image']) ;
+                            $permalink=route('frontend.index.index',[$value['alias']]);
+                            $title=$value['fullname'];
                             ?>
-                        </ul>                        
-                    </div>
-                    <?php
-                }                                                         
+                            <div class="margin-top-15">
+                                <div><center><figure><a href="<?php echo $permalink; ?>"><img src="<?php echo $featuredImg; ?>"></a></figure></center></div>
+                                <div class="margin-top-5 box-product-intro-title"><a href="<?php echo $permalink; ?>"><b><?php echo $title; ?></b></a></div>
+                            </div>
+                            <?php
+                        }
+                    }
+                }                                                        
                 break;                            
             }                                       
             ?>                            
