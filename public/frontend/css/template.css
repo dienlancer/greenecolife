@@ -471,8 +471,7 @@ footer{
 
 .brabel{
     font-size: 15px;
-    text-transform: uppercase;
-    font-weight: bold;
+    text-transform: uppercase;    
     border-bottom: 1px solid #0c62ad;
     padding-bottom: 10px;
     font-family: 'Anton';
@@ -760,11 +759,10 @@ div.liverpool:hover div.youtube-img{
     float: right;   
 }
 .slogan{
-    color: #0c62ad;
-    font-size: 35px;
-    font-weight: bold;
+        color: #0c62ad;
+    font-size: 40px;
     margin-top: 35px;
-    text-align: center;    
+    text-align: center;
     text-shadow: 2px 2px 0px #ffffff;
     font-family: 'Anton';
 }
@@ -791,8 +789,7 @@ div.ducati  h2{
     padding: 0px 0px;
     text-transform: uppercase;
     text-align: left;
-    font-size: 15px;
-    font-weight: bold;
+    font-size: 15px;   
     border-radius: 5px;
     font-family: 'Anton';
 }
