@@ -39,9 +39,9 @@ class IndexController extends Controller {
   var $_pageRange=4;
   var $_ssNameUser="vmuser";
   var $_ssNameCart="vmart";      
-  public function getHome(){   
+  public function getHome(Request $request){   
     return view("frontend.home");
-  }  
+  } 
   public function search(Request $request){
     /* begin standard */    
     $layout="two-column";                                                           
@@ -541,7 +541,7 @@ class IndexController extends Controller {
             try{
               $mail->SMTPDebug = 2;                           
               $mail->isSMTP();     
-              $mail->charSet = "UTF-8";                           
+              $mail->CharSet = "UTF-8";                           
               $mail->Host = $smtp_host; 
               $mail->SMTPAuth = $smtp_auth;                         
               $mail->Username = $smtp_username;             
