@@ -9,6 +9,8 @@ use App\ProductModel;
 use App\PageModel;
 use App\MenuModel;
 use App\ProjectModel;
+use App\ProvinceModel;
+use App\DistrictModel;
 use App\ProjectArticleModel;
 use App\ArticleCategoryModel;
 use DB;
@@ -58,8 +60,10 @@ class ProjectController extends Controller {
            case 'add':
               $title=$this->_title . " : Add new";
            break;     
-        }            
-        return view("adminsystem.".$this->_controller.".form",compact("arrRowData","controller","task","title","icon"));
+        }     
+        $arrProvince=ProvinceModel::select("id","fullname")->orderBy("sort_order","asc")->get()->toArray();              
+        $arrDistrict=DistrictModel::select("id","fullname")->orderBy("sort_order","asc")->get()->toArray();                     
+        return view("adminsystem.".$this->_controller.".form",compact("arrRowData","arrProvince","arrDistrict","controller","task","title","icon"));
         }else{
           return view("adminsystem.no-access");
         }        
@@ -67,17 +71,21 @@ class ProjectController extends Controller {
      public function save(Request $request){
           $id 					        =		trim($request->id);        
           $fullname 				    =		trim($request->fullname);
-          $alias                =   trim($request->alias);
-                    
+          $alias                =   trim($request->alias);                    
           $meta_keyword         =   trim($request->meta_keyword);
           $meta_description     =   trim($request->meta_description);
           $image                =   trim($request->image);
           $image_hidden         =   trim($request->image_hidden);            
           $total_cost           =   trim($request->total_cost);
+          $unit                 =   trim($request->unit);
           $intro                =   trim($request->intro);    
-          $overview                =   trim($request->overview);          
-          $plan                 =   trim($request->plan);          
-          $sponsor              =   trim($request->sponsor);          
+          $overview             =   trim($request->overview);          
+          $equipment            =   trim($request->equipment);          
+          $price_list           =   trim($request->price_list);
+          $googlemap_url        =   trim($request->googlemap_url);  
+          $province_id             =   trim($request->province_id);
+          $district_id             =   trim($request->district_id);
+          $street               =   trim($request->street);                    
           $sort_order           =   trim($request->sort_order);
           $status               =   trim($request->status);          
           $data 		            =   array();
@@ -130,15 +138,19 @@ class ProjectController extends Controller {
                     }                    
                 }  
                 $item->fullname 		    =	$fullname;
-                $item->alias            = $alias;
-                       
+                $item->alias            = $alias;                       
                 $item->meta_keyword     = $meta_keyword;
                 $item->meta_description = $meta_description;                             
                 $item->total_cost       = $total_cost;
+                $item->unit             = $unit;
                 $item->intro            = $intro;
-                $item->overview            = $overview;
-                $item->plan             = $plan;                
-                $item->sponsor          = $sponsor;                       
+                $item->overview         = $overview;
+                $item->equipment        = $equipment;
+                $item->price_list       = $price_list;
+                $item->googlemap_url    = $googlemap_url;
+                $item->province_id         = (int)@$province_id;
+                $item->district_id         = (int)@$district_id;                
+                $item->street           = $street;                                                   
                 $item->sort_order 		  =	(int)@$sort_order;
                 $item->status 			    =	(int)@$status;    
                 $item->updated_at 		  =	date("Y-m-d H:i:s",time());    	        	
@@ -206,13 +218,14 @@ class ProjectController extends Controller {
             return $info;
       }
       public function updateStatus(Request $request){
-          $str_id                 =   $request->str_id;   
-          $status                 =   $request->status;  
-          $arrID                 =   explode(",", $str_id)  ;
-          $checked                =   1;
-          $type_msg               =   "alert-success";
-          $msg                    =   "Cập nhật thành công";     
-          if(empty($str_id)){
+          $strID                 =   $request->str_id;     
+        $status                 =   $request->status;            
+        $checked                =   1;
+        $type_msg               =   "alert-success";
+        $msg                    =   "Cập nhật thành công";                  
+        $strID=substr($strID, 0,strlen($strID) - 1);
+        $arrID=explode(',',$strID);                 
+        if(empty($strID)){
                     $checked                =   0;
                     $type_msg               =   "alert-warning";            
                     $msg                    =   "Vui lòng chọn ít nhất một phần tử";
@@ -236,12 +249,13 @@ class ProjectController extends Controller {
           return $info;
       }
       public function trash(Request $request){
-            $str_id                 =   $request->str_id;   
+            $strID                 =   $request->str_id;               
             $checked                =   1;
             $type_msg               =   "alert-success";
-            $msg                    =   "Xóa thành công";      
-            $arrID                  =   explode(",", $str_id)  ;        
-            if(empty($str_id)){
+            $msg                    =   "Xóa thành công";                  
+            $strID=substr($strID, 0,strlen($strID) - 1);
+            $arrID=explode(',',$strID);                 
+            if(empty($strID)){
               $checked     =   0;
               $type_msg           =   "alert-warning";            
               $msg                =   "Vui lòng chọn ít nhất một phần tử";
@@ -252,11 +266,9 @@ class ProjectController extends Controller {
               $type_msg               =   "alert-warning";            
               $msg                    =   "Phần tử này có dữ liệu con. Vui lòng không xoá";
             }   
-            if($checked == 1){                
-                  $strID = implode(',',$arrID);   
-                  $strID=substr($strID, 0,strlen($strID) - 1);
-                  $sql = "DELETE FROM `project` WHERE `id` IN  (".$strID.")";                                               
-                  DB::statement($sql);                                   
+            if($checked == 1){                                 
+     
+                  DB::table('project')->whereIn('id',@$arrID)->delete();                             
             }
             $data                   =   $this->loadData($request);
             $info = array(

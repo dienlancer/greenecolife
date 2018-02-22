@@ -176,8 +176,9 @@ class IndexController extends Controller {
     $lstCategoryProduct=CategoryProductModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
     $lstArticle=ArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
     $lstProduct=ProductModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
-    $lstPage=PageModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
+    $lstPage=PageModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();    
     $lstProject=ProjectModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
+    $lstProjectArticle=ProjectArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
     $lstOrganization=OrganizationModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
     $lstAlbum=AlbumModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
     $lstCategoryVideo=CategoryVideoModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
@@ -199,6 +200,12 @@ class IndexController extends Controller {
     if(count($lstProject) > 0){
       $component='project';
     } 
+    if(count($lstProject) > 0){
+      $component='project';
+    } 
+    if(count($lstProjectArticle) > 0){
+      $component='project-article';
+    }
     if(count($lstOrganization) > 0){
       $component='organization';
     }
@@ -215,22 +222,21 @@ class IndexController extends Controller {
       case 'go-nguyen-lieu':
       $component='products';
       break;                     
-    }        
+    }       
     switch ($component) {
       case 'category-article':      
       $category_id=0;
       $category=CategoryArticleModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower(@$alias,'UTF-8'))])->get()->toArray();      
       if(count($category) > 0){
         $category     = $category[0];
-        $category_id    = $category['id'];
-        $str_category_id="";
+        $category_id    = $category['id'];        
         $arr_category_id[]=$category_id;
         getStringCategoryID($category_id,$arr_category_id,'category_article');                 
         $data=DB::table('article')
                 ->join('article_category','article.id','=','article_category.article_id')
-                ->join('category_article','category_article.id','=','article_category.category_article_id')                              
+                ->join('category_article','category_article.id','=','article_category.category_id')                              
                 ->select('article.id')
-                ->whereIn('article_category.category_article_id', $arr_category_id)
+                ->whereIn('article_category.category_id', $arr_category_id)
                 ->where('article.status',1)    
                 ->groupBy('article.id')                
                 ->get()->toArray();
@@ -251,12 +257,12 @@ class IndexController extends Controller {
         $position   = ((int)@$arrPagination['currentPage']-1)*$totalItemsPerPage;        
         $data=DB::table('article')
                 ->join('article_category','article.id','=','article_category.article_id')
-                ->join('category_article','category_article.id','=','article_category.category_article_id')                     
+                ->join('category_article','category_article.id','=','article_category.category_id')                     
                 ->select('article.id','article.alias','article.fullname','article.image','article.intro','article.count_view')
-                ->whereIn('article_category.category_article_id', $arr_category_id)
+                ->whereIn('article_category.category_id', $arr_category_id)
                 ->where('article.status',1)     
                 ->groupBy('article.id','article.alias','article.fullname','article.image','article.intro','article.count_view')
-                ->orderBy('article.created_at', 'desc')
+                ->orderBy('article.sort_order', 'asc')
                 ->skip($position)
                 ->take($totalItemsPerPage)
                 ->get()
@@ -272,9 +278,7 @@ class IndexController extends Controller {
       }            
       $layout="two-column";       
       break;  
-      case 'articles':            
-        $meta_keyword="metakeyword tin tức";
-        $meta_description="metadescription tin tức";
+      case 'articles':                    
       $data=DB::table('article')                                  
                 ->select('article.id')                
                 ->where('article.status',1)    
@@ -300,7 +304,7 @@ class IndexController extends Controller {
                 ->select('article.id','article.alias','article.fullname','article.image','article.intro','article.count_view')                
                 ->where('article.status',1)     
                 ->groupBy('article.id','article.alias','article.fullname','article.image','article.intro','article.count_view')
-                ->orderBy('article.created_at', 'desc')
+                ->orderBy('article.sort_order', 'asc')
                 ->skip($position)
                 ->take($totalItemsPerPage)
                 ->get()->toArray();            
@@ -316,21 +320,19 @@ class IndexController extends Controller {
       break; 
       case 'category-product':
       $category_id=0;
-      $category=CategoryProductModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();
+      $category=CategoryProductModel::whereRaw("trim(lower(alias)) = ?",[trim(mb_strtolower($alias,'UTF-8'))])->get()->toArray();      
       if(count($category) > 0){
-        $category     = $category[0];
-        $category_id    = $category['id'];
-        $str_category_id="";
-        $arr_category_id[]=$category_id;
-        $data=DB::table('product')
-                ->join('product_category','product.id','=','product_category.product_id')
-                ->join('category_product','category_product.id','=','product_category.category_product_id')                                  
+        $category     = $category[0];        
+        $category_id    = $category['id'];        
+        $arr_category_id[]=(int)@$category_id;        
+        getStringCategoryID($category_id,$arr_category_id,'category_product');              
+        $data=DB::table('product')                      
                 ->select('product.id')
-                ->whereIn('product_category.category_product_id', $arr_category_id)
+                ->whereIn('product.category_id', $arr_category_id)
                 ->where('product.status',1)  
                 ->groupBy('product.id')                
                 ->get()->toArray();
-        $data=convertToArray($data);
+        $data=convertToArray($data);        
         $totalItems=count($data);
         $totalItemsPerPage=(int)$setting['product_perpage']['field_value']; 
         $pageRange=$this->_pageRange;
@@ -345,18 +347,16 @@ class IndexController extends Controller {
         );           
         $pagination=new PaginationModel($arrPagination);
         $position   = ((int)@$arrPagination['currentPage']-1)*$totalItemsPerPage;        
-        $data=DB::table('product')
-                ->join('product_category','product.id','=','product_category.product_id')
-                ->join('category_product','category_product.id','=','product_category.category_product_id')                   
-                ->select('product.id','product.alias','product.fullname','product.image','product.intro')
-                ->whereIn('product_category.category_product_id', $arr_category_id)
+        $data=DB::table('product')                
+                ->select('product.id','product.alias','product.fullname','product.image','product.intro','product.price','product.sale_price')
+                ->whereIn('product.category_id', $arr_category_id)
                 ->where('product.status',1)       
-                ->groupBy('product.id','product.alias','product.fullname','product.image','product.intro')
-                ->orderBy('product.created_at', 'desc')
+                ->groupBy('product.id','product.alias','product.fullname','product.image','product.intro','product.price','product.sale_price')
+                ->orderBy('product.sort_order', 'asc')
                 ->skip($position)
                 ->take($totalItemsPerPage)
                 ->get()->toArray();   
-        $items=convertToArray($data);                  
+        $items=convertToArray($data);           
       }       
       $layout="two-column";             
       break; 
@@ -367,9 +367,7 @@ class IndexController extends Controller {
       }    
       $layout="two-column";       
       break;     
-      case 'products':      
-        $meta_keyword="metakeyword Gỗ nguyên liệu";
-        $meta_description="metadescription Gỗ nguyên liệu";
+      case 'products':              
       $data=DB::table('product')                                  
                 ->select('product.id')                
                 ->where('product.status',1)    
@@ -400,12 +398,13 @@ class IndexController extends Controller {
                 ->get()->toArray();            
         $items=convertToArray($data);           
       $layout="two-column";        
-      break;                
-    }  
+      break;            
+    }      
     if(count($menu) > 0){
       $menu=convertToArray($menu);
       $title=$menu[0]['fullname'];
-    }       
+    }     
+
     if(count($item) > 0){
       $title=$item['fullname'];                      
       if(!empty($item['meta_keyword'])){
@@ -415,6 +414,7 @@ class IndexController extends Controller {
         $meta_description=$item['meta_description'];
       }                
     }         
+
     if(count($category) > 0){      
       $title=$category['fullname'];                         
       if(!empty($category['meta_keyword'])){
@@ -425,8 +425,10 @@ class IndexController extends Controller {
       }
     }
     $breadcrumb='';              
-    $breadcrumb= getBreadcrumb($alias);  
-    return view("frontend.index",compact("component","alias","title","meta_keyword","meta_description","item","items","pagination","layout","breadcrumb"));                            
+    $breadcrumb= getBreadcrumb($alias);    
+    
+    return view("frontend.index",compact("component","alias","title","meta_keyword","meta_description","item","items","pagination","layout","breadcrumb")); 
+                               
   }
       function addCart(){          
           $product_id=(int)($_POST["product_id"]);
@@ -483,7 +485,7 @@ class IndexController extends Controller {
         $error=array();
         $data=array();
         $success=array();           
-        $layout="full-width";     
+        $layout="two-column";     
         $component='contact';
         $alias="lien-he";   
         if($request->isMethod('post'))     {  

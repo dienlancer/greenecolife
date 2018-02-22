@@ -17,7 +17,7 @@
 	}	
 	?>
 	<div class="row">
-		<?php 	
+		<?php 			
 		if(count($items) > 0){
 			$k=1;			
 			foreach ($items as $key => $value) {

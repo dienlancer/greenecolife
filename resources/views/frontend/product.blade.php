@@ -1,5 +1,6 @@
 <?php 
 use App\ProductCategoryModel;
+use App\CategoryProductModel;
 use App\ProductModel;
 use Illuminate\Support\Facades\DB;
 $setting=getSettingSystem();
@@ -27,43 +28,14 @@ if(count($item) > 0){
     $office=$setting['office']['field_value'];
     /* end setting */    
     /* begin category */
-    $dataProductCategory=DB::table('product_category')
-    ->join('category_product','product_category.category_product_id','=','category_product.id')     
-    ->select('category_product.id','category_product.fullname','category_product.alias')
-    ->where('product_category.product_id','=',(int)@$id)                    
-    ->groupBy('category_product.id','category_product.fullname','category_product.alias')
-    ->orderBy('category_product.sort_order','asc')
-    ->get()->toArray();
-    $arr_category_id=array();
-    $arr_category_name=array(); 
-    $category_name='';  
-    if(count($dataProductCategory) > 0){        
-        $dataProductCategory=convertToArray($dataProductCategory);
-        foreach ($dataProductCategory as $key => $value) {
-            $arr_category_id[]=$value["id"];
-            $permalink=route('frontend.index.index',[$value['alias']]);
-            $arr_category_name[]='<a href="'.$permalink.'">'.$value["fullname"].'</a>' ;                        
-        }       
-        $category_name=implode(' / ', $arr_category_name);      
-    }       
+    $dataCategory=CategoryProductModel::find((int)@$item['category_id'])->toArray();   
+    $breadcrumb= getBreadCrumbCategoryProduct($dataCategory);   
     /* end category */
     ?>    
     <div class="margin-top-15">
-        <?php       
-    if(empty($breadcrumb)){
-        ?>
-        <h2 class="tieu-de">
-            <?php echo $title; ?>       
-        </h2>
-        <?php
-    }else{
-        ?>
         <h2 class="breadcrumb-title">
             <?php echo $breadcrumb; ?>
         </h2>
-        <?php
-    }   
-    ?>  
         <div>
             <div class="col-lg-4 no-padding-left">
                 <div class="margin-top-15">
@@ -121,22 +93,19 @@ if(count($item) > 0){
             <b>Hotline:</b> <?php echo $telephone; ?>
         </div>              
         <?php                     
-        
-        if(count($dataProductCategory) > 0){            
-            $dataProduct=DB::table('product')
-            ->join('product_category','product.id','=','product_category.product_id')
-            ->join('category_product','category_product.id','=','product_category.category_product_id')                   
-            ->select('product.id','product.alias','product.fullname','product.image','product.intro')
-            ->whereIn('product_category.category_product_id', $arr_category_id)
-            ->where('product.id','<>',(int)@$id)
-            ->where('product.status',1)       
-            ->groupBy('product.id','product.alias','product.fullname','product.image','product.intro')
-            ->orderBy('product.created_at', 'desc')                
-            ->get()
-            ->toArray();         
-            $dataProduct=convertToArray($dataProduct);     
-            if(count($dataProduct) > 0){
-                ?>
+        $category_id=$item['category_id'];               
+        $dataProduct=DB::table('product')                        
+        ->select('product.id','product.alias','product.fullname','product.image','product.intro','product.price','product.sale_price')
+        ->where('product.category_id', $category_id)
+        ->where('product.id','<>',(int)@$id)
+        ->where('product.status',1)       
+        ->groupBy('product.id','product.alias','product.fullname','product.image','product.intro','product.price','product.sale_price')
+        ->orderBy('product.created_at', 'desc')                
+        ->get()
+        ->toArray();         
+        $dataProduct=convertToArray($dataProduct); 
+        if(count($dataProduct) > 0){            
+            ?>
                 <div class="margin-top-15 product-detail-content">
                     Sản phẩm liên quan
                 </div> 
@@ -185,8 +154,7 @@ if(count($item) > 0){
                         ?>
                     </div>
                 </div>
-                <?php 
-            }                
+                <?php               
         }    
         ?>
     </div>

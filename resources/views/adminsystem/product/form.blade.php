@@ -5,24 +5,26 @@ $linkCancel             =   route('adminsystem.'.$controller.'.getList');
 $linkSave               =   route('adminsystem.'.$controller.'.save');
 $linkUploadFile         =   route('adminsystem.'.$controller.'.uploadFile');
 $linkCreateAlias        =   route('adminsystem.'.$controller.'.createAlias');
-$inputCode              =   '<input type="text" class="form-control" name="code"   id="code"       value="'.@$arrRowData['code'].'">'; 
-$inputFullName          =   '<input type="text" class="form-control" name="fullname"   id="fullname"  onblur="createAlias()"     value="'.@$arrRowData['fullname'].'">';
-$inputAlias             =   '<input type="text" class="form-control" name="alias"      id="alias"    disabled      value="'.@$arrRowData['alias'].'">'; 
+
+$inputFullName          =   '<input type="text" class="form-control" name="fullname"    onblur="createAlias()"     value="'.@$arrRowData['fullname'].'">';
+$inputAlias             =   '<input type="text" class="form-control" name="alias"          disabled      value="'.@$arrRowData['alias'].'">'; 
  
-$inputMetakeyword             =   '<textarea id="meta_keyword" name="meta_keyword" rows="2" cols="100" class="form-control" >'.@$arrRowData['meta_keyword'].'</textarea>'; 
-$inputMetadescription             =   '<textarea id="meta_description" name="meta_description" rows="2" cols="100" class="form-control" >'.@$arrRowData['meta_description'].'</textarea>'; 
-$inputPrice             =   '<input type="text" class="form-control" name="price" onkeyup="PhanCachSoTien(this);"  id="price"       value="'.convertToTextPrice(@$arrRowData['price']).'">';
-$inputSalePrice             =   '<input type="text" class="form-control" name="sale_price" onkeyup="PhanCachSoTien(this);"  id="sale_price"       value="'.convertToTextPrice(@$arrRowData['sale_price']).'">';
+$inputMetakeyword             =   '<textarea  name="meta_keyword" rows="2" cols="100" class="form-control" >'.@$arrRowData['meta_keyword'].'</textarea>'; 
+$inputMetadescription             =   '<textarea  name="meta_description" rows="2" cols="100" class="form-control" >'.@$arrRowData['meta_description'].'</textarea>'; 
+$inputPrice             =   '<input type="text" class="form-control" name="price" onkeyup="PhanCachSoTien(this);"         value="'.convertToTextPrice(@$arrRowData['price']).'">';
+$inputSalePrice             =   '<input type="text" class="form-control" name="sale_price" onkeyup="PhanCachSoTien(this);"        value="'.convertToTextPrice(@$arrRowData['sale_price']).'">';
 $status                 =   (count($arrRowData) > 0) ? @$arrRowData['status'] : 1 ;
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Publish', 0 => 'Unpublish');  
 $ddlStatus              =   cmsSelectbox("status","status","form-control",$arrStatus,$status,"");
 $inputIntro            =   '<textarea id="intro" name="intro" rows="5" cols="100" class="form-control" >'.@$arrRowData['intro'].'</textarea>'; 
 $inputDetail            =   '<textarea id="detail" name="detail" rows="5" cols="100" class="form-control" >'.@$arrRowData['detail'].'</textarea>'; 
 $inputSortOrder         =   '<input type="text" class="form-control" name="sort_order" id="sort_order"     value="'.@$arrRowData['sort_order'].'">';
-$ddlCategoryProduct     =   cmsSelectboxCategoryProductMultiple("category_product_id","category_product_id[]", 'form-control', @$arrCategoryProductRecursive, @$arrProductCategory,"");
+$inputSizeType         =   '<input type="text" class="form-control" name="size_type"     value="'.@$arrRowData['size_type'].'">';
+$ddlCategoryProduct      =   cmsSelectboxCategory("category_id","category_id","form-control",$arrCategoryProductRecursive,@$arrRowData['category_id'],"");
+
 $id                     =   (count($arrRowData) > 0) ? @$arrRowData['id'] : "" ;
-$inputID                =   '<input type="hidden" name="id" id="id" value="'.@$id.'" />'; 
-$inputAliasMenu       =   '<input type="hidden" name="alias_menu" id="alias_menu" value="'.@$arrRowData['alias'].'" />'; 
+$inputID                =   '<input type="hidden" name="id"  value="'.@$id.'" />'; 
+$inputAliasMenu       =   '<input type="hidden" name="alias_menu"  value="'.@$arrRowData['alias'].'" />'; 
 $picture                =   "";
 $strImage               =   "";
 $setting= getSettingSystem();
@@ -34,7 +36,7 @@ if(count(@$arrRowData)>0){
         $strImage       =   @$arrRowData["image"];
     }        
 }   
-$inputPictureHidden     =   '<input type="hidden" name="image_hidden" id="image_hidden" value="'.@$strImage.'" />';
+$inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.@$strImage.'" />';
 $str_child_image="";
 if(count($arrRowData) > 0){
     $arrProductChildImage=json_decode(@$arrRowData['child_image']);    
@@ -42,7 +44,7 @@ if(count($arrRowData) > 0){
         $str_child_image=implode(',',$arrProductChildImage);
     }    
 }   
-$inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden" id="image_child_hidden" value="'.@$str_child_image.'" />';
+$inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"  value="'.@$str_child_image.'" />';
 ?>
 <div class="portlet light bordered">
     <div class="portlet-title">
@@ -67,8 +69,8 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
             echo $inputPictureHidden; 
             echo $inputChildPictureHidden;
             echo $inputID;
+            echo $inputAliasMenu;
             ?>                
-            <?php echo $inputAliasMenu; ?>         
             <div class="form-body">                
                 <div class="row">
                     <div class="form-group col-md-12">
@@ -87,16 +89,7 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
                             <span class="help-block"></span>
                         </div>
                     </div>     
-                </div>      
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label class="col-md-2 control-label"><b>Mã sản phẩm</b></label>
-                        <div class="col-md-10">
-                            <?php echo $inputCode; ?>
-                            <span class="help-block"></span>
-                        </div>
-                    </div>  
-                </div>
+                </div>                      
                 <div class="row"> 
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-label"><b>Giá</b></label>
@@ -123,7 +116,7 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
                             <span class="help-block"></span>
                         </div>
                     </div> 
-                </div>
+                </div>                             
                 <div class="row">                      
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-label"><b>Hình</b></label>
@@ -172,7 +165,7 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
                             </table>    
                         </div>
                     </div>     
-                </div>       
+                </div>                     
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-label"><b>Sắp xếp</b></label>
@@ -240,24 +233,23 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
 <script type="text/javascript" language="javascript">
     function resetErrorStatus(){
         var id                   =   $('input[name="id"]');
-        var code                 =   $('input[name="code"]');
+        
         var fullname             =   $('input[name="fullname"]');
         var alias                =   $('input[name="alias"]');     
-        var category_product_id  =   $('select[name="category_product_id[]"]');   
+        var category_id  =   $('select[name="category_id"]');   
         var sort_order           =   $('input[name="sort_order"]');
         var status               =   $('select[name="status"]');
         
-        $(code).closest('.form-group').removeClass("has-error");
+        
         $(fullname).closest('.form-group').removeClass("has-error");        
         $(alias).closest('.form-group').removeClass("has-error");
-        $(category_product_id).closest('.form-group').removeClass("has-error");
+        $(category_id).closest('.form-group').removeClass("has-error");
         $(sort_order).closest('.form-group').removeClass("has-error");
         $(status).closest('.form-group').removeClass("has-error");        
-
-        $(code).closest('.form-group').find('span').empty().hide();
+       
         $(fullname).closest('.form-group').find('span').empty().hide();        
         $(alias).closest('.form-group').find('span').empty().hide();
-        $(category_product_id).closest('.form-group').find('span').empty().hide();
+        $(category_id).closest('.form-group').find('span').empty().hide();
         $(sort_order).closest('.form-group').find('span').empty().hide();
         $(status).closest('.form-group').find('span').empty().hide();        
     }
@@ -286,15 +278,15 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
         $("input[name='image_hidden']").val("");        
     }
     function save(){
-        var id=$('input[name="id"]').val();        
-        var code = $('input[name="code"]').val();
+        var id=$('input[name="id"]').val();                
         var fullname=$('input[name="fullname"]').val();        
         var alias=$('input[name="alias"]').val();
         var alias_menu=$('input[name="alias_menu"]').val();
         
         var meta_keyword=$('textarea[name="meta_keyword"]').val();
         var meta_description=$('textarea[name="meta_description"]').val();
-        var category_product_id=$('select[name="category_product_id[]"]').val();
+        var category_id=$('select[name="category_id"]').val();  
+        
         var image = $('input[name="image"]').val();
         if (image != ''){
             image = image.substr(image.lastIndexOf('\\') + 1);       
@@ -322,19 +314,18 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
         }        
         var status=$('select[name="status"]').val();             
         var price=$('input[name="price"]').val();
-        var sale_price=$('input[name="sale_price"]').val();
+        var sale_price=$('input[name="sale_price"]').val();       
         var intro=$('textarea[name="intro"]').val(); 
         var detail=CKEDITOR.instances['detail'].getData();        
+        
         var sort_order=$('input[name="sort_order"]').val();        
         var token = $('input[name="_token"]').val();   
         resetErrorStatus();
         var dataItem={
-            "id":id,
-            "code":code,
+            "id":id,            
             "fullname":fullname,            
             "alias":alias,
-            "alias_menu":alias_menu,
-            
+            "alias_menu":alias_menu,            
             "meta_keyword":meta_keyword,
             "meta_description":meta_description,
             "image":image,
@@ -342,9 +333,11 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
             "status":status,                     
             "price":price,
             "sale_price":sale_price,
+            
             "intro":intro,
             "detail":detail,
-            "category_product_id":category_product_id,                        
+            "category_id":category_id,    
+           
             "child_image":child_image,            
             "sort_order":sort_order,
             "status":status,
@@ -366,12 +359,7 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
                     }                    
                     window.location.href = "<?php echo $linkCancel; ?>";
                 }else{
-                    var data_error=data.error;
-                    if(typeof data_error.code               != "undefined"){
-                        $('input[name="code"]').closest('.form-group').addClass(data_error.code.type_msg);
-                        $('input[name="code"]').closest('.form-group').find('span').text(data_error.code.msg);
-                        $('input[name="code"]').closest('.form-group').find('span').show();                        
-                    }   
+                    var data_error=data.error;                    
                     if(typeof data_error.fullname               != "undefined"){
                         $('input[name="fullname"]').closest('.form-group').addClass(data_error.fullname.type_msg);
                         $('input[name="fullname"]').closest('.form-group').find('span').text(data_error.fullname.msg);
@@ -382,10 +370,10 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
                         $('input[name="alias"]').closest('.form-group').find('span').text(data_error.alias.msg);
                         $('input[name="alias"]').closest('.form-group').find('span').show();                       
                     }
-                    if(typeof data_error.category_product_id               != "undefined"){
-                        $('select[name="category_product_id[]"]').closest('.form-group').addClass(data_error.category_product_id.type_msg);
-                        $('select[name="category_product_id[]"]').closest('.form-group').find('span').text(data_error.category_product_id.msg);
-                        $('select[name="category_product_id[]"]').closest('.form-group').find('span').show();                        
+                    if(typeof data_error.category_id               != "undefined"){
+                        $('select[name="category_id"]').closest('.form-group').addClass(data_error.category_id.type_msg);
+                        $('select[name="category_id"]').closest('.form-group').find('span').text(data_error.category_id.msg);
+                        $('select[name="category_id"]').closest('.form-group').find('span').show();                        
                     }
                     if(typeof data_error.sort_order               != "undefined"){
                         $('input[name="sort_order"]').closest('.form-group').addClass(data_error.sort_order.type_msg);

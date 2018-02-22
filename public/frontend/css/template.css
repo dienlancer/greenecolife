@@ -437,13 +437,13 @@ ul.list-style-none{
 .related-products .owl-prev{
       position: absolute;
     right: 35px;
-    top: -39px;
+    top: -54px;
 
 }
 .related-products .owl-next{
         position: absolute;
     right: 0;
-    top: -39px;
+    top: -54px;
 }
 .featured-news .owl-prev, .featured-news .owl-next{
            background:#0c62ad;

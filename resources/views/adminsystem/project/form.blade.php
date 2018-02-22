@@ -11,12 +11,16 @@ $inputFullName          =   '<input type="text" class="form-control" name="fulln
 $inputAlias             =   '<input type="text" class="form-control" name="alias"      id="alias"    disabled      value="'.@$arrRowData['alias'].'">';
 $inputIntro             =   '<textarea id="intro" name="intro" rows="5" cols="100" class="form-control" >'.@$arrRowData['intro'].'</textarea>'; 
 $inputOverview             =   '<textarea id="overview" name="overview" rows="5" cols="100" class="form-control" >'.@$arrRowData['overview'].'</textarea>'; 
-$inputDescription       =   '<textarea id="description" name="description" rows="2" cols="100" class="form-control" >'.@$arrRowData['description'].'</textarea>'; 
+$inputEquipment       =   '<textarea id="equipment" name="equipment" rows="2" cols="100" class="form-control" >'.@$arrRowData['equipment'].'</textarea>'; 
+$inputPriceList       =   '<textarea id="price_list" name="price_list" rows="2" cols="100" class="form-control" >'.@$arrRowData['price_list'].'</textarea>'; 
+$inputGoogleMapUrl       =   '<textarea id="googlemap_url" name="googlemap_url" rows="2" cols="100" class="form-control" >'.@$arrRowData['googlemap_url'].'</textarea>'; 
 $inputMetakeyword             =   '<textarea id="meta_keyword" name="meta_keyword" rows="2" cols="100" class="form-control" >'.@$arrRowData['meta_keyword'].'</textarea>'; 
 $inputMetadescription             =   '<textarea id="meta_description" name="meta_description" rows="2" cols="100" class="form-control" >'.@$arrRowData['meta_description'].'</textarea>'; 
-$inputTotalCost             =   '<textarea id="total_cost" name="total_cost" rows="2" cols="100" class="form-control" >'.@$arrRowData['total_cost'].'</textarea>';  
-$inputPlan             =   '<textarea id="plan" name="plan" rows="2" cols="100" class="form-control" >'.@$arrRowData['plan'].'</textarea>'; 
-$inputSponsor             =   '<textarea id="sponsor" name="sponsor" rows="2" cols="100" class="form-control" >'.@$arrRowData['sponsor'].'</textarea>'; 
+$inputTotalCost             =   '<input type="text" class="form-control" name="total_cost"      id="total_cost"         value="'.@$arrRowData['total_cost'].'">';
+$inputUnit          =   '<input type="text" class="form-control" name="unit"   id="unit"     value="'.@$arrRowData['unit'].'">'; 
+$ddlProvince      =   cmsSelectboxCategory("province_id","province_id","form-control",$arrProvince,@$arrRowData['province_id'],"");
+$ddlDistrict      =   cmsSelectboxCategory("district_id","district_id","form-control",$arrDistrict,@$arrRowData['district_id'],"");
+$inputStreet          =   '<input type="text" class="form-control" name="street"   id="street"    value="'.@$arrRowData['street'].'">'; 
 $inputSortOrder         =   '<input type="text" class="form-control" name="sort_order" id="sort_order"     value="'.@$arrRowData['sort_order'].'">';
 $status                 =   (count($arrRowData) > 0) ? @$arrRowData['status'] : 1 ;
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Publish', 0 => 'Unpublish');  
@@ -33,7 +37,7 @@ if(count(@$arrRowData)>0){
         $picture        =   '<div class="col-sm-6"><center>&nbsp;<img src="'.asset("/upload/" . $article_width . "x" . $article_height . "-".@$arrRowData["image"]).'" style="width:100%" />&nbsp;</center></div><div class="col-sm-6"><a href="javascript:void(0);" onclick="deleteImage();"><img src="'.asset('public/adminsystem/images/delete-icon.png').'"/></a></div>';                        
         $strImage       =   @$arrRowData["image"];
     }        
-}   
+} 
 $inputPictureHidden     =   '<input type="hidden" name="image_hidden" id="image_hidden" value="'.@$strImage.'" />';
 ?>
 <div class="portlet light bordered">
@@ -94,7 +98,34 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden" id="image_
                             <span class="help-block"></span>
                         </div>
                     </div>     
+                </div>   
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-label"><b>Province</b></label>
+                        <div class="col-md-10">                            
+                            <?php echo $ddlProvince; ?>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>     
+                </div>   
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-label"><b>District</b></label>
+                        <div class="col-md-10">                            
+                            <?php echo $ddlDistrict; ?>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>     
                 </div>       
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-label"><b>Địa điểm</b></label>
+                        <div class="col-md-10">                            
+                            <?php echo $inputStreet; ?>                            
+                           <span class="help-block"></span>
+                       </div>
+                   </div>                       
+                </div>   
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-label"><b>Hình</b></label>
@@ -108,13 +139,16 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden" id="image_
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-label"><b>Kinh phí dự án</b></label>
                         <div class="col-md-10">                            
-                            <?php echo $inputTotalCost; ?>
-                            <span class="help-block"></span>
-                            <script type="text/javascript" language="javascript">
-                                CKEDITOR.replace('total_cost',{
-                                   height:300
-                               });
-                           </script>
+                            <?php echo $inputTotalCost; ?>                           
+                           <span class="help-block"></span>
+                       </div>
+                   </div>                       
+                </div>   
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-label"><b>Đơn vị</b></label>
+                        <div class="col-md-10">                            
+                            <?php echo $inputUnit; ?>                           
                            <span class="help-block"></span>
                        </div>
                    </div>                       
@@ -127,7 +161,7 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden" id="image_
                             <span class="help-block"></span>
                         </div>
                     </div>    
-                </div> 
+                </div>                
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-label"><b>Tổng quan</b></label>
@@ -138,41 +172,47 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden" id="image_
                                 CKEDITOR.replace('overview',{
                                    height:300
                                });
-                           </script>
-                           <span class="help-block"></span>
+                           </script>                           
                        </div>
                    </div>                       
                 </div>   
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label class="col-md-2 control-label"><b>Kế hoạch</b></label>
+                        <label class="col-md-2 control-label"><b>Tiện ích</b></label>
                         <div class="col-md-10">                            
-                            <?php echo $inputPlan; ?>
+                            <?php echo $inputEquipment; ?>
                             <span class="help-block"></span>
                             <script type="text/javascript" language="javascript">
-                                CKEDITOR.replace('plan',{
+                                CKEDITOR.replace('equipment',{
                                    height:300
                                });
-                           </script>
-                           <span class="help-block"></span>
-                       </div>
-                   </div>                       
-                </div>   
+                           </script>    
+                        </div>
+                    </div>    
+                </div>
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label class="col-md-2 control-label"><b>Tài trợ</b></label>
+                        <label class="col-md-2 control-label"><b>Bảng giá</b></label>
                         <div class="col-md-10">                            
-                            <?php echo $inputSponsor; ?>
+                            <?php echo $inputPriceList; ?>
                             <span class="help-block"></span>
                             <script type="text/javascript" language="javascript">
-                                CKEDITOR.replace('sponsor',{
+                                CKEDITOR.replace('price_list',{
                                    height:300
                                });
-                           </script>
-                           <span class="help-block"></span>
-                       </div>
-                   </div>                       
-                </div>                    
+                           </script>    
+                        </div>
+                    </div>    
+                </div>    
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-label"><b>Google map</b></label>
+                        <div class="col-md-10">                            
+                            <?php echo $inputGoogleMapUrl; ?>
+                            <span class="help-block"></span>                            
+                        </div>
+                    </div>    
+                </div>                             
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-label"><b>Sắp xếp</b></label>
@@ -249,11 +289,16 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden" id="image_
             image = image.substr(image.lastIndexOf('\\') + 1);       
         }
         var image_hidden=$('input[name="image_hidden"]').val();         
-        var total_cost=CKEDITOR.instances['total_cost'].getData();
+        var total_cost=$('input[name="total_cost"]').val();     
+        var unit=$('input[name="unit"]').val();        
         var intro=$('textarea[name="intro"]').val();        
-        var overview=CKEDITOR.instances['overview'].getData();        
-        var plan=CKEDITOR.instances['plan'].getData();        
-        var sponsor=CKEDITOR.instances['sponsor'].getData();
+        var overview=CKEDITOR.instances['overview'].getData();    
+        var equipment=CKEDITOR.instances['equipment'].getData();    
+        var price_list=CKEDITOR.instances['price_list'].getData();    
+        var googlemap_url=$('textarea[name="googlemap_url"]').val();   
+        var province_id=$('select[name="province_id"]').val();     
+        var district_id=$('select[name="district_id"]').val();         
+        var street=$('input[name="street"]').val();        
         var sort_order=$('input[name="sort_order"]').val();
         var status=$('select[name="status"]').val();     
         var token = $('input[name="_token"]').val();   
@@ -261,17 +306,21 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden" id="image_
         var dataItem={
             "id":id,
             "fullname":fullname,
-            "alias":alias,    
-            
+            "alias":alias,                
             "meta_keyword":meta_keyword,
             "meta_description":meta_description,                   
             "image":image,       
             "image_hidden":image_hidden,
             "total_cost":total_cost,     
+            "unit":unit,
             "intro":intro,
             "overview":overview,
-            "plan":plan,
-            "sponsor":sponsor,                                    
+            "equipment":equipment,
+            "price_list":price_list,
+            "googlemap_url":googlemap_url,
+            "street":street,     
+            "province_id":province_id,
+            "district_id":district_id,                            
             "sort_order":sort_order,
             "status":status,
             "_token": token

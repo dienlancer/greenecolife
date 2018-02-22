@@ -83,8 +83,8 @@ if(isset($alias)){
                 $data=getModuleItem("san-pham-noi-bat");
                 if(count($data) > 0){
                     $fullname=$data["fullname"];
-                    $items=$data["items"];
-                    if(count($items) > 0){
+                    $items1=$data["items"];
+                    if(count($items1) > 0){
                         ?>
                         <script language="javascript" type="text/javascript">
                             $(document).ready(function(){
@@ -96,14 +96,14 @@ if(isset($alias)){
                         <h2 class="menu-right-title margin-top-20"><?php echo $fullname; ?></h2>
                         <div class="bxSlider">
                             <?php 
-                            foreach($items as $key => $value){
+                            foreach($items1 as $key => $value){
                                 $featuredImg=get_product_thumbnail($value['image']) ;
                                 $permalink=route('frontend.index.index',[$value['alias']]);
-                                $title=$value['fullname'];
+                                $title1=$value['fullname'];
                                 ?>
                                 <div >
                                     <div><center><figure><a href="<?php echo $permalink; ?>"><img src="<?php echo $featuredImg; ?>"></a></figure></center></div>
-                                    <div class="margin-top-5 box-product-intro-title"><a href="<?php echo $permalink; ?>"><b><?php echo $title; ?></b></a></div>
+                                    <div class="margin-top-5 box-product-intro-title"><a href="<?php echo $permalink; ?>"><b><?php echo $title1; ?></b></a></div>
                                 </div>
                                 <?php
                             }
