@@ -111,9 +111,8 @@ class IndexController extends Controller {
     $items=array();                            
     $component='search-product';              
     $title="Tìm kiếm"; 
-    $query=DB::table('product')
-    ->join('product_category','product.id','=','product_category.product_id')
-    ->join('category_product','category_product.id','=','product_category.category_product_id')
+    $query=DB::table('product')    
+    ->join('category_product','product.category_id','=','category_product.id')
     ->where('product.status',1);
     if(!empty(@$request->q)){
       $query->where('product.fullname','like', '%'.@$request->q.'%');
@@ -137,8 +136,7 @@ class IndexController extends Controller {
     $pagination=new PaginationModel($arrPagination);
     $position   = ((int)@$arrPagination['currentPage']-1)*$totalItemsPerPage;        
     $query=DB::table('product')
-    ->join('product_category','product.id','=','product_category.product_id')
-    ->join('category_product','category_product.id','=','product_category.category_product_id')
+    ->join('category_product','product.category_id','=','category_product.id')
     ->where('product.status',1);
     if(!empty(@$request->q)){
       $query->where('product.fullname','like', '%'.@$request->q.'%');
@@ -485,7 +483,7 @@ class IndexController extends Controller {
         $error=array();
         $data=array();
         $success=array();           
-        $layout="two-column";     
+        $layout="full-width";     
         $component='contact';
         $alias="lien-he";   
         if($request->isMethod('post'))     {  
