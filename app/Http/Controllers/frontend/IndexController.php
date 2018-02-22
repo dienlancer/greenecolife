@@ -58,7 +58,7 @@ class IndexController extends Controller {
     $title="Tìm kiếm"; 
     $query=DB::table('article')
     ->join('article_category','article.id','=','article_category.article_id')
-    ->join('category_article','category_article.id','=','article_category.category_article_id')
+    ->join('category_article','category_article.id','=','article_category.category_id')
     ->where('article.status',1);
     if(!empty(@$request->q)){
       $query->where('article.fullname','like', '%'.@$request->q.'%');
@@ -83,7 +83,7 @@ class IndexController extends Controller {
     $position   = ((int)@$arrPagination['currentPage']-1)*$totalItemsPerPage;        
     $query=DB::table('article')
     ->join('article_category','article.id','=','article_category.article_id')
-    ->join('category_article','category_article.id','=','article_category.category_article_id')
+    ->join('category_article','category_article.id','=','article_category.category_id')
     ->where('article.status',1);
     if(!empty(@$request->q)){
       $query->where('article.fullname','like', '%'.@$request->q.'%');
