@@ -475,6 +475,8 @@ footer{
     border-bottom: 1px solid #0c62ad;
     padding-bottom: 10px;
     font-family: 'Anton';
+    text-shadow: 1px 1px 0px #ffffff;
+
 }
 .tialia{
         font-size: 15px;
