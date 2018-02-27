@@ -218,7 +218,7 @@ if(count($arrCart) > 0){
 				<div class="slogan"><?php echo $company; ?></div>
 			</div> 
 			<div class="col-lg-4">
-				<div class="searching  margin-top-30">
+				<div class="searching">
 					<div class="hotline">						
 						<span class="telephone"><i class="fa fa-phone" aria-hidden="true"></i></span>
 						<span class="so-phone margin-left-5"><?php echo $telephone; ?></span>

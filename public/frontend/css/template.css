@@ -470,7 +470,7 @@ footer{
 }
 
 .brabel{
-    font-size: 15px;
+    font-size: 18px;
     text-transform: uppercase;    
     border-bottom: 1px solid #0c62ad;
     padding-bottom: 10px;
@@ -769,7 +769,7 @@ div.liverpool:hover div.youtube-img{
     font-family: 'Anton';
 }
 .searching{
-    
+    margin-top: 30px;
 }
 .so-phone{
     text-shadow: 2px 2px 0px #ffffff;
@@ -1014,6 +1014,12 @@ div.ducati  h2{
     }
     .hotline{
     	text-align: center;
+    }
+    .slogan{
+        font-size: 22px
+    }
+    .searching{
+        margin-top: 5px
     }
 }
 
