@@ -62,11 +62,11 @@ $tel_nvkd_4=$setting['tel_nvkd_4']['field_value'];
 			foreach($data as $key => $value){
 				$featuredImg=get_product_thumbnail($value['image']) ;
 				$permalink=route('frontend.index.index',[$value['alias']]);
-				$title=$value['fullname'];
+				$title2=$value['fullname'];
 				?>
 				<div>
 					<div><center><figure><a href="<?php echo $permalink; ?>"><img src="<?php echo $featuredImg; ?>"></a></figure></center></div>
-					<div class="margin-top-5 box-product-intro-title"><a href="<?php echo $permalink; ?>"><b><?php echo $title; ?></b></a></div>
+					<div class="margin-top-5 box-product-intro-title"><a href="<?php echo $permalink; ?>"><b><?php echo $title2; ?></b></a></div>
 				</div>
 				<?php
 			}
@@ -226,11 +226,11 @@ $tel_nvkd_4=$setting['tel_nvkd_4']['field_value'];
 						foreach ($items as $key => $value){
 							$featuredImg=get_article_thumbnail($value['image']) ;
 							$permalink=route('frontend.index.index',[$value['alias']]);
-							$title=substr( $value['fullname'],0,50);
+							$title3=substr( $value['fullname'],0,50);
 							?>
 							<div>
 								<div><figure><center><a href="<?php echo $permalink; ?>"><img src="<?php echo $featuredImg; ?>" /></a></center></figure></div>
-								<div class="margin-top-5 box-intro-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></div>
+								<div class="margin-top-5 box-intro-title"><a href="<?php echo $permalink; ?>"><?php echo $title3; ?></a></div>
 							</div>		
 							<?php
 						}
@@ -257,9 +257,9 @@ $tel_nvkd_4=$setting['tel_nvkd_4']['field_value'];
 							foreach ($items as $key => $value){
 								$featuredImg=get_article_thumbnail($value['image']) ;
 								$permalink=route('frontend.index.index',[$value['alias']]);
-								$title=$value['fullname'];
+								$title4=$value['fullname'];
 								?>
-								<li><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></li>
+								<li><a href="<?php echo $permalink; ?>"><?php echo $title4; ?></a></li>
 								<?php
 							}
 							?>		
@@ -315,11 +315,11 @@ $tel_nvkd_4=$setting['tel_nvkd_4']['field_value'];
 					foreach($items as $key => $value){
 						$featuredImg=get_product_thumbnail($value['image']) ;
 						$permalink=route('frontend.index.index',[$value['alias']]);
-						$title=$value['fullname'];
+						$title5=$value['fullname'];
 						?>
 						<div>
 							<div><center><figure><a href="<?php echo $permalink; ?>"><img src="<?php echo $featuredImg; ?>"></a></figure></center></div>
-							<div class="margin-top-5 box-product-intro-title"><a href="<?php echo $permalink; ?>"><b><?php echo $title; ?></b></a></div>
+							<div class="margin-top-5 box-product-intro-title"><a href="<?php echo $permalink; ?>"><b><?php echo $title5; ?></b></a></div>
 						</div>
 						<?php
 					}

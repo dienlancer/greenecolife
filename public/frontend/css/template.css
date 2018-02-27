@@ -465,7 +465,7 @@ ul.list-style-none{
     list-style: square;
 }
 footer{
-       color: #0c62ad;
+      
     padding-bottom: 15px;
 }
 
@@ -476,14 +476,19 @@ footer{
     padding-bottom: 10px;
     font-family: 'Anton';
     text-shadow: 1px 1px 0px #ffffff;
-
+ color: #0c62ad;
 }
 .tialia{
-        font-size: 15px;
-    text-align: justify;
+    font-size: 15px;    
+    color: #0c62ad;
+    text-shadow: 1px 1px 0px #ffffff;
 }
 .danh-muc{
     list-style: none;
+}
+.thiet-ke-boi{
+    color: #0c62ad;
+    text-shadow: 1px 1px 0px #ffffff;
 }
 .danh-muc li{
     margin-left: 0;

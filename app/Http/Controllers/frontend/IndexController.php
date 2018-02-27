@@ -40,7 +40,7 @@ class IndexController extends Controller {
   var $_ssNameUser="vmuser";
   var $_ssNameCart="vmart";      
   public function getHome(Request $request){   
-    \Artisan::call('sitemap:auto');
+    \Artisan::call('sitemap:auto');     
     return view("frontend.home");
   } 
   public function search(Request $request){
