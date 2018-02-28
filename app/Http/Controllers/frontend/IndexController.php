@@ -426,7 +426,7 @@ class IndexController extends Controller {
     $breadcrumb='';              
     $breadcrumb= getBreadcrumb($alias);    
     \Artisan::call('sitemap:auto');
-    return view("frontend.index",compact("component","alias","title","meta_keyword","meta_description","item","items","pagination","layout","breadcrumb")); 
+    return view("frontend.index",compact("component","alias","title","meta_keyword","meta_description","item","items","pagination","layout","breadcrumb","category")); 
                                
   }
       function addCart(){          
