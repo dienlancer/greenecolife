@@ -2,7 +2,7 @@
 ?>
 <footer class="footer">
 	<div class="container azweb">
-		<div class="col-lg-3">			
+		<div class="col-lg-4">			
 			<?php 
 			$module=getPage("intro-footer");
 			if(count($module) > 0){
@@ -16,7 +16,7 @@
 					<div class="tialia margin-top-15">
 						<?php echo $content; ?>
 					</div>
-					<div class="margin-top-15 thiet-ke-boi">Thiết kế bởi: <a href="https://vidoweb.com.vn" target="_blank">Vidoweb</a> </div>		
+					<div class="margin-top-15 thiet-ke-boi">Thiết kế bởi: <a href="https://vidoco.vn/" target="_blank">vidoco.vn</a> </div>		
 				</div>										
 				<?php				
 			}
@@ -41,7 +41,7 @@
 			}
 			?>			
 		</div>
-		<div class="col-lg-3">
+		<div class="col-lg-2">
 			<div class="margin-top-40">
 				<h1 class="brabel">Kết nối mạng xã hội</h1>
 				<div class="tialia margin-top-15">

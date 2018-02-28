@@ -480,15 +480,14 @@ footer{
 }
 .tialia{
     font-size: 15px;    
-    color: #0c62ad;
-    text-shadow: 1px 1px 0px #ffffff;
+    color: #ffffff;    
 }
 .danh-muc{
     list-style: none;
 }
 .thiet-ke-boi{
-    color: #0c62ad;
-    text-shadow: 1px 1px 0px #ffffff;
+    color: #ffffff;
+    
 }
 .danh-muc li{
     margin-left: 0;
@@ -947,7 +946,7 @@ div.ducati  h2{
 	padding: 5px 0px;
 }
 .thiet-ke-boi a{
-	color: #0c62ad;
+	color:#ffffff;
     text-transform: uppercase;
 }
 .employee-name{	
@@ -964,7 +963,7 @@ div.ducati  h2{
 }
 
 .connected-social li{
-    margin-left: 15px;
+    margin-left:8px;
 }
 .connected-social li:first-child{
     margin-left: 0

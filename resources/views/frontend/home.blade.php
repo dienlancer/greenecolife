@@ -3,6 +3,7 @@
 <?php 
 use App\ProductModel;
 $setting=getSettingSystem();
+$seo=getSeo();
 $name_nvkd_1=$setting['name_nvkd_1']['field_value'];
 $name_nvkd_2=$setting['name_nvkd_2']['field_value'];
 $name_nvkd_3=$setting['name_nvkd_3']['field_value'];
@@ -23,6 +24,7 @@ $tel_nvkd_2=$setting['tel_nvkd_2']['field_value'];
 $tel_nvkd_3=$setting['tel_nvkd_3']['field_value'];
 $tel_nvkd_4=$setting['tel_nvkd_4']['field_value'];
 ?>
+<h1 style="display: none;"><?php echo $seo["title"]; ?></h1>
 <div class="container box-wrapper">
 	<?php 
 	$data=ProductModel::select('id','fullname','alias','image','count_view')->orderBy('count_view','desc')->take(20)->get()->toArray();	
