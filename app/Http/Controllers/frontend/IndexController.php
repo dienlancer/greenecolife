@@ -422,11 +422,9 @@ class IndexController extends Controller {
       if(!empty($category['meta_description'])){
         $meta_description=$category['meta_description'];
       }
-    }
-    $breadcrumb='';              
-    $breadcrumb= getBreadcrumb($alias);    
+    }    
     \Artisan::call('sitemap:auto');
-    return view("frontend.index",compact("component","alias","title","meta_keyword","meta_description","item","items","pagination","layout","breadcrumb","category")); 
+    return view("frontend.index",compact("component","alias","title","meta_keyword","meta_description","item","items","pagination","layout","category")); 
                                
   }
       function addCart(){          
