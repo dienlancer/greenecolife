@@ -16,9 +16,9 @@ $inputSalePrice             =   '<input type="text" class="form-control" name="s
 $status                 =   (count($arrRowData) > 0) ? @$arrRowData['status'] : 1 ;
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Publish', 0 => 'Unpublish');  
 $ddlStatus              =   cmsSelectbox("status","status","form-control",$arrStatus,$status,"");
-$inputIntro            =   '<textarea id="intro" name="intro" rows="5" cols="100" class="form-control" >'.@$arrRowData['intro'].'</textarea>'; 
-$inputDetail            =   '<textarea id="detail" name="detail" rows="5" cols="100" class="form-control" >'.@$arrRowData['detail'].'</textarea>'; 
-$inputSortOrder         =   '<input type="text" class="form-control" name="sort_order" id="sort_order"     value="'.@$arrRowData['sort_order'].'">';
+$inputIntro            =   '<textarea  name="intro" rows="5" cols="100" class="form-control" >'.@$arrRowData['intro'].'</textarea>'; 
+$inputDetail            =   '<textarea name="detail" rows="5" cols="100" class="form-control" >'.@$arrRowData['detail'].'</textarea>'; 
+$inputSortOrder         =   '<input type="text" class="form-control" name="sort_order"  value="'.@$arrRowData['sort_order'].'">';
 $inputSizeType         =   '<input type="text" class="form-control" name="size_type"     value="'.@$arrRowData['size_type'].'">';
 $ddlCategoryProduct      =   cmsSelectboxCategory("category_id","category_id","form-control",$arrCategoryProductRecursive,@$arrRowData['category_id'],"");
 
@@ -121,7 +121,7 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-label"><b>Hình</b></label>
                         <div class="col-md-4">
-                            <input type="file" id="image" name="image"  />   
+                            <input type="file"  name="image"  />   
                             <div class="picture-area"><?php echo $picture; ?>                      </div>
                             <div class="clr"></div>
                                                 
@@ -132,7 +132,7 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
                                     <i class="fa fa-plus"></i>
                                 </a>
                             </div>
-                            <table class="table-image" id="table-image" border="0" cellpadding="0" cellspacing="0" border="1" width="100%">
+                            <table class="table-image"  border="0" cellpadding="0" cellspacing="0" border="1" width="100%">
                                 <thead>
                                     <tr>                                    
                                         <th><center>Thumbnails</center></th>                                  
@@ -349,7 +349,7 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
             data: dataItem,
             async: false,
             success: function (data) {
-                if(data.checked==true){
+                if(data.checked==1){
                     uploadFileImport($('input[name="image"]'));    
                     var child_image_ctrl=$("table.table-image > tbody").find("input[type='file']");                
                     if(child_image_ctrl.length > 0){
@@ -437,7 +437,7 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
             data: dataItem,            
             async: false,
             success: function (data) {                
-                if(data.checked==true){
+                if(data.checked==1){
                     $('input[name="alias"]').val(data.alias); 
                 }else{                    
                     var data_error=data.error;

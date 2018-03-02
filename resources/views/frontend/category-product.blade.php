@@ -2,7 +2,12 @@
 	<input type="hidden" name="filter_page" value="1">         
 	{{ csrf_field() }}	
 	<?php 			
-	$breadcrumb= getBreadCrumbCategoryProduct($category);		
+	if(@$category != null){
+		$breadcrumb= getBreadCrumbCategoryProduct(@$category);			
+	}
+	else{
+		$breadcrumb='<a href="'.url('/').'">Trang chủ</a><a href="javascript:void(0);">Tìm kiếm</a>';
+	}	
 	?>
 	<div class="breadcrumb-title">
 		<?php echo $breadcrumb; ?>
