@@ -19,8 +19,7 @@ $li_product_management='';
 $li_category_product='';
 $li_product='';
 
-$li_payment_method='';
-$li_invoice='';
+
 
 $li_menu_type='';
 $li_page='';
@@ -83,14 +82,7 @@ switch ($controller) {
     $li_product_management='active open';
     break;
     
-    case 'payment-method':     
-    $li_payment_method='active open';
-    $li_product_management='active open';
-    break;
-    case 'invoice':        
-    $li_invoice='active open';
-    $li_product_management='active open';
-    break; 
+    
     case 'menu-type':
     case 'menu':
     $li_menu_type='active open';
@@ -190,18 +182,6 @@ switch ($controller) {
                 </a>                                                                      
             </li>
             
-            <li class="nav-item <?php echo $li_payment_method; ?> ">
-                <a href="{!! route('adminsystem.payment-method.getList') !!}" class="nav-link nav-toggle">
-                    <i class="icon-notebook"></i>
-                    <span class="title">Phương thức thanh toán</span>                                            
-                </a>                                                                      
-            </li>
-            <li class="nav-item  <?php echo $li_invoice; ?>">
-                <a href="{!! route('adminsystem.invoice.getList') !!}" class="nav-link nav-toggle">
-                    <i class="icon-notebook"></i>
-                    <span class="title">Đơn hàng</span>                                            
-                </a>                                                                      
-            </li>
         </ul>
     </li>
     <!--<li class="nav-item <?php echo $li_project_management; ?>">

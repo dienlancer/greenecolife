@@ -80,38 +80,38 @@ if(isset($alias)){
                 case 'product':
                 case 'search-product':                
                 wp_nav_menu($argsDanhMucSanPham);       
-                $data=getModuleItem("san-pham-noi-bat");
-                if(count($data) > 0){
-                    $fullname=$data["fullname"];
-                    $items1=$data["items"];
-                    if(count($items1) > 0){
-                        ?>
-                        <script language="javascript" type="text/javascript">
-                            $(document).ready(function(){
-                                $('.bxSlider').bxSlider({
-    mode: 'vertical', speed: 500, slideMargin:15, infiniteLoop: true, pager: false, controls: false, minSlides: 5, maxSlides:20, moveSlides: 5, adaptiveHeight: false,auto:true
-    });
-                            });
-                      </script>
-                        <h2 class="menu-right-title margin-top-20"><?php echo $fullname; ?></h2>
-                        <div class="bxSlider">
-                            <?php 
-                            foreach($items1 as $key => $value){
-                                $featuredImg=get_product_thumbnail($value['image']) ;
-                                $permalink=route('frontend.index.index',[$value['alias']]);
-                                $title1=$value['fullname'];
-                                ?>
-                                <div >
-                                    <div><center><figure><a href="<?php echo $permalink; ?>"><img src="<?php echo $featuredImg; ?>"></a></figure></center></div>
-                                    <div class="margin-top-5 box-product-intro-title"><a href="<?php echo $permalink; ?>"><b><?php echo $title1; ?></b></a></div>
-                                </div>
-                                <?php
-                            }
+                $featured_module=getModuleItem("san-pham-noi-bat");
+                    if(count($featured_module) > 0){
+                        $featured_module_name=$featured_module["fullname"];
+                        $featured_products=$featured_module["items"];
+                        if(count($featured_products) > 0){
                             ?>
-                        </div>
-                        <?php                        
-                    }
-                }                                                        
+                            <script language="javascript" type="text/javascript">
+                                $(document).ready(function(){
+                                    $('.bxSlider').bxSlider({
+                                        mode: 'vertical', speed: 500, slideMargin:15, infiniteLoop: true, pager: false, controls: false, minSlides: 5, maxSlides:20, moveSlides: 5, adaptiveHeight: false,auto:true
+                                    });
+                                });
+                            </script>
+                            <h2 class="menu-right-title margin-top-20"><?php echo $featured_module_name; ?></h2>
+                            <div class="bxSlider">
+                                <?php 
+                                foreach($featured_products as $key => $value){
+                                    $featured_product_img=get_product_thumbnail($value['image']) ;
+                                    $featured_product_link=route('frontend.index.index',[$value['alias']]);
+                                    $featured_product_name=$value['fullname'];
+                                    ?>
+                                    <div >
+                                        <div><center><figure><a href="<?php echo $featured_product_link; ?>"><img src="<?php echo $featured_product_img; ?>"></a></figure></center></div>
+                                        <div class="margin-top-5 box-product-intro-title"><a href="<?php echo $featured_product_link; ?>"><b><?php echo $featured_product_name; ?></b></a></div>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                            <?php                        
+                        }
+                    }                                                       
                 break;                            
             }                                       
             ?>                            
