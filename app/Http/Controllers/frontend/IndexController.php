@@ -62,7 +62,7 @@ class IndexController extends Controller {
     ->join('category_product','product.category_id','=','category_product.id')
     ->where('product.status',1);
     if(!empty(@$request->q)){
-      $query->where('product.fullname','like', '%'.@$request->q.'%');
+      $query->where('product.fullname','like', '%'.trim(@$request->q).'%');
     }                     
     $data=$query->select('product.id')
     ->groupBy('product.id')                
