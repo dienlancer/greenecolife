@@ -969,7 +969,7 @@ div.ducati  h2{
     margin-left: 0
 }
 
-@media (max-width: 767px){    
+@media (max-width: 768px){    
     div.mobilemenu{
         display: block;
         background: #ffffff;
@@ -1004,8 +1004,7 @@ div.ducati  h2{
     .tuabin{
     	float: none;
     }
-}
-@media (max-width: 543px){
+
     .logo{
     width: 100%;    
    }
@@ -1017,7 +1016,7 @@ div.ducati  h2{
         margin-top: 15px;
     }
     .hotline{
-    	text-align: center;
+        text-align: center;
     }
     .slogan{
         font-size: 22px
