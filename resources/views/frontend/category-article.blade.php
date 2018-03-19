@@ -7,6 +7,8 @@
 	<div class="breadcrumb-title">
 		<?php echo $breadcrumb; ?>
 	</div>
+	<h1 style="display: none;"><?php echo @$category['fullname']; ?></h1>
+	<h2 style="display: none;"><?php echo @$meta_description; ?></h2>
 	<div class="row">
 		<?php 	
 		if(count($items) > 0){

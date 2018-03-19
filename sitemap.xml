@@ -2,195 +2,45 @@
 <?xml-stylesheet href="http://greenecolife.dienkim/vendor/sitemap/styles/xml.xsl" type="text/xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 	<url>
-	<loc>http://greenecolife.dienkim/trang-chu.html</loc>
+	<loc>http://greenecolife.dienkim/nganh-go.html</loc>
 		<priority>0.9</priority>
-		<lastmod>2018-01-10T03:36:35+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/go-nguyen-lieu.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-16T10:07:17+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/tin-tuc.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T04:32:52+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/ve-cong-ty-tnhh-greenecolife.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T04:35:03+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/lien-he.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T04:35:03+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/go-oc-cho.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T04:36:01+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/go-soi.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T05:02:24+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/go-tan-bi.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T05:02:47+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/san-go.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T05:03:01+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/go-oc-cho-44.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T05:05:38+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/go-oc-cho-54.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T05:05:25+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/go-oc-cho-64.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T05:30:10+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/go-oc-cho-84.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T05:30:40+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/go-soi-trang-44.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T06:47:02+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/go-soi-trang-54.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T06:47:45+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/go-soi-trang-64.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T06:48:16+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/go-soi-trang-84.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T06:49:01+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/go-soi-do-44.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T06:49:44+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/go-soi-do-54.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T06:50:31+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/go-soi-do-64.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T06:51:24+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/go-soi-do-84.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T06:51:49+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/go-tan-bi-44.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T06:52:30+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/go-tan-bi-54.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T06:54:28+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/go-tan-bi-64.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T06:54:57+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/go-tan-bi-84.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-10T06:55:28+00:00</lastmod>
+		<lastmod>2018-02-27T07:50:04+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
 	<url>
 	<loc>http://greenecolife.dienkim/tu-van-giai-phap.html</loc>
 		<priority>0.9</priority>
-		<lastmod>2018-02-27T08:36:09+00:00</lastmod>
+		<lastmod>2018-02-27T07:50:04+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
 	<url>
-	<loc>http://greenecolife.dienkim/nganh-go.html</loc>
+	<loc>http://greenecolife.dienkim/san-go.html</loc>
 		<priority>0.9</priority>
-		<lastmod>2018-02-27T08:36:09+00:00</lastmod>
+		<lastmod>2018-01-11T05:09:42+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
 	<url>
-	<loc>http://greenecolife.dienkim/san-go-chong-nuoc.html</loc>
+	<loc>http://greenecolife.dienkim/go-tan-bi.html</loc>
 		<priority>0.9</priority>
-		<lastmod>2018-01-11T16:50:39+00:00</lastmod>
+		<lastmod>2018-01-11T05:08:58+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
 	<url>
-	<loc>http://greenecolife.dienkim/san-go-king-floor.html</loc>
+	<loc>http://greenecolife.dienkim/go-soi.html</loc>
 		<priority>0.9</priority>
-		<lastmod>2018-01-11T16:51:07+00:00</lastmod>
+		<lastmod>2018-01-17T09:38:07+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
 	<url>
-	<loc>http://greenecolife.dienkim/san-go-ngoai-troi.html</loc>
+	<loc>http://greenecolife.dienkim/go-oc-cho.html</loc>
 		<priority>0.9</priority>
-		<lastmod>2018-01-11T16:51:47+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://greenecolife.dienkim/san-go-nhap-khau-sensa.html</loc>
-		<priority>0.9</priority>
-		<lastmod>2018-01-11T16:52:04+00:00</lastmod>
+		<lastmod>2018-02-22T04:23:59+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
 	<url>
 	<loc>http://greenecolife.dienkim/go-oc-cho-chat-luong-su-lua-chon.html</loc>
 		<priority>0.9</priority>
-		<lastmod>2018-02-27T10:31:35+00:00</lastmod>
+		<lastmod>2018-03-19T06:46:53+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
 	<url>
@@ -376,7 +226,7 @@
 	<url>
 	<loc>http://greenecolife.dienkim/go-oc-cho-44.html</loc>
 		<priority>0.9</priority>
-		<lastmod>2018-02-28T18:55:07+00:00</lastmod>
+		<lastmod>2018-03-19T06:47:07+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
 </urlset>

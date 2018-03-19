@@ -866,7 +866,8 @@ div.ducati  h2{
     padding: 5px 5px;
 }
 .box-product-title a{
-    color: #ffffff
+        color: #ffffff;
+    font-size: 13px;
 }
 .box-product-title a:hover{
     color: #0c62ad

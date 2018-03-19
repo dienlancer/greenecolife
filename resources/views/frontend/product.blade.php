@@ -33,9 +33,9 @@ if(count($item) > 0){
     /* end category */
     ?>    
     <div class="margin-top-15">
-        <h2 class="breadcrumb-title">
+        <div class="breadcrumb-title">
             <?php echo $breadcrumb; ?>
-        </h2>
+        </div>
         <div>
             <div class="col-lg-4 no-padding-left">
                 <div class="margin-top-15">
@@ -43,9 +43,9 @@ if(count($item) > 0){
                 </div>
             </div>
             <div class="col-lg-8 no-padding-left">
-                <div class="margin-top-15 product-detail-title">
+                <h1 class="margin-top-15 product-detail-title">
                     <?php echo $title; ?>
-                </div>
+                </h1>
                 <div class="margin-top-5">
                     <b>Lượt xem:</b>&nbsp;<?php echo $count_view; ?>
                 </div>
