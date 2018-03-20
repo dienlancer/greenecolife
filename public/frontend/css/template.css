@@ -971,7 +971,7 @@ div.ducati  h2{
 }
 
 @media (max-width: 768px){    
-    div.mobilemenu{
+    .mobilemenu{
         display: block;
         background: #ffffff;
         margin-top: 10px;
@@ -979,51 +979,13 @@ div.ducati  h2{
     .bg-menu{
     	display: none;
     }
-    .menu-cerex{
-        display: none;
-    }
-    .info-header{
-        width: 100%;
-    }
-    
-   .soratv{
-        padding: 5px 0px;
-        width: 100%;
-        margin-top: 5px;
-    }
-    .immotal{
-            padding-top: 15px;
-    }
-    .hotline{
-    	text-align: center;
-    }
-    .nana{
-    	display: flex;
-    	
-    	justify-content: center;
-    }
-    .tuabin{
-    	float: none;
-    }
-
-    .logo{
-    width: 100%;    
-   }
-    .searching{
-        width: 100%;
-    }
-    .slogan{
-        margin-right: 0;
-        margin-top: 15px;
-    }
     .hotline{
         text-align: center;
     }
-    .slogan{
-        font-size: 22px
-    }
-    .searching{
-        margin-top: 5px
+    .nana{
+        display: flex;
+        
+        justify-content: center;
     }
 }
 
