@@ -45,7 +45,10 @@ class IndexController extends Controller {
   } 
   
   public function searchProduct(Request $request){
-    /* begin standard */    
+    /* begin standard */  
+    $title="";
+    $meta_keyword="";
+    $meta_description="";  
     $layout="two-column";                                                           
     $totalItems=0;
     $totalItemsPerPage=0;
@@ -89,7 +92,7 @@ class IndexController extends Controller {
     ->take($totalItemsPerPage)
     ->get()->toArray();   
     $items=convertToArray($data);      
-    return view("frontend.index",compact("component","title","items","pagination","layout"));
+    return view("frontend.index",compact("component","title","items","pagination","layout","title","meta_keyword","meta_description"));
   }
   public function index(Request $request,$alias)
   {                     
