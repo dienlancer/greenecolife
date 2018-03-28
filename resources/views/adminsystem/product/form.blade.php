@@ -7,24 +7,26 @@ $linkUploadFile         =   route('adminsystem.'.$controller.'.uploadFile');
 $linkCreateAlias        =   route('adminsystem.'.$controller.'.createAlias');
 
 $inputFullName          =   '<input type="text" class="form-control" name="fullname"    onblur="createAlias()"     value="'.@$arrRowData['fullname'].'">';
-$inputAlias             =   '<input type="text" class="form-control" name="alias"          disabled      value="'.@$arrRowData['alias'].'">'; 
+$inputAlias             =   '<input type="text" class="form-control" name="alias"     disabled      value="'.@$arrRowData['alias'].'">'; 
  
 $inputMetakeyword             =   '<textarea  name="meta_keyword" rows="2" cols="100" class="form-control" >'.@$arrRowData['meta_keyword'].'</textarea>'; 
 $inputMetadescription             =   '<textarea  name="meta_description" rows="2" cols="100" class="form-control" >'.@$arrRowData['meta_description'].'</textarea>'; 
-$inputPrice             =   '<input type="text" class="form-control" name="price" onkeyup="PhanCachSoTien(this);"         value="'.convertToTextPrice(@$arrRowData['price']).'">';
-$inputSalePrice             =   '<input type="text" class="form-control" name="sale_price" onkeyup="PhanCachSoTien(this);"        value="'.convertToTextPrice(@$arrRowData['sale_price']).'">';
+$inputPrice             =   '<input type="text" class="form-control" name="price" onkeyup="PhanCachSoTien(this);"       value="'.convertToTextPrice(@$arrRowData['price']).'">';
+$inputSalePrice             =   '<input type="text" class="form-control" name="sale_price" onkeyup="PhanCachSoTien(this);"       value="'.convertToTextPrice(@$arrRowData['sale_price']).'">';
 $status                 =   (count($arrRowData) > 0) ? @$arrRowData['status'] : 1 ;
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Publish', 0 => 'Unpublish');  
 $ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,$status,"");
 $inputIntro            =   '<textarea  name="intro" rows="5" cols="100" class="form-control" >'.@$arrRowData['intro'].'</textarea>'; 
 $inputDetail            =   '<textarea name="detail" rows="5" cols="100" class="form-control" >'.@$arrRowData['detail'].'</textarea>'; 
-$inputSortOrder         =   '<input type="text" class="form-control" name="sort_order"  value="'.@$arrRowData['sort_order'].'">';
-$inputSizeType         =   '<input type="text" class="form-control" name="size_type"     value="'.@$arrRowData['size_type'].'">';
-$ddlCategoryProduct      =   cmsSelectboxCategory("category_id","form-control",$arrCategoryProductRecursive,@$arrRowData['category_id'],"");
+$inputTechnicalDetail            =   '<textarea name="technical_detail" rows="5" cols="100" class="form-control" >'.@$arrRowData['technical_detail'].'</textarea>'; 
+$inputVideoId          =   '<input type="text" class="form-control" name="video_id"       value="'.@$arrRowData['video_id'].'">';
+$inputSortOrder         =   '<input type="text" class="form-control" name="sort_order"      value="'.@$arrRowData['sort_order'].'">';
 
+$ddlCategoryProduct      =   cmsSelectboxCategory("category_id","form-control",$arrCategoryProductRecursive,@$arrRowData['category_id'],"");
+$ddlCategoryParam        =cmsSelectboxCategoryParamMultiple("category_param_id[]", 'form-control', @$arrCategoryParamRecursive, @$arrPostParam,"");
 $id                     =   (count($arrRowData) > 0) ? @$arrRowData['id'] : "" ;
-$inputID                =   '<input type="hidden" name="id"  value="'.@$id.'" />'; 
-$inputAliasMenu       =   '<input type="hidden" name="alias_menu"  value="'.@$arrRowData['alias'].'" />'; 
+$inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'; 
+$inputAliasMenu       =   '<input type="hidden" name="alias_menu" value="'.@$arrRowData['alias'].'" />'; 
 $picture                =   "";
 $strImage               =   "";
 $setting= getSettingSystem();
@@ -36,15 +38,7 @@ if(count(@$arrRowData)>0){
         $strImage       =   @$arrRowData["image"];
     }        
 }   
-$inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.@$strImage.'" />';
-$str_child_image="";
-if(count($arrRowData) > 0){
-    $arrProductChildImage=json_decode(@$arrRowData['child_image']);    
-    if(count($arrProductChildImage) > 0){        
-        $str_child_image=implode(',',$arrProductChildImage);
-    }    
-}   
-$inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"  value="'.@$str_child_image.'" />';
+$inputPictureHidden     =   '<input type="hidden" name="image_hidden"   value="'.@$strImage.'" />';
 ?>
 <div class="portlet light bordered">
     <div class="portlet-title">
@@ -66,8 +60,7 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
         <form class="form-horizontal" name="frm" role="form" enctype="multipart/form-data">
             {{ csrf_field() }}          
             <?php 
-            echo $inputPictureHidden; 
-            echo $inputChildPictureHidden;
+            echo $inputPictureHidden;             
             echo $inputID;
             echo $inputAliasMenu;
             ?>                
@@ -116,7 +109,16 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
                             <span class="help-block"></span>
                         </div>
                     </div> 
-                </div>                             
+                </div>   
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-label"><b>Thuộc tính</b></label>
+                        <div class="col-md-10">
+                            <?php echo $ddlCategoryParam; ?>
+                            <span class="help-block"></span>
+                        </div>
+                    </div> 
+                </div>                
                 <div class="row">                      
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-label"><b>Hình</b></label>
@@ -132,7 +134,7 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
                                     <i class="fa fa-plus"></i>
                                 </a>
                             </div>
-                            <table class="table-image"  border="0" cellpadding="0" cellspacing="0" border="1" width="100%">
+                            <table class="table-image" id="table-image" border="0" cellpadding="0" cellspacing="0" border="1" width="100%">
                                 <thead>
                                     <tr>                                    
                                         <th><center>Thumbnails</center></th>                                  
@@ -165,7 +167,7 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
                             </table>    
                         </div>
                     </div>     
-                </div>                     
+                </div>                  
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-label"><b>Sắp xếp</b></label>
@@ -213,6 +215,30 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
                 </div> 
                 <div class="row">
                     <div class="form-group col-md-12">
+                        <label class="col-md-2 control-label"><b>VideoID</b></label>
+                        <div class="col-md-10">                            
+                            <?php echo $inputVideoId; ?>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>     
+                </div> 
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-label"><b>Chi tiết kỹ thuật</b></label>
+                        <div class="col-md-10">                            
+                            <?php echo $inputTechnicalDetail; ?>
+                            <span class="help-block"></span>
+                            <script type="text/javascript" language="javascript">
+                                CKEDITOR.replace('technical_detail',{
+                                   height:300
+                               });
+                           </script>
+                           <span class="help-block"></span>
+                       </div>
+                   </div>                       
+                </div> 
+                <div class="row">
+                    <div class="form-group col-md-12">
                         <label class="col-md-2 control-label"><b>Chi tiết</b></label>
                         <div class="col-md-10">                            
                             <?php echo $inputDetail; ?>
@@ -253,18 +279,6 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
         $(sort_order).closest('.form-group').find('span').empty().hide();
         $(status).closest('.form-group').find('span').empty().hide();        
     }
-
-    function uploadFileImport(ctrl_image){    
-        var token = $('input[name="_token"]').val();       
-        var image=ctrl_image;        
-        var file_upload=$(image).get(0);
-        var files = file_upload.files;
-        var file  = files[0];    
-        var frmdata = new FormData();        
-        frmdata.append("image", file);
-        frmdata.append("_token", token);
-        $.ajax({ url: '<?php echo $linkUploadFile; ?>', method: 'post', data: frmdata, contentType: false, processData: false })
-    }
     function deleteImage(){
         var xac_nhan = 0;
         var msg="Bạn có muốn xóa ?";
@@ -278,6 +292,7 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
         $("input[name='image_hidden']").val("");        
     }
     function save(){
+        var dataItem = new FormData();
         var id=$('input[name="id"]').val();                
         var fullname=$('input[name="fullname"]').val();        
         var alias=$('input[name="alias"]').val();
@@ -286,77 +301,80 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
         var meta_keyword=$('textarea[name="meta_keyword"]').val();
         var meta_description=$('textarea[name="meta_description"]').val();
         var category_id=$('select[name="category_id"]').val();  
+        var category_param_id=$('select[name="category_param_id[]"]').val();      
         
-        var image = $('input[name="image"]').val();
-        if (image != ''){
-            image = image.substr(image.lastIndexOf('\\') + 1);       
-        }
-        var image_hidden=$('input[name="image_hidden"]').val();             
-        var child_image='';
-        var tbody=$("table.table-image > tbody")[0];
-        var arr_child_image=new Array(tbody.rows.length);
-        for(var i=0;i<tbody.rows.length;i++){
-            var row=tbody.rows[i];
-            var imageChild='';
-            var product_child_image_hidden=$(row.cells[0]).find('input[type="hidden"][name="product_child_image_hidden"]');
-            var product_child_image_file=$(row.cells[0]).find('input[type="file"][name="product_child_image_file"]');
-            if(product_child_image_hidden.length > 0){
-                imageChild=$(product_child_image_hidden).val();
-            }
-            if(product_child_image_file.length > 0){
-                imageChild = $(product_child_image_file).val();
-                imageChild = imageChild.substr(imageChild.lastIndexOf('\\') + 1);       
-            }
-            arr_child_image[i]=imageChild;
-        }
-        if(arr_child_image.length > 0){
-                child_image=arr_child_image.toString();          
+        /* begin xử lý image */
+        var image_file=null;
+        var image_ctrl=$('input[name="image"]');         
+        var image_files = $(image_ctrl).get(0).files;        
+        if(image_files.length > 0){            
+            image_file  = image_files[0];  
         }        
+        /* end xử lý image */
+        var image_hidden=$('input[name="image_hidden"]').val();
+        /* begin source child image */
+        var tbody=$("table.table-image > tbody")[0]; 
+        if(tbody.rows.length > 0){
+            for(var i=0;i<tbody.rows.length;i++){
+                var row=tbody.rows[i];
+                var child_image_hidden_ctrl=$(row.cells[0]).find('input[type="hidden"][name="product_child_image_hidden"]');
+                var child_image_ctrl=$(row.cells[0]).find('input[type="file"][name="product_child_image_file"]');            
+
+                if($(child_image_hidden_ctrl).length > 0){
+                    var child_image_thumb=$(child_image_hidden_ctrl).val();
+                    if(child_image_thumb.length > 0){
+                        dataItem.append("source_image_child_hidden[]", child_image_thumb);
+                    }  
+                }                            
+                var child_image_file=null;                  
+                if($(child_image_ctrl).length > 0){
+                    var child_image_files = $(child_image_ctrl).get(0).files;        
+                    if(child_image_files.length > 0){            
+                        child_image_file  = child_image_files[0];  
+                        dataItem.append("source_image_child[]", child_image_file);
+                    }
+                }                            
+            }
+        }       
+        /* end source child image */
         var status=$('select[name="status"]').val();             
         var price=$('input[name="price"]').val();
         var sale_price=$('input[name="sale_price"]').val();       
         var intro=$('textarea[name="intro"]').val(); 
-        var detail=CKEDITOR.instances['detail'].getData();        
-        
+        var detail=CKEDITOR.instances['detail'].getData(); 
+        var technical_detail=CKEDITOR.instances['technical_detail'].getData();                
+        var video_id=$('input[name="video_id"]').val();
         var sort_order=$('input[name="sort_order"]').val();        
         var token = $('input[name="_token"]').val();   
-        resetErrorStatus();
-        var dataItem={
-            "id":id,            
-            "fullname":fullname,            
-            "alias":alias,
-            "alias_menu":alias_menu,            
-            "meta_keyword":meta_keyword,
-            "meta_description":meta_description,
-            "image":image,
-            "image_hidden":image_hidden,
-            "status":status,                     
-            "price":price,
-            "sale_price":sale_price,
-            
-            "intro":intro,
-            "detail":detail,
-            "category_id":category_id,    
-           
-            "child_image":child_image,            
-            "sort_order":sort_order,
-            "status":status,
-            "_token": token
-        };
+        resetErrorStatus();                
+        dataItem.append('id',id);
+        dataItem.append('fullname',fullname);
+        dataItem.append('alias',alias);
+        dataItem.append('alias_menu',alias_menu);              
+        dataItem.append('meta_keyword',meta_keyword);
+        dataItem.append('meta_description',meta_description);
+        if(image_files.length > 0){
+            dataItem.append('image',image_file);
+        } 
+        dataItem.append('image_hidden',image_hidden);
+        dataItem.append('status',status); 
+        dataItem.append('price',price);
+        dataItem.append('sale_price',sale_price);
+        dataItem.append('intro',intro);
+        dataItem.append('detail',detail);
+        dataItem.append('technical_detail',technical_detail);     
+        dataItem.append('video_id',video_id);
+        dataItem.append('category_id',category_id);        
+        dataItem.append('category_param_id',category_param_id);        
+        dataItem.append('sort_order',sort_order);         
+        dataItem.append('_token',token);       
         $.ajax({
             url: '<?php echo $linkSave; ?>',
             type: 'POST',
             data: dataItem,
             async: false,
             success: function (data) {
-                if(data.checked==1){
-                    uploadFileImport($('input[name="image"]'));    
-                    var child_image_ctrl=$("table.table-image > tbody").find("input[type='file']");                
-                    if(child_image_ctrl.length > 0){
-                        for(var i=0;i<child_image_ctrl.length;i++){
-                            uploadFileImport(child_image_ctrl[i]);
-                        }
-                    }                    
+                if(data.checked==1){                                                    
                     window.location.href = "<?php echo $linkCancel; ?>";
                 }else{
                     var data_error=data.error;                    
@@ -395,6 +413,9 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
             beforeSend  : function(jqXHR,setting){
                 spinner.show();
             },
+            cache: false,
+            contentType: false,
+            processData: false
         });
     }
     function addRow() {
@@ -408,15 +429,6 @@ $inputChildPictureHidden     =   '<input type="hidden" name="image_child_hidden"
     function removeRow(control) {
         var tbody=$(control).closest("tbody")[0];
         var tr=$(control).closest("tr")[0];
-        var image=$(tr).find("input[type='hidden']").val();            
-        var image_child_hidden=$('input[name="image_child_hidden"]').val()            
-        var arrImageChild=image_child_hidden.split(',');
-        var index=arrImageChild.indexOf(image);
-        if (index > -1) {
-            arrImageChild.splice(index, 1);
-        }
-        var str=arrImageChild.toString();
-        $('input[name="image_child_hidden"]').val(str);
         var index = $(tr).index();         
         tbody.deleteRow(index); 
     }
