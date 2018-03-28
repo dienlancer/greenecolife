@@ -345,7 +345,7 @@ class CategoryProductController extends Controller {
           return view("adminsystem.no-access");
         }      
       }
-   
+    
     public function createAlias(Request $request){
           $id                =  trim($request->id)  ; 
           $fullname                =  trim($request->fullname)  ;        
