@@ -3,30 +3,27 @@
 <?php 
 $linkCancel             =   route('adminsystem.'.$controller.'.getList');
 $linkSave               =   route('adminsystem.'.$controller.'.save');
-
 $linkCreateAlias        =   route('adminsystem.'.$controller.'.createAlias');
 
 $inputFullName          =   '<input type="text" class="form-control" name="fullname"    onblur="createAlias()"     value="'.@$arrRowData['fullname'].'">';
-$inputAlias             =   '<input type="text" class="form-control" name="alias"     disabled      value="'.@$arrRowData['alias'].'">'; 
+$inputAlias             =   '<input type="text" class="form-control" name="alias"          disabled      value="'.@$arrRowData['alias'].'">'; 
  
 $inputMetakeyword             =   '<textarea  name="meta_keyword" rows="2" cols="100" class="form-control" >'.@$arrRowData['meta_keyword'].'</textarea>'; 
 $inputMetadescription             =   '<textarea  name="meta_description" rows="2" cols="100" class="form-control" >'.@$arrRowData['meta_description'].'</textarea>'; 
-$inputPrice             =   '<input type="text" class="form-control" name="price" onkeyup="PhanCachSoTien(this);"       value="'.convertToTextPrice(@$arrRowData['price']).'">';
-$inputSalePrice             =   '<input type="text" class="form-control" name="sale_price" onkeyup="PhanCachSoTien(this);"       value="'.convertToTextPrice(@$arrRowData['sale_price']).'">';
+$inputPrice             =   '<input type="text" class="form-control" name="price" onkeyup="PhanCachSoTien(this);"         value="'.convertToTextPrice(@$arrRowData['price']).'">';
+$inputSalePrice             =   '<input type="text" class="form-control" name="sale_price" onkeyup="PhanCachSoTien(this);"        value="'.convertToTextPrice(@$arrRowData['sale_price']).'">';
 $status                 =   (count($arrRowData) > 0) ? @$arrRowData['status'] : 1 ;
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Publish', 0 => 'Unpublish');  
 $ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,$status,"");
 $inputIntro            =   '<textarea  name="intro" rows="5" cols="100" class="form-control" >'.@$arrRowData['intro'].'</textarea>'; 
 $inputDetail            =   '<textarea name="detail" rows="5" cols="100" class="form-control" >'.@$arrRowData['detail'].'</textarea>'; 
-$inputTechnicalDetail            =   '<textarea name="technical_detail" rows="5" cols="100" class="form-control" >'.@$arrRowData['technical_detail'].'</textarea>'; 
-$inputVideoId          =   '<input type="text" class="form-control" name="video_id"       value="'.@$arrRowData['video_id'].'">';
-$inputSortOrder         =   '<input type="text" class="form-control" name="sort_order"      value="'.@$arrRowData['sort_order'].'">';
-
+$inputSortOrder         =   '<input type="text" class="form-control" name="sort_order"  value="'.@$arrRowData['sort_order'].'">';
+$inputSizeType         =   '<input type="text" class="form-control" name="size_type"     value="'.@$arrRowData['size_type'].'">';
 $ddlCategoryProduct      =   cmsSelectboxCategory("category_id","form-control",$arrCategoryProductRecursive,@$arrRowData['category_id'],"");
-$ddlCategoryParam        =cmsSelectboxCategoryParamMultiple("category_param_id[]", 'form-control', @$arrCategoryParamRecursive, @$arrPostParam,"");
+
 $id                     =   (count($arrRowData) > 0) ? @$arrRowData['id'] : "" ;
-$inputID                =   '<input type="hidden" name="id" value="'.@$id.'" />'; 
-$inputAliasMenu       =   '<input type="hidden" name="alias_menu" value="'.@$arrRowData['alias'].'" />'; 
+$inputID                =   '<input type="hidden" name="id"  value="'.@$id.'" />'; 
+$inputAliasMenu       =   '<input type="hidden" name="alias_menu"  value="'.@$arrRowData['alias'].'" />'; 
 $picture                =   "";
 $strImage               =   "";
 $setting= getSettingSystem();
@@ -38,7 +35,7 @@ if(count(@$arrRowData)>0){
         $strImage       =   @$arrRowData["image"];
     }        
 }   
-$inputPictureHidden     =   '<input type="hidden" name="image_hidden"   value="'.@$strImage.'" />';
+$inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.@$strImage.'" />';
 ?>
 <div class="portlet light bordered">
     <div class="portlet-title">
@@ -60,7 +57,7 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"   value="'
         <form class="form-horizontal" name="frm" role="form" enctype="multipart/form-data">
             {{ csrf_field() }}          
             <?php 
-            echo $inputPictureHidden;             
+            echo $inputPictureHidden; 
             echo $inputID;
             echo $inputAliasMenu;
             ?>                
@@ -109,16 +106,7 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"   value="'
                             <span class="help-block"></span>
                         </div>
                     </div> 
-                </div>   
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label class="col-md-2 control-label"><b>Thuộc tính</b></label>
-                        <div class="col-md-10">
-                            <?php echo $ddlCategoryParam; ?>
-                            <span class="help-block"></span>
-                        </div>
-                    </div> 
-                </div>                
+                </div>                             
                 <div class="row">                      
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-label"><b>Hình</b></label>
@@ -134,7 +122,7 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"   value="'
                                     <i class="fa fa-plus"></i>
                                 </a>
                             </div>
-                            <table class="table-image" id="table-image" border="0" cellpadding="0" cellspacing="0" border="1" width="100%">
+                            <table class="table-image"  border="0" cellpadding="0" cellspacing="0" border="1" width="100%">
                                 <thead>
                                     <tr>                                    
                                         <th><center>Thumbnails</center></th>                                  
@@ -167,7 +155,7 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"   value="'
                             </table>    
                         </div>
                     </div>     
-                </div>                  
+                </div>                     
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-label"><b>Sắp xếp</b></label>
@@ -215,30 +203,6 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"   value="'
                 </div> 
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label class="col-md-2 control-label"><b>VideoID</b></label>
-                        <div class="col-md-10">                            
-                            <?php echo $inputVideoId; ?>
-                            <span class="help-block"></span>
-                        </div>
-                    </div>     
-                </div> 
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label class="col-md-2 control-label"><b>Chi tiết kỹ thuật</b></label>
-                        <div class="col-md-10">                            
-                            <?php echo $inputTechnicalDetail; ?>
-                            <span class="help-block"></span>
-                            <script type="text/javascript" language="javascript">
-                                CKEDITOR.replace('technical_detail',{
-                                   height:300
-                               });
-                           </script>
-                           <span class="help-block"></span>
-                       </div>
-                   </div>                       
-                </div> 
-                <div class="row">
-                    <div class="form-group col-md-12">
                         <label class="col-md-2 control-label"><b>Chi tiết</b></label>
                         <div class="col-md-10">                            
                             <?php echo $inputDetail; ?>
@@ -279,6 +243,7 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"   value="'
         $(sort_order).closest('.form-group').find('span').empty().hide();
         $(status).closest('.form-group').find('span').empty().hide();        
     }
+
     function deleteImage(){
         var xac_nhan = 0;
         var msg="Bạn có muốn xóa ?";
@@ -301,7 +266,6 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"   value="'
         var meta_keyword=$('textarea[name="meta_keyword"]').val();
         var meta_description=$('textarea[name="meta_description"]').val();
         var category_id=$('select[name="category_id"]').val();  
-        var category_param_id=$('select[name="category_param_id[]"]').val();      
         
         /* begin xử lý image */
         var image_file=null;
@@ -311,7 +275,7 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"   value="'
             image_file  = image_files[0];  
         }        
         /* end xử lý image */
-        var image_hidden=$('input[name="image_hidden"]').val();
+        var image_hidden=$('input[name="image_hidden"]').val();             
         /* begin source child image */
         var tbody=$("table.table-image > tbody")[0]; 
         if(tbody.rows.length > 0){
@@ -341,12 +305,11 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"   value="'
         var price=$('input[name="price"]').val();
         var sale_price=$('input[name="sale_price"]').val();       
         var intro=$('textarea[name="intro"]').val(); 
-        var detail=CKEDITOR.instances['detail'].getData(); 
-        var technical_detail=CKEDITOR.instances['technical_detail'].getData();                
-        var video_id=$('input[name="video_id"]').val();
+        var detail=CKEDITOR.instances['detail'].getData();        
+        
         var sort_order=$('input[name="sort_order"]').val();        
         var token = $('input[name="_token"]').val();   
-        resetErrorStatus();                
+        resetErrorStatus();
         dataItem.append('id',id);
         dataItem.append('fullname',fullname);
         dataItem.append('alias',alias);
@@ -362,10 +325,9 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"   value="'
         dataItem.append('sale_price',sale_price);
         dataItem.append('intro',intro);
         dataItem.append('detail',detail);
-        dataItem.append('technical_detail',technical_detail);     
-        dataItem.append('video_id',video_id);
+        
         dataItem.append('category_id',category_id);        
-        dataItem.append('category_param_id',category_param_id);        
+ 
         dataItem.append('sort_order',sort_order);         
         dataItem.append('_token',token);       
         $.ajax({
@@ -374,7 +336,7 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"   value="'
             data: dataItem,
             async: false,
             success: function (data) {
-                if(data.checked==1){                                                    
+                if(data.checked==1){                            
                     window.location.href = "<?php echo $linkCancel; ?>";
                 }else{
                     var data_error=data.error;                    
@@ -429,6 +391,15 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"   value="'
     function removeRow(control) {
         var tbody=$(control).closest("tbody")[0];
         var tr=$(control).closest("tr")[0];
+        var image=$(tr).find("input[type='hidden']").val();            
+        var image_child_hidden=$('input[name="image_child_hidden"]').val()            
+        var arrImageChild=image_child_hidden.split(',');
+        var index=arrImageChild.indexOf(image);
+        if (index > -1) {
+            arrImageChild.splice(index, 1);
+        }
+        var str=arrImageChild.toString();
+        $('input[name="image_child_hidden"]').val(str);
         var index = $(tr).index();         
         tbody.deleteRow(index); 
     }

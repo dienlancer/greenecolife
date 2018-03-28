@@ -2,6 +2,7 @@
 @section("content")
 <?php 
 $linkCancel             =   route('adminsystem.'.$controller.'.getList');
+$linkSave               =   route('adminsystem.'.$controller.'.save');
 
 $linkCreateAlias        =   route('adminsystem.'.$controller.'.createAlias');
 $inputFullName          =   '<input type="text" class="form-control" name="fullname"    onblur="createAlias()"     value="'.@$arrRowData['fullname'].'">'; 
