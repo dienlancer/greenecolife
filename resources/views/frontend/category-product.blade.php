@@ -1,19 +1,31 @@
 <form method="post" class="frm margin-top-15" name="frm">
 	<input type="hidden" name="filter_page" value="1">         
 	{{ csrf_field() }}	
-	<?php 			
-	if(@$category != null){
-		$breadcrumb= getBreadCrumbCategoryProduct(@$category);			
-	}
+	<?php 	
+	$breadcrumb='';	
+	$seo=getSeo();
+	$seo_title=$seo["title"];
+	$seo_meta_keyword=$seo["meta_keyword"];
+	$seo_meta_description=$seo["meta_description"];	
+	if(count($category) > 0){
+		$breadcrumb= getBreadCrumbCategoryProduct(@$category);		
+		?>
+		<h1 style="display: none;"><?php echo @$category['fullname']; ?></h1>
+		<h2 style="display: none;"><?php echo @$category['meta_description']; ?></h2>
+		<input type="hidden" name="category_id" value="<?php echo @$category['id']; ?>">
+		<?php			
+	}	
 	else{
 		$breadcrumb='<a href="'.url('/').'">Trang chủ</a><a href="javascript:void(0);">Tìm kiếm</a>';
+		?>
+		<h1 style="display: none;"><?php echo $seo_title; ?></h1>
+		<h2 style="display: none;"><?php echo $seo_meta_description; ?></h2>
+		<?php		
 	}	
-	?>
+	?>	
 	<div class="breadcrumb-title">
 		<?php echo $breadcrumb; ?>
 	</div>
-	<h1 style="display: none;"><?php echo @$category['fullname']; ?></h1>
-	<h2 style="display: none;"><?php echo @$meta_description; ?></h2>
 	<div class="row">
 		<?php 			
 		if(count($items) > 0){

@@ -43,40 +43,55 @@ class IndexController extends Controller {
     \Artisan::call('sitemap:auto');     
     return view("frontend.home");
   } 
-  
   public function searchProduct(Request $request){
-    /* begin standard */  
-    $title="";
-    $meta_keyword="";
-    $meta_description="";  
+    /* begin standard */    
     $layout="two-column";                                                           
     $totalItems=0;
     $totalItemsPerPage=0;
     $pageRange=0;      
     $currentPage=1;  
     $pagination ;                                              
-    $setting= getSettingSystem();     
-    
+    $setting= getSettingSystem();         
     /* end standard */     
     $items=array();                            
-    $component='search-product';              
-    $title="Tìm kiếm"; 
-    $query=DB::table('product')    
-    ->join('category_product','product.category_id','=','category_product.id')
-    ->where('product.status',1);
-    if(!empty(@$request->q)){
-      $query->where('product.fullname','like', '%'.trim(@$request->q).'%');
-    }                     
+    $component='search-product';                      
+    $prod_param=array();   
+    $category=array();
+    $q='';
+
+    $query=DB::table('product')   ;     
+             
+    $arr_category_id=array();
+    if(isset($request->category_id)){   
+      if(!empty($request->category_id)){
+        $category_id    = $request->category_id;              
+        $arr_category_id[]=$category_id;      
+        getStringCategoryID($category_id,$arr_category_id,'category_product');      
+        $query->whereIn('product.category_id', $arr_category_id);        
+        $category=CategoryProductModel::find($category_id);       
+      }         
+    }    
+    if(isset($request->q)){
+      if(!empty($request->q)){
+        $q=@$request->q;
+        $query->where('product.fullname','like', '%'.trim(@$q).'%');
+      }      
+    }      
+
+    $query->where('product.status',1);    
     $data=$query->select('product.id')
     ->groupBy('product.id')                
     ->get()->toArray();
+    
     $data=convertToArray($data);
     $totalItems=count($data);
     $totalItemsPerPage=(int)@$setting['product_perpage']['field_value']; 
     $pageRange=$this->_pageRange;
-    if(!empty(@$request->filter_page)){
-      $currentPage=@$request->filter_page;
-    }       
+    if(isset($request->filter_page)){
+      if(!empty(@$request->filter_page)){
+        $currentPage=@$request->filter_page;
+      }
+    }          
     $arrPagination=array(
       "totalItems"=>$totalItems,
       "totalItemsPerPage"=>$totalItemsPerPage,
@@ -84,16 +99,17 @@ class IndexController extends Controller {
       "currentPage"=>$currentPage   
     );           
     $pagination=new PaginationModel($arrPagination);
-    $position   = ((int)@$arrPagination['currentPage']-1)*$totalItemsPerPage;                            
-    $data=$query->select('product.id','product.alias','product.fullname','product.image','product.intro','product.count_view')
-    ->groupBy('product.id','product.alias','product.fullname','product.image','product.intro','product.count_view')
+    $position   = ((int)@$arrPagination['currentPage']-1)*$totalItemsPerPage;        
+
+    $data=$query->select('product.id','product.alias','product.fullname','product.price','product.sale_price','product.image','product.intro','product.count_view')
+    ->groupBy('product.id','product.alias','product.fullname','product.price','product.sale_price','product.image','product.intro','product.count_view')
     ->orderBy('product.created_at', 'desc')
     ->skip($position)
     ->take($totalItemsPerPage)
     ->get()->toArray();   
     $items=convertToArray($data);      
-    return view("frontend.index",compact("component","title","items","pagination","layout","title","meta_keyword","meta_description"));
-  }
+    return view("frontend.index",compact("component","items","pagination","layout",'q','category'));
+  }  
   public function index(Request $request,$alias)
   {                     
     /* begin standard */
