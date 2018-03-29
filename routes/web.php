@@ -392,5 +392,4 @@ Route::post("tim-kiem",["as"=>"frontend.index.search","uses"=>"frontend\IndexCon
 Route::post("join-project",["as"=>"frontend.index.joinProject","uses"=>"frontend\IndexController@joinProject"]);
 Route::post("load-data-member",["as"=>"frontend.index.loadDataMember","uses"=>"frontend\IndexController@loadDataMember"]);	
 Route::post("load-data-supporter",["as"=>"frontend.index.loadDataSupporter","uses"=>"frontend\IndexController@loadDataSupporter"]);		
-Route::post("tim-kiem-san-pham",["as"=>"frontend.index.searchProduct","uses"=>"frontend\IndexController@searchProduct"]);
 ?>

@@ -77,8 +77,7 @@ if(isset($alias)){
                 break;
                 case 'products':        
                 case 'category-product':
-                case 'product':
-                case 'search-product':                
+                case 'product':                                
                 wp_nav_menu($argsDanhMucSanPham);       
                 $featured_module=getModuleItem("san-pham-noi-bat");
                     if(count($featured_module) > 0){

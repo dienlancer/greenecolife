@@ -43,7 +43,7 @@ class IndexController extends Controller {
     \Artisan::call('sitemap:auto');     
     return view("frontend.home");
   } 
-  public function searchProduct(Request $request){
+  public function search(Request $request){
     /* begin standard */    
     $layout="two-column";                                                           
     $totalItems=0;
@@ -54,7 +54,7 @@ class IndexController extends Controller {
     $setting= getSettingSystem();         
     /* end standard */     
     $items=array();                            
-    $component='search-product';                      
+    $component='category-product';                      
     $prod_param=array();   
     $category=array();
     $q='';

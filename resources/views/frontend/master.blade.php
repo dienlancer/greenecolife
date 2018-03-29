@@ -18,6 +18,13 @@ if(isset($title) && !empty($title)){
 	$seo_title=$seo["title"];
 }
 
+$seo_meta_keyword="";
+if(isset($meta_keyword) && ! empty($meta_keyword)){
+	$seo_meta_keyword=$meta_keyword;
+}else{
+	$seo_meta_keyword=$seo["meta_keyword"];
+}
+
 $seo_meta_description="";
 if(isset($meta_description) && !empty($meta_description)){
 	$seo_meta_description=$meta_description;
@@ -25,12 +32,7 @@ if(isset($meta_description) && !empty($meta_description)){
 	$seo_meta_description=$seo["meta_description"];
 }
 
-$seo_meta_keyword="";
-if(isset($meta_keyword) && ! empty($meta_keyword)){
-	$seo_meta_keyword=$meta_keyword;
-}else{
-	$seo_meta_keyword=$seo["meta_keyword"];
-}
+
 $seo_google_analytics=$seo["google_analytics"];
 $seo_author=$seo["author"];
 $seo_copyright=$seo["copyright"];
@@ -221,9 +223,9 @@ if(count($arrCart) > 0){
 						<span class="so-phone margin-left-5"><?php echo $telephone; ?></span>
 					</div>
 					<div class="nana">
-						<form action="<?php echo route('frontend.index.searchProduct'); ?>" method="post" name="frm-search" class="relative tuabin">
+						<form action="<?php echo route('frontend.index.search'); ?>" method="post" name="frm-search" class="relative tuabin">
 						{{ csrf_field() }}
-						<input type="text" name="q" autocomplete="off" placeholder="Nhập từ khoá tìm kiếm" value="">
+						<input type="text" name="q" autocomplete="off" placeholder="Tìm kiếm sản phẩm" value="">
 						<a href="javascript:void(0);" onclick="document.forms['frm-search'].submit();">Tìm kiếm</a>
 						
 					</form>
