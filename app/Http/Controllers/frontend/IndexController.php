@@ -418,7 +418,7 @@ class IndexController extends Controller {
         return view("frontend.index",compact("layout"));
       }
       public function contact(Request $request){   
-        $flag=1;
+        $checked=1;
         $error=array();
         $data=array();
         $success=array();           
@@ -448,34 +448,34 @@ class IndexController extends Controller {
           if(mb_strlen($fullname) < 6){
             $error["fullname"] = 'Họ tên phải chứa từ 6 ký tự trở lên';
             $data["fullname"] = "";          
-            $flag=0;
+            $checked=0;
           }
           if(!preg_match("#^[a-z][a-z0-9_\.]{4,31}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$#",$email )){
             $error["email"] = 'Email không hợp lệ';
             $data["email"] = '';
-            $flag=0;
+            $checked=0;
           }
           if(mb_strlen($telephone) < 10){
             $error["telephone"] = 'Số điện thoại không hợp lệ';
             $data["telephone"] = "";          
-            $flag=0;
+            $checked=0;
           }
           if(mb_strlen($title) < 10){
             $error["title"] = 'Tiêu đề không hợp lệ';
             $data["title"] = "";         
-            $flag=0;
+            $checked=0;
           }   
           if(mb_strlen($address) < 10){
             $error["address"] = 'Địa chỉ không hợp lệ';
             $data["address"] = "";         
-            $flag=0;
+            $checked=0;
           }   
           if(mb_strlen($content) < 10){
             $error["content"] = 'Nội dung không hợp lệ';
             $data["content"] = "";         
-            $flag=0;
+            $checked=0;
           }     
-          if((int)@$flag==1){
+          if((int)@$checked==1){
             $mail = new PHPMailer(true);
             try{
               $mail->SMTPDebug = 2;                           
@@ -578,7 +578,7 @@ class IndexController extends Controller {
 
       public function register(Request $request){     
 
-        $flag=1;
+        $checked=1;
         $error=array();
         $success=array();  
         $data=array();        
@@ -599,65 +599,65 @@ class IndexController extends Controller {
           if(empty($username)){
             $error["username"] = 'Username không được rỗng';
             $data["username"] = ""; 
-            $flag = 0;
+            $checked = 0;
           }else{
             $customer=CustomerModel::whereRaw("trim(lower(username)) = ?",[trim(mb_strtolower($username,'UTF-8'))])->get()->toArray();
             if(count($customer) > 0){
               $error["username"] = 'Username đã tồn tại';
               $data["username"] = ""; 
-              $flag = 0;
+              $checked = 0;
             }  
           }
           if(mb_strlen($password) < 6){
             $error["password"] = 'Password phải có độ dài lớn hơn hoặc bằng 6 ký tự';
             $data["password"] = "";
             $data["password_confirm"] = ""; 
-            $flag = 0;
+            $checked = 0;
           }else{
             if(strcmp($password , $password_confirm) != 0 ){
               $error["password_confirm"] = 'Mật khẩu xác nhận phải trùng khớp';
               $data["password_confirm"] = "";   
-              $flag = 0;
+              $checked = 0;
             }
           }              
           if(!preg_match("#^[a-z][a-z0-9_\.]{4,31}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$#", mb_strtolower($email,'UTF-8')   )){
             $error["email"] = 'Email không hợp lệ';
             $data["email"] = '';
-            $flag = 0;
+            $checked = 0;
           }else{
             $customer=CustomerModel::whereRaw("trim(lower(email)) = ?",[mb_strtolower($email,'UTF-8')])->get()->toArray();
             if(count($customer) > 0){
               $error["email"] = 'Email đã tồn tại';
               $data["email"] = ""; 
-              $flag = 0;
+              $checked = 0;
             }
           }  
           if(mb_strlen($fullname) < 6){
             $error["fullname"] = 'Họ tên phải từ 6 ký tự trở lên';
             $data["fullname"] = ""; 
-            $flag = 0;
+            $checked = 0;
           }  
           if(mb_strlen($address) < 6){
             $error["address"] = 'Địa chỉ phải từ 6 ký tự trở lên';
             $data["address"] = ""; 
-            $flag = 0;
+            $checked = 0;
           }  
           if(!empty($phone)){
             if(mb_strlen($phone) < 10){
               $error["phone"] = 'Số điện thoại phải từ 10 ký tự trở lên';
               $data["phone"] = ""; 
-              $flag = 0;
+              $checked = 0;
             }  
           }
           if(!empty($mobilephone)){
             if(mb_strlen($mobilephone) < 10){
               $error["mobilephone"] = 'Số mobile phải từ 10 ký tự trở lên';
               $data["mobilephone"] = ""; 
-              $flag = 0;
+              $checked = 0;
             }  
           }          
 
-          if($flag==1){
+          if($checked==1){
             $item               =   new CustomerModel;
             $item->username     =   $username;
             $item->password     =   md5($password) ;
@@ -721,7 +721,7 @@ class IndexController extends Controller {
         return $info;
       }
       public function login(Request $request){   
-        $flag=1;
+        $checked=1;
         $error=array();
         $success=array();   
         $data=array();        
@@ -751,7 +751,7 @@ class IndexController extends Controller {
         return view("frontend.index",compact("component","error","data","success","layout"));        
       }
       public function loginJoinProject(Request $request){   
-        $flag=1;
+        $checked=1;
         $error=array();
         $success=array();   
         $data=array();        
@@ -792,7 +792,7 @@ class IndexController extends Controller {
         return view("frontend.index",compact("component","alias","error","data","success","layout"));        
       }
       public function viewSecurity(Request $request){
-       $flag=1;
+       $checked=1;
        $error=array();
        $success=array();   
        $data=array();        
@@ -814,14 +814,14 @@ class IndexController extends Controller {
           $error["password"] = 'Độ dài mật khẩu phải lớn hơn hoặc bằng 6';
           $data["password"] = "";
           $data["password_confirm"] = ""; 
-          $flag = 0;
+          $checked = 0;
         }
         if(strcmp($password,$password_confirm)!=0){
           $error["password_confirm"] = 'Mật khẩu xác nhận không khớp';
           $data["password_confirm"] = "";   
-          $flag = 0;
+          $checked = 0;
         }    
-        if($flag==1){
+        if($checked==1){
           $item=CustomerModel::find($id);                         
           $item->password=md5(@$request->password) ;
           $item->save();  
@@ -839,7 +839,7 @@ class IndexController extends Controller {
         return redirect()->route('frontend.index.login'); 
       }
       public function viewAccount(Request $request){        
-        $flag=1;
+        $checked=1;
         $error=array();
         $success=array();   
         $data=array();        
@@ -866,40 +866,40 @@ class IndexController extends Controller {
           if(!preg_match("#^[a-z][a-z0-9_\.]{4,31}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$#", mb_strtolower($email,'UTF-8')   )){
             $error["email"] = 'Email không hợp lệ';
             $data["email"] = '';
-            $flag = 0;
+            $checked = 0;
           }else{
             $customer=CustomerModel::whereRaw("trim(lower(email)) = ? and id != ? ",[mb_strtolower($email,'UTF-8'),(int)@$id])->get()->toArray();
             if(count($customer) > 0){
               $error["email"] = 'Email đã tồn tại';
               $data["email"] = ""; 
-              $flag = 0;
+              $checked = 0;
             }
           }  
           if(mb_strlen($fullname) < 6){
             $error["fullname"] = 'Họ tên phải từ 6 ký tự trở lên';
             $data["fullname"] = ""; 
-            $flag = 0;
+            $checked = 0;
           }  
           if(mb_strlen($address) < 6){
             $error["address"] = 'Địa chỉ phải từ 6 ký tự trở lên';
             $data["address"] = ""; 
-            $flag = 0;
+            $checked = 0;
           }  
           if(!empty($phone)){
             if(mb_strlen($phone) < 10){
               $error["phone"] = 'Số điện thoại phải từ 10 ký tự trở lên';
               $data["phone"] = ""; 
-              $flag = 0;
+              $checked = 0;
             }  
           }
           if(!empty($mobilephone)){
             if(mb_strlen($mobilephone) < 10){
               $error["mobilephone"] = 'Số mobile phải từ 10 ký tự trở lên';
               $data["mobilephone"] = ""; 
-              $flag = 0;
+              $checked = 0;
             }  
           }          
-          if($flag==1){
+          if($checked==1){
             $item               =   CustomerModel::find((int)@$id);            
             $item->email        =   $email;
             $item->fullname     =   $fullname;
@@ -937,7 +937,7 @@ class IndexController extends Controller {
             $error=array();
             $data =array();
             $arrUser=array();              
-            $flag = 1;               
+            $checked = 1;               
             $id=0;            
             if(Session::has($this->_ssNameUser)){                
                 $arrUser = Session::get($this->_ssNameUser)["userInfo"];    
@@ -961,20 +961,20 @@ class IndexController extends Controller {
                   if(!preg_match("#^[a-z][a-z0-9_\.]{4,31}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$#",$email )){
                     $error["email"] = 'Email is invalid';
                     $data["email"] = '';
-                    $flag = 0;
+                    $checked = 0;
                   }else{
                     $arrRowData=CustomerModel::whereRaw("trim(lower(email)) = ? and id != ? ",[trim(mb_strtolower($email,'UTF-8')),(int)$id])->get()->toArray();
                   if(count($arrRowData) > 0){
                     $error["email"] = 'Email đã tồn tại';
                     $data["email"] = ""; 
-                    $flag = 0;
+                    $checked = 0;
                   }
                   }
                   if((int)$payment_method==0){
                       $error["payment_method"] = 'Xin vui lòng chọn 1 phương thức thanh toán';                      
-                      $flag = 0;
+                      $checked = 0;
                   }                                    
-                  if($flag==1){                    
+                  if($checked==1){                    
                       $item = new InvoiceModel;
                       $item->code=randomString(20);
                       $item->customer_id  =$id;
@@ -1044,7 +1044,7 @@ class IndexController extends Controller {
             $layout="two-column";
             $error=array();
             $data =array();   
-            $flag = 1;   
+            $checked = 1;   
             $arrUser=array();
             $customer=array();                            
             $arrCart=array();
@@ -1067,13 +1067,13 @@ class IndexController extends Controller {
                   if(mb_strlen($username) < 6){
                     $error["username"] = 'Username phải có độ dài lớn hơn hoặc bằng 6 ký tự';
                     $data["username"] = ""; 
-                    $flag = 0;
+                    $checked = 0;
                   }else{
                     $customer=CustomerModel::whereRaw("trim(lower(username)) = ?",[trim(mb_strtolower($username,'UTF-8'))])->get()->toArray();
                     if(count($customer) > 0){
                       $error["username"] = 'Username đã tồn tại';
                       $data["username"] = ""; 
-                      $flag = 0;
+                      $checked = 0;
                     }  
                   }
 
@@ -1081,28 +1081,28 @@ class IndexController extends Controller {
                     $error["password"] = 'Password phải có độ dài lớn hơn hoặc bằng 6 ký tự';
                     $data["password"] = "";
                     $data["password_confirm"] = ""; 
-                    $flag = 0;
+                    $checked = 0;
                   }else{
                     if(strcmp(mb_strtolower($password,'UTF-8') , mb_strtolower($password_confirm,'UTF-8')) != 0 ){
                       $error["password_confirm"] = 'PasswordConfirm does not matched Password';
                       $data["password_confirm"] = "";   
-                      $flag = 0;
+                      $checked = 0;
                     }
                   }              
 
                   if(!preg_match("#^[a-z][a-z0-9_\.]{4,31}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$#", mb_strtolower($email,'UTF-8')   )){
                     $error["email"] = 'Email is invalid';
                     $data["email"] = '';
-                    $flag = 0;
+                    $checked = 0;
                   }else{
                     $customer=CustomerModel::whereRaw("trim(lower(email)) = ?",[trim(mb_strtolower($email,'UTF-8'))])->get()->toArray();
                     if(count($customer) > 0){
                       $error["email"] = 'Email đã tồn tại';
                       $data["email"] = ""; 
-                      $flag = 0;
+                      $checked = 0;
                     }
                   }                   
-                  if($flag==1){
+                  if($checked==1){
                       $item               =   new CustomerModel;
                       $item->username     =   trim(@$request->username);
                       $item->password     =   md5(@$request->password) ;
@@ -1145,7 +1145,7 @@ class IndexController extends Controller {
         $data =array();   
         $arrUser=array();
         $customer=array();
-        $flag = 1;                 
+        $checked = 1;                 
         $id=0;                
         if(Session::has($this->_ssNameUser)){                
                 $arrUser = Session::get($this->_ssNameUser)["userInfo"];    
