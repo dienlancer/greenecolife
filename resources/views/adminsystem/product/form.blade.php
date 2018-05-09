@@ -16,7 +16,7 @@ $status                 =   (count($arrRowData) > 0) ? @$arrRowData['status'] : 
 $arrStatus              =   array(-1 => '- Select status -', 1 => 'Publish', 0 => 'Unpublish');  
 $ddlStatus              =   cmsSelectbox("status","form-control",$arrStatus,$status,"");
 $inputIntro            =   '<textarea  name="intro" rows="5" cols="100" class="form-control" >'.@$arrRowData['intro'].'</textarea>'; 
-$inputDetail            =   '<textarea name="detail" rows="5" cols="100" class="form-control" >'.@$arrRowData['detail'].'</textarea>'; 
+$inputDetail            =   '<textarea name="detail" rows="5" cols="100" class="form-control summer-editor" >'.@$arrRowData['detail'].'</textarea>'; 
 $inputSortOrder         =   '<input type="text" class="form-control" name="sort_order"  value="'.@$arrRowData['sort_order'].'">';
 $inputSizeType         =   '<input type="text" class="form-control" name="size_type"     value="'.@$arrRowData['size_type'].'">';
 $ddlCategoryProduct      =   cmsSelectboxCategory("category_id","form-control",$arrCategoryProductRecursive,@$arrRowData['category_id'],"",'Chọn danh mục');
@@ -36,6 +36,7 @@ if(count(@$arrRowData)>0){
     }        
 }   
 $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.@$strImage.'" />';
+$inputCallback='<input type="hidden" name="callback_url"  value="'.route('adminsystem.media.saveSummerFile').'" />';
 ?>
 <div class="portlet light bordered">
     <div class="portlet-title">
@@ -61,6 +62,7 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.
             echo $inputPictureHidden; 
             echo $inputID;
             echo $inputAliasMenu;
+            echo $inputCallback; 
             ?>                
             <div class="form-body">                
                 <div class="row">
@@ -207,13 +209,7 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.
                         <label class="col-md-2 control-label"><b>Chi tiết</b></label>
                         <div class="col-md-10">                            
                             <?php echo $inputDetail; ?>
-                            <span class="help-block"></span>
-                            <script type="text/javascript" language="javascript">
-                                CKEDITOR.replace('detail',{
-                                   height:300
-                               });
-                           </script>
-                           <span class="help-block"></span>
+                            <span class="help-block"></span>                            
                        </div>
                    </div>                       
                 </div>                                                               
@@ -284,7 +280,7 @@ $inputPictureHidden     =   '<input type="hidden" name="image_hidden"  value="'.
         var price=$('input[name="price"]').val();
         var sale_price=$('input[name="sale_price"]').val();       
         var intro=$('textarea[name="intro"]').val(); 
-        var detail=CKEDITOR.instances['detail'].getData();        
+        var detail=$('textarea[name="detail"]').summernote('code');        
         
         var sort_order=$('input[name="sort_order"]').val();        
         var token = $('input[name="_token"]').val();   
