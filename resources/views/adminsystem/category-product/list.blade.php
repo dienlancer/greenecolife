@@ -42,7 +42,7 @@ $linkSortOrder			=	route('adminsystem.'.$controller.'.sortOrder');
 				}				
 				?>
 			</div>                                                                            
-            @endif			
+            @endif		
 			<div class="caption font-dark">
 				<i class="{{$icon}}"></i>
 				<span class="caption-subject bold uppercase">{{$title}}</span>
