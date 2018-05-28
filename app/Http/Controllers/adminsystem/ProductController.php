@@ -91,6 +91,7 @@ public function save(Request $request){
   $alias_menu           =   trim($request->alias_menu);      
   $meta_keyword         =   trim($request->meta_keyword);
   $meta_description     =   trim($request->meta_description);
+  $alt_image                =   trim($request->alt_image);  
   $image_file           =   null;
   $source_image_child=array();
   $source_image_child_hidden=array();
@@ -219,6 +220,7 @@ if ($checked == 1) {
   $item->sale_price       = (int)(str_replace('.', '',@$sale_price)) ;                                 
   $item->detail           = $detail;       
   $item->intro            = $intro;  
+  $item->alt_image          = $alt_image; 
   $item->category_id      = (int)@$category_id;                                      
   $item->sort_order 	    =	(int)@$sort_order;                
   $item->updated_at 	    =	date("Y-m-d H:i:s",time());  
