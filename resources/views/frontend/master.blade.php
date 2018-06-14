@@ -88,11 +88,20 @@ if(count($arrCart) > 0){
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="google-site-verification" content="<?php echo $seo_google_site_verification; ?>">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	
+
+	<!-- begin meta facebook -->
+
+	<meta property="og:locale" content="vi_VN" />
 	<meta property="og:title" content="<?php echo $seo_title; ?>">
 	<meta property="og:type" content="website">
 	<meta property="og:description" content="<?php echo $seo_meta_description; ?>">
 	<meta property="og:site_name" content="<?php echo $seo_title; ?>">
 	<meta property="og:url" content="<?php echo $seo_page_url; ?>">
+
+
+	<!-- end meta facebook -->
+
 	<!-- begin google analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $seo_google_analytics; ?>"></script>
 	<script>
